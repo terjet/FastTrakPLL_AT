@@ -6,3 +6,6 @@
 )
 ON [PRIMARY]
 GO
+
+GRANT SELECT ON [dbo].[MetaAlertAction] TO [FastTrak]
+GO

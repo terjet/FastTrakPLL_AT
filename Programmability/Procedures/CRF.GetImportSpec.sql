@@ -14,3 +14,6 @@ BEGIN
   ORDER BY fi.OrderNumber
 END
 GO
+
+GRANT EXECUTE ON [CRF].[GetImportSpec] TO [FastTrak]
+GO

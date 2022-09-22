@@ -38,6 +38,12 @@ GO
 GRANT UPDATE ON [dbo].[UserList] TO [DashboardAgent]
 GO
 
+GRANT SELECT ON [dbo].[UserList] TO [FastTrak]
+GO
+
+GRANT INSERT ON [dbo].[UserList] TO [superuser]
+GO
+
 ALTER TABLE [dbo].[UserList]
   ADD CONSTRAINT [FK_UserList_BaseProfId] FOREIGN KEY ([BaseProfId]) REFERENCES [dbo].[MetaProfession] ([ProfId])
 GO

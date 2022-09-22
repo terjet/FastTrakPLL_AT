@@ -7,3 +7,6 @@ BEGIN
   WHERE ( SELECT COUNT(*) FROM dbo.LabCodeGroup WHERE LabCodeId = LabCode.LabCodeId ) = 0;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetLabNameUngrouped] TO [FastTrak]
+GO

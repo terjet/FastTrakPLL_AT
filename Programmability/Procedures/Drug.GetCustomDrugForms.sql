@@ -9,3 +9,6 @@ BEGIN
   WHERE StudyId = @StudyId AND DisabledAt IS NULL;
 END
 GO
+
+GRANT EXECUTE ON [Drug].[GetCustomDrugForms] TO [DrugEditor]
+GO

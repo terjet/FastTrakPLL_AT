@@ -74,3 +74,6 @@ BEGIN
 
 END;
 GO
+
+GRANT EXECUTE ON [CRF].[UpdateClinFormSetTime] TO [FastTrak]
+GO

@@ -14,3 +14,6 @@ BEGIN
   END;
 END;
 GO
+
+GRANT EXECUTE ON [CRF].[AddClinEvent] TO [FastTrak]
+GO

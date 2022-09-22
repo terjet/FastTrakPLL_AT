@@ -10,3 +10,6 @@ AS
   JOIN Study s ON s.StudyId=v.StudyId AND s.StudyName='GBD'
   GROUP BY v.GroupName
 GO
+
+GRANT SELECT ON [GBD].[HultenNursingLoadByGroup] TO [FastTrak]
+GO

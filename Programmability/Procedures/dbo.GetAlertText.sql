@@ -10,3 +10,6 @@ BEGIN
   SET @AlertMessage = ISNULL(@AlertMessage,'@' + @AlertClass + '.' + @AlertFacet );
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetAlertText] TO [FastTrak]
+GO

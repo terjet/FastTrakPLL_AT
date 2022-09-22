@@ -16,3 +16,9 @@ BEGIN
   END; 
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateDrugPrescriptionPrintStatus] TO [PrintPrescription]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateDrugPrescriptionPrintStatus] TO [ReadOnly]
+GO

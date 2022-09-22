@@ -6,5 +6,8 @@ BEGIN
 END
 GO
 
+DENY EXECUTE ON [dbo].[UpdateUserPerson] TO [ReadOnly]
+GO
+
 GRANT EXECUTE ON [dbo].[UpdateUserPerson] TO [superuser]
 GO

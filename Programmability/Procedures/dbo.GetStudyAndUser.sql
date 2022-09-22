@@ -24,3 +24,6 @@ BEGIN
   WHERE s.StudyName = @StudyName;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetStudyAndUser] TO [FastTrak]
+GO

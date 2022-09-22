@@ -17,3 +17,9 @@ BEGIN
   SELECT StudyId FROM Study WHERE StudName=@StudyName;
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[AddStudy] TO [DataImport]
+GO
+
+GRANT EXECUTE ON [dbo].[AddStudy] TO [FastTrak]
+GO

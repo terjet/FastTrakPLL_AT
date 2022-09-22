@@ -31,3 +31,6 @@ BEGIN
   WHERE (ce.PersonId = @PersonId) AND ((cf.Archived = 0) OR (@IncludeArchived = 1));
 END
 GO
+
+GRANT EXECUTE ON [CRF].[GetClinFormList] TO [FastTrak]
+GO

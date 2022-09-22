@@ -10,3 +10,6 @@ BEGIN
 	  'Vi henter inn labdata fra integrasjonene, labdata er ikke oppdatert';
 END;
 GO
+
+GRANT EXECUTE ON [LAB].[StartBeakerImport] TO [FastTrak]
+GO

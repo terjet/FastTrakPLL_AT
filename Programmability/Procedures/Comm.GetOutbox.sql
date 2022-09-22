@@ -5,3 +5,6 @@ BEGIN
   SELECT OutId, MessageText, MsgGuid FROM COMM.OutBox WHERE PulledAt IS NULL OR ISNULL(StatusCode,-2) < 0;
 END
 GO
+
+GRANT EXECUTE ON [Comm].[GetOutbox] TO [FastTrak]
+GO

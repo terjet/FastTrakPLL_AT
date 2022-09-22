@@ -5,3 +5,6 @@
 )
 ON [PRIMARY]
 GO
+
+GRANT SELECT ON [dbo].[MetaReasonType] TO [FastTrak]
+GO

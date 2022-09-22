@@ -5,3 +5,6 @@ BEGIN
   RETURN CONVERT( VARCHAR, DATEDIFF( DD, @TimeAxis, '3000-01-01' ) );
 END
 GO
+
+GRANT EXECUTE ON [report].[RowKeyReverse] TO [FastTrak]
+GO

@@ -30,6 +30,9 @@ CREATE INDEX [I_CaseLog_PersonId]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[CaseLog] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[CaseLog]
   ADD CONSTRAINT [FK_CaseLog_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

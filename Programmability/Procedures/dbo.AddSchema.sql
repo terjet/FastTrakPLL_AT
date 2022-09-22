@@ -11,3 +11,6 @@ BEGIN
   END
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddSchema] TO [superuser]
+GO

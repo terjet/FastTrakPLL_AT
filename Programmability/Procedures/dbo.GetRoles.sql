@@ -9,3 +9,9 @@ BEGIN
   ORDER BY uri.SortOrder;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetRoles] TO [FastTrak]
+GO
+
+GRANT EXECUTE ON [dbo].[GetRoles] TO [superuser]
+GO

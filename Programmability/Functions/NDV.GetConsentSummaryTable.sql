@@ -15,3 +15,6 @@ BEGIN
   RETURN;
 END
 GO
+
+GRANT SELECT ON [NDV].[GetConsentSummaryTable] TO [FastTrak]
+GO

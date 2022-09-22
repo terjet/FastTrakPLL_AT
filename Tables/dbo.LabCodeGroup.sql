@@ -13,6 +13,9 @@ CREATE INDEX [I_LabCodeGroup_LabCodeId]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[LabCodeGroup] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[LabCodeGroup]
   ADD CONSTRAINT [FK_LabCodeGroup_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

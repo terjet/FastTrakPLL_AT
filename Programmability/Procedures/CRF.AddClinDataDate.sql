@@ -28,3 +28,6 @@ BEGIN
   END
 END
 GO
+
+GRANT EXECUTE ON [CRF].[AddClinDataDate] TO [FastTrak]
+GO

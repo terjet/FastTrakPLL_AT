@@ -11,3 +11,9 @@ BEGIN
      @Dose24hCount, @StartAt, @StartFuzzy, @StartReason, @DoseCode, @RxText, @TreatType, 'X', @BatchId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddDrug] TO [DataImport]
+GO
+
+GRANT EXECUTE ON [dbo].[AddDrug] TO [FastTrak]
+GO

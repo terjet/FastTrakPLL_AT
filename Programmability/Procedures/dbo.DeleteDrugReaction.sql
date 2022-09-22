@@ -10,3 +10,6 @@ BEGIN
     WHERE DRId = @DRId AND DeletedBy IS NULL;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[DeleteDrugReaction] TO [FastTrak]
+GO

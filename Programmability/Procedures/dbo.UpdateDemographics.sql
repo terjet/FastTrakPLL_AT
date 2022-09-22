@@ -30,3 +30,9 @@ BEGIN
      VALUES (@NationalId, GetDate())
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateDemographics] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateDemographics] TO [ReadOnly]
+GO

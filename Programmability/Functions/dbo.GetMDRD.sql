@@ -33,3 +33,6 @@ BEGIN
   RETURN @GFR;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetMDRD] TO [FastTrak]
+GO

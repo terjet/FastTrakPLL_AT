@@ -10,3 +10,6 @@ END;
 
 GRANT EXECUTE ON dbo.AddRx TO public
 GO
+
+GRANT EXECUTE ON [dbo].[AddRx] TO [FastTrak]
+GO

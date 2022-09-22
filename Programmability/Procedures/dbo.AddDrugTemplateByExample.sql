@@ -27,3 +27,6 @@ CREATE PROCEDURE [dbo].[AddDrugTemplateByExample] @TreatId INTEGER, @FriendlyNam
   IF @@ERROR <> 0 RETURN -ABS(@@ERROR);
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[AddDrugTemplateByExample] TO [FastTrak]
+GO

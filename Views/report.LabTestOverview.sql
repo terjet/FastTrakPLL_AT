@@ -12,3 +12,6 @@ CREATE VIEW [report].[LabTestOverview] AS
   JOIN LabCode lc ON lc.LabCodeId = LabStats.LabCodeId
   LEFT JOIN dbo.LabClass cl ON cl.LabClassId = lc.LabClassId
 GO
+
+GRANT SELECT ON [report].[LabTestOverview] TO [FastTrak]
+GO

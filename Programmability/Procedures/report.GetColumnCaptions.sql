@@ -9,3 +9,6 @@ END
 
 GRANT EXECUTE ON Report.GetColumnCaptions TO [public] AS [dbo]
 GO
+
+GRANT EXECUTE ON [report].[GetColumnCaptions] TO [FastTrak]
+GO

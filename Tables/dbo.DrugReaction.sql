@@ -68,6 +68,9 @@ BEGIN
 END
 GO
 
+GRANT SELECT ON [dbo].[DrugReaction] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[DrugReaction]
   ADD CONSTRAINT [FK_DrugReaction_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

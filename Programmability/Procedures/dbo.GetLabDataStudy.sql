@@ -10,3 +10,6 @@ BEGIN
   JOIN StudCase sc on sc.PersonId=ld.PersonId AND sc.StudyId=@StudyId
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[GetLabDataStudy] TO [FastTrak]
+GO

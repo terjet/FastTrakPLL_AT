@@ -14,3 +14,6 @@ BEGIN
   FROM #temp WHERE ( SYSBP > 140 ) OR ( BPDRUGS > 1 ) ORDER BY FullName;
 END
 GO
+
+GRANT EXECUTE ON [NDV].[GetType2WithHypertension] TO [FastTrak]
+GO

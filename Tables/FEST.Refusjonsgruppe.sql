@@ -19,6 +19,9 @@ CREATE UNIQUE INDEX [IDX_Refusjonsgruppe_Gruppenr]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [FEST].[Refusjonsgruppe] TO [FastTrak]
+GO
+
 ALTER TABLE [FEST].[Refusjonsgruppe]
   ADD CONSTRAINT [FK_FEST_Refusjonsgruppe_RefRefusjonshjemmel] FOREIGN KEY ([RefRefusjonshjemmel]) REFERENCES [FEST].[Refusjonshjemmel] ([V])
 GO

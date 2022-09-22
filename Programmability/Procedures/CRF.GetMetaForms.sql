@@ -14,3 +14,6 @@ BEGIN
   WHERE msf.StudyId=@StudyId;
 END
 GO
+
+GRANT EXECUTE ON [CRF].[GetMetaForms] TO [FastTrak]
+GO

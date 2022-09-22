@@ -5,3 +5,6 @@ BEGIN
   EXEC RulePeriodicData @StudyId, @PersonId, 'SBP_UNSPEC',30, 2
 END
 GO
+
+GRANT EXECUTE ON [GBD].[RuleBP30Days] TO [FastTrak]
+GO

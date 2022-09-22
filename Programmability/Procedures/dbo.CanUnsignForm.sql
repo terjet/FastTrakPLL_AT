@@ -34,3 +34,6 @@ BEGIN
   END;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[CanUnsignForm] TO [FastTrak]
+GO

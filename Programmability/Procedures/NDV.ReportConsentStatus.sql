@@ -44,3 +44,6 @@ BEGIN
   ORDER BY StartTime DESC;
 END
 GO
+
+GRANT EXECUTE ON [NDV].[ReportConsentStatus] TO [FastTrak]
+GO

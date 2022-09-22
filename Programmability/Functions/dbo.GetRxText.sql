@@ -16,3 +16,6 @@ BEGIN
   RETURN @RetVal;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetRxText] TO [FastTrak]
+GO

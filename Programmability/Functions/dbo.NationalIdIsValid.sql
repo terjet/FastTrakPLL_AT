@@ -27,3 +27,6 @@ BEGIN
   RETURN 1;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[NationalIdIsValid] TO [FastTrak]
+GO

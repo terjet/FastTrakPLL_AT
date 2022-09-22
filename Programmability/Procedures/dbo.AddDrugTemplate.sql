@@ -33,3 +33,6 @@ BEGIN
   END;
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[AddDrugTemplate] TO [FastTrak]
+GO

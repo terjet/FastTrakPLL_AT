@@ -7,3 +7,6 @@
 ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
 GO
+
+GRANT SELECT ON [dbo].[MetaSeverity] TO [FastTrak]
+GO

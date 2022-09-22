@@ -9,3 +9,6 @@ BEGIN
   WHERE ( dt.PersonId=@PersonId ) AND ( rx.DeletedBy IS NULL );
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetRxPrintQueue] TO [FastTrak]
+GO

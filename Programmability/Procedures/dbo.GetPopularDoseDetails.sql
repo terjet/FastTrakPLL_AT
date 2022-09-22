@@ -11,3 +11,6 @@ BEGIN
   ORDER BY count(*) DESC
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetPopularDoseDetails] TO [FastTrak]
+GO

@@ -8,3 +8,6 @@ BEGIN
     RAISERROR( 'Du har ikke anledning til å signere medikamenter!', 16, 1 );
 END
 GO
+
+GRANT EXECUTE ON [dbo].[SignDrugTreatment] TO [FastTrak]
+GO

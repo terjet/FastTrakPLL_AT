@@ -14,3 +14,6 @@ BEGIN
   END 
 END
 GO
+
+GRANT EXECUTE ON [dbo].[DbDowngrade] TO [superuser]
+GO

@@ -17,3 +17,6 @@ BEGIN
   RETURN 1;
 END
 GO
+
+GRANT EXECUTE ON [AccessCtrl].[UserHasCaseAccess] TO [FastTrak]
+GO

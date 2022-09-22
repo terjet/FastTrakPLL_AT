@@ -11,3 +11,6 @@ BEGIN
   ORDER BY l.ServTime
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[GetUsersOnline] TO [FastTrak]
+GO

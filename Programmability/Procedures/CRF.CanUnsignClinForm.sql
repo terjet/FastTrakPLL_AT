@@ -11,3 +11,6 @@ AS
     SELECT @CanUnsign AS CanUnsign,@ErrMsg AS ErrMsg;
   END
 GO
+
+GRANT EXECUTE ON [CRF].[CanUnsignClinForm] TO [FastTrak]
+GO

@@ -8,3 +8,9 @@ BEGIN
     AND ( DOB <> @DOB OR GenderId <> @GenderId OR LstName <> RTRIM( @LstName ) OR FstName <> RTRIM( @FstName ) OR ISNULL( NationalId, '' ) <> ISNULL( @NationalId, '' )  );
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdatePerson] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdatePerson] TO [ReadOnly]
+GO

@@ -6,3 +6,6 @@ BEGIN
   INSERT INTO AuditLog.CaseAccess ( EventGuid, PersonId, AccessTypeId, AccessText, ClinRelId ) VALUES ( @EventGuid, @PersonId, 1, @AccessText, NULLIF(@ClinRelId,0) )
 END
 GO
+
+GRANT EXECUTE ON [AuditLog].[AddCaseOpenedEvent] TO [FastTrak]
+GO

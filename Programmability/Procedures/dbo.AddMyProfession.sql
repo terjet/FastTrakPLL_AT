@@ -9,3 +9,6 @@ BEGIN
 	AND ProfId IS NULL
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddMyProfession] TO [FastTrak]
+GO

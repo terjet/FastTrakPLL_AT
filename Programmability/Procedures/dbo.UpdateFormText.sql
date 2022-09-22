@@ -6,3 +6,9 @@ BEGIN
   WHERE ( FormId=@FormId ) AND ( EventId=@EventId ) AND ( ISNULL(CachedText,'') <> ISNULL(@CachedText,'') );
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateFormText] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateFormText] TO [ReadOnly]
+GO

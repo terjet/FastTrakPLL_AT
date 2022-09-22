@@ -9,3 +9,6 @@ BEGIN
     EXEC CRF.DeleteMyClinForm @ClinFormId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[DeleteClinForm] TO [FastTrak]
+GO

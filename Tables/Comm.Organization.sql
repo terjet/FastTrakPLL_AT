@@ -11,3 +11,6 @@
 )
 ON [PRIMARY]
 GO
+
+GRANT SELECT ON [Comm].[Organization] TO [FastTrak]
+GO

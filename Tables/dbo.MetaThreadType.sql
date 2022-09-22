@@ -9,3 +9,6 @@
 ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
 GO
+
+GRANT SELECT ON [dbo].[MetaThreadType] TO [FastTrak]
+GO

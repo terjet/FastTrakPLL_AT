@@ -6,3 +6,6 @@ SELECT
   ATC,DrugName,DrugForm,Strength,StrengthUnit,SubstanceName,DrugNameFormStrength
 FROM dbo.PIA
 GO
+
+GRANT SELECT ON [dbo].[ViewDrugList] TO [FastTrak]
+GO

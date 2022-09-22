@@ -38,3 +38,6 @@ BEGIN
     UPDATE dbo.UserList SET PersonId = @PersonId WHERE UserId = USER_ID() AND PersonId IS NULL
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddMyself] TO [FastTrak]
+GO

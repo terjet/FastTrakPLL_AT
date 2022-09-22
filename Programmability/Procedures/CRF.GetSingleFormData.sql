@@ -13,3 +13,6 @@ BEGIN
   WHERE ( cf.ClinFormId = @ClinFormId ) AND ( ( cdp.ObsDate > @ChangedAfter ) OR ( cdp.LockedAt > @ChangedAfter ) );
 END
 GO
+
+GRANT EXECUTE ON [CRF].[GetSingleFormData] TO [FastTrak]
+GO

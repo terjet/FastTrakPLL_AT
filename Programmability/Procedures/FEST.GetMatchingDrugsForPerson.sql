@@ -22,3 +22,6 @@ BEGIN
     ORDER BY ISNULL(dt.PersonId, 0) DESC, PIA.DrugName;
 END
 GO
+
+GRANT EXECUTE ON [FEST].[GetMatchingDrugsForPerson] TO [FastTrak]
+GO

@@ -30,3 +30,9 @@ BEGIN
   RETURN ISNULL(@PersonId,-1);
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddPerson] TO [DataImport]
+GO
+
+GRANT EXECUTE ON [dbo].[AddPerson] TO [FastTrak]
+GO

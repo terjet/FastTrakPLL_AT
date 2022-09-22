@@ -59,3 +59,6 @@ BEGIN
   DEALLOCATE alert_list;
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[RuleDrugToProblem] TO [FastTrak]
+GO

@@ -14,3 +14,9 @@ BEGIN
   END;
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateClinProblemSummary] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateClinProblemSummary] TO [ReadOnly]
+GO

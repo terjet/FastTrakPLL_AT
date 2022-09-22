@@ -8,3 +8,9 @@ BEGIN
     WHERE StudyId=@StudyId AND PersonId=@PersonId AND HandledBy<>user_id()
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateCaseAdopt] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateCaseAdopt] TO [ReadOnly]
+GO

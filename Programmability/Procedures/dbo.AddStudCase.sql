@@ -11,3 +11,9 @@ BEGIN
    VALUES( @StudyId,@PersonId,1,@Journalansvarlig);
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddStudCase] TO [DataImport]
+GO
+
+GRANT EXECUTE ON [dbo].[AddStudCase] TO [FastTrak]
+GO

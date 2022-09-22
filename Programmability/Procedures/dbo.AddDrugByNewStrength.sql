@@ -31,3 +31,6 @@ BEGIN
   RETURN @NewId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddDrugByNewStrength] TO [FastTrak]
+GO

@@ -15,6 +15,9 @@ ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[DSSRuleError] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[DSSRuleError]
   ADD CONSTRAINT [FK_DSSRuleError_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

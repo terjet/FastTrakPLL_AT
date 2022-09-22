@@ -25,6 +25,9 @@ ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[DrugPrescription] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[DrugPrescription] WITH NOCHECK
   ADD CONSTRAINT [FK_DrugPrescription_CodeId] FOREIGN KEY ([CodeId]) REFERENCES [dbo].[MetaReimbursementCode] ([CodeId])
 GO

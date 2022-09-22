@@ -11,3 +11,6 @@ BEGIN
   RETURN @PauseStatus;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetDrugPauseStatus] TO [FastTrak]
+GO

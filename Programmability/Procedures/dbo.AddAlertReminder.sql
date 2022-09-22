@@ -9,3 +9,6 @@ BEGIN
     VALUES (0,@UserId,@AlertLevel,'REMINDER','Undefined',@AlertHeader,@AlertMessage,'TWMHYF')
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddAlertReminder] TO [FastTrak]
+GO

@@ -29,6 +29,9 @@ BEGIN
 END
 GO
 
+GRANT SELECT ON [dbo].[ClinThread] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[ClinThread]
   ADD CONSTRAINT [FK_ClinThread_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

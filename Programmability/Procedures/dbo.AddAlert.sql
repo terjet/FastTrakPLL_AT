@@ -13,3 +13,6 @@ BEGIN
   WHERE a.AlertId = SCOPE_IDENTITY();
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddAlert] TO [FastTrak]
+GO

@@ -12,3 +12,6 @@
 ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
 GO
+
+GRANT SELECT ON [FEST].[Refusjonshjemmel] TO [FastTrak]
+GO

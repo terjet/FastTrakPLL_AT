@@ -15,3 +15,6 @@ BEGIN
     WHERE mf.FormId=@FormId;
 END
 GO
+
+GRANT EXECUTE ON [CRF].[GetForm] TO [FastTrak]
+GO

@@ -7,3 +7,6 @@ BEGIN
   WHERE NOT mia.ICD10 IS NULL;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetDiagnoseMapICD10] TO [FastTrak]
+GO

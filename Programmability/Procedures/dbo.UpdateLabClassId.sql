@@ -9,3 +9,9 @@ BEGIN
     WHERE LabCodeId=@LabCodeId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateLabClassId] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateLabClassId] TO [ReadOnly]
+GO

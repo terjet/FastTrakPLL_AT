@@ -13,6 +13,3 @@ BEGIN
     PRINT '    The profession ' + @ProfName + ' is already on the database.';
 END
 GO
-
-GRANT EXECUTE ON [Tools].[AddProfession] TO [superuser]
-GO

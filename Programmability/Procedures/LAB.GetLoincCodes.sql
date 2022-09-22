@@ -5,3 +5,6 @@ BEGIN
 	SELECT DISTINCT Loinc FROM dbo.LabClass WHERE Loinc IS NOT NULL;
 END
 GO
+
+GRANT EXECUTE ON [LAB].[GetLoincCodes] TO [FastTrak]
+GO

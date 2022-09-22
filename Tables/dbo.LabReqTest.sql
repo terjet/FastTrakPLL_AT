@@ -11,6 +11,9 @@
 ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[LabReqTest] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[LabReqTest]
   ADD CONSTRAINT [FK_LabReqTest_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

@@ -10,3 +10,6 @@ BEGIN
     AND ( ( @Strength IS NULL ) OR ( @Strength = Strength ) ); 
 END
 GO
+
+GRANT EXECUTE ON [FEST].[GetMatchingDrugs] TO [FastTrak]
+GO

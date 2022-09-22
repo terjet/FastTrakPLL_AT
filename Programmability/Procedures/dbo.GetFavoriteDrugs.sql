@@ -7,3 +7,6 @@ BEGIN
     '' AS DummyField,StartReason FROM DrugTemplate  
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetFavoriteDrugs] TO [FastTrak]
+GO

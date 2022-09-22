@@ -16,3 +16,6 @@ BEGIN
   ORDER BY scl.ChangedAt DESC, sc.CreatedAt DESC;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetPatientLocationHistory] TO [FastTrak]
+GO

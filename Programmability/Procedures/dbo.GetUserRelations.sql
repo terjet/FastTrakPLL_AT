@@ -10,3 +10,6 @@ BEGIN
   WHERE ul.UserId=@UserId AND mr.DisabledBy IS NULL
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetUserRelations] TO [FastTrak]
+GO

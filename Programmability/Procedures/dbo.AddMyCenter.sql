@@ -7,3 +7,6 @@ BEGIN
   UPDATE UserList SET CenterId=@CenterId WHERE UserId=USER_ID() AND CenterId IS NULL
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddMyCenter] TO [FastTrak]
+GO

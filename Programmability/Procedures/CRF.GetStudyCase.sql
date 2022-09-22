@@ -24,3 +24,6 @@ BEGIN
   WHERE p.PersonId = @PersonId;
 END
 GO
+
+GRANT EXECUTE ON [CRF].[GetStudyCase] TO [FastTrak]
+GO

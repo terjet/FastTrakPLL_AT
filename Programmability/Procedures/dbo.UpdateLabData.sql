@@ -8,3 +8,6 @@ BEGIN
   ArithmeticComp = @ArithmeticComp WHERE ResultId=@ResultId;
 END
 GO
+
+DENY EXECUTE ON [dbo].[UpdateLabData] TO [ReadOnly]
+GO

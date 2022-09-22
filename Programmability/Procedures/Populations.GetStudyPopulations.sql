@@ -15,3 +15,6 @@ BEGIN
 	ORDER BY ProcId;
 END;
 GO
+
+GRANT EXECUTE ON [Populations].[GetStudyPopulations] TO [FastTrak]
+GO

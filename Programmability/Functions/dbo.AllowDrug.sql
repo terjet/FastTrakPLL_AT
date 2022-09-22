@@ -11,3 +11,6 @@ BEGIN
   RETURN @AllowIt;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AllowDrug] TO [FastTrak]
+GO

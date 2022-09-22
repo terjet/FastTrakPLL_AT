@@ -47,3 +47,6 @@ BEGIN
   END;
 END
 GO
+
+GRANT EXECUTE ON [CRF].[UpdateClinFormSign] TO [FastTrak]
+GO

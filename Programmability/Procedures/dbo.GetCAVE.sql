@@ -6,3 +6,6 @@ BEGIN
   SELECT CAVE,NB,Reservations,Allergies FROM dbo.Person WHERE PersonId=@PersonId
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCAVE] TO [FastTrak]
+GO

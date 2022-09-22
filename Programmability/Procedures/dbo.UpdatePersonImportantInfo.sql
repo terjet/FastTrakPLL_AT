@@ -19,3 +19,9 @@ BEGIN
     RAISERROR( 'Ukjent dokumentidentifikator angitt.', 16, 1 );
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdatePersonImportantInfo] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdatePersonImportantInfo] TO [ReadOnly]
+GO

@@ -9,3 +9,6 @@ AS BEGIN
   WHERE ContextName=@ContextName;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetImportContextUpdate] TO [DataImport]
+GO

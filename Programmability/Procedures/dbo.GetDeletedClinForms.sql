@@ -13,3 +13,6 @@ BEGIN
   ORDER BY cf.DeletedAt DESC
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetDeletedClinForms] TO [FastTrak]
+GO

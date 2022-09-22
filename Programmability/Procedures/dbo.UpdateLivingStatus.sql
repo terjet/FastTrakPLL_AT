@@ -10,3 +10,9 @@ BEGIN
     INSERT INTO LivingStatusCheck( NationalId, LastChecked ) VALUES( @NationalId, GETDATE() )
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateLivingStatus] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateLivingStatus] TO [ReadOnly]
+GO

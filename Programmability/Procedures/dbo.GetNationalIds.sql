@@ -8,3 +8,6 @@ BEGIN
     JOIN Study s ON s.StudyId=sc.StudyId AND s.StudName=@StudyName;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetNationalIds] TO [FastTrak]
+GO

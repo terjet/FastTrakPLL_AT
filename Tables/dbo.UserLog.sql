@@ -30,6 +30,12 @@ CREATE INDEX [I_UserLog_UserId_ClosedAt]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[UserLog] TO [FastTrak]
+GO
+
+GRANT INSERT ON [dbo].[UserLog] TO [superuser]
+GO
+
 ALTER TABLE [dbo].[UserLog]
   ADD CONSTRAINT [FK_UserLog_ClosedBy] FOREIGN KEY ([ClosedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

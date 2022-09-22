@@ -25,3 +25,6 @@ BEGIN
   RETURN;
 END
 GO
+
+GRANT SELECT ON [dbo].[GetLastFormTable] TO [QuickStat]
+GO

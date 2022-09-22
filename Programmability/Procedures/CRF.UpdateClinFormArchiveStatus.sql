@@ -39,7 +39,13 @@ BEGIN
 END
 GO
 
+GRANT EXECUTE ON [CRF].[UpdateClinFormArchiveStatus] TO [FastTrak]
+GO
+
 GRANT EXECUTE ON [CRF].[UpdateClinFormArchiveStatus] TO [Journalansvarlig]
+GO
+
+DENY EXECUTE ON [CRF].[UpdateClinFormArchiveStatus] TO [ReadOnly]
 GO
 
 GRANT EXECUTE ON [CRF].[UpdateClinFormArchiveStatus] TO [superuser]

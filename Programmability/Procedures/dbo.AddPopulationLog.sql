@@ -7,3 +7,6 @@ BEGIN
   VALUES ( @StudyId, @ProcId, @ProcDesc, @MsElapsed );
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[AddPopulationLog] TO [FastTrak]
+GO

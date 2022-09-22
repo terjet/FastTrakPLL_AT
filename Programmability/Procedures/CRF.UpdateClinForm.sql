@@ -60,3 +60,9 @@ BEGIN
   END;
 END
 GO
+
+GRANT EXECUTE ON [CRF].[UpdateClinForm] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [CRF].[UpdateClinForm] TO [ReadOnly]
+GO

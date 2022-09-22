@@ -29,3 +29,9 @@ BEGIN
   SELECT @NewId AS TreatId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateDrugStrength] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateDrugStrength] TO [ReadOnly]
+GO

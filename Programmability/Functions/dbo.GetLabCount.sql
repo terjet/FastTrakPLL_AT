@@ -15,3 +15,6 @@ BEGIN
  RETURN @RetVal;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetLabCount] TO [FastTrak]
+GO

@@ -13,3 +13,6 @@ BEGIN
   WHERE cl.RowId=@RowId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetClinAuditTrail] TO [FastTrak]
+GO

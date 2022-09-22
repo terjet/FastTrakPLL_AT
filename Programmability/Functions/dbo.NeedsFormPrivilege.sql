@@ -16,3 +16,6 @@ AS
     RETURN @NeedsPrivilege;
   END
 GO
+
+GRANT EXECUTE ON [dbo].[NeedsFormPrivilege] TO [FastTrak]
+GO

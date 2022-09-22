@@ -55,3 +55,6 @@ BEGIN
   WHERE UserId = @UserId;
 END
 GO
+
+GRANT EXECUTE ON [Tools].[NegateUser] TO [Administrator]
+GO

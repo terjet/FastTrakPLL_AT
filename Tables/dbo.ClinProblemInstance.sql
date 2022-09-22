@@ -13,6 +13,9 @@ CREATE INDEX [I_ClinProblemInstance_ProbId]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[ClinProblemInstance] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[ClinProblemInstance]
   ADD CONSTRAINT [FK_ClinProblemInstance_ProbId] FOREIGN KEY ([ProbId]) REFERENCES [dbo].[ClinProblem] ([ProbId]) ON DELETE CASCADE
 GO

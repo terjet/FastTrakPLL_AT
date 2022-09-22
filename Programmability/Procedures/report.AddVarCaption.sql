@@ -20,5 +20,5 @@ BEGIN
 END
 GO
 
-GRANT EXECUTE ON [report].[AddVarCaption] TO [superuser]
+GRANT EXECUTE ON [report].[AddVarCaption] TO [FastTrak]
 GO

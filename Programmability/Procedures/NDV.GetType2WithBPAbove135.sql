@@ -5,3 +5,6 @@ BEGIN
   EXECUTE NDV.GetType2WithHighBP @StudyId,135.1
 END
 GO
+
+GRANT EXECUTE ON [NDV].[GetType2WithBPAbove135] TO [FastTrak]
+GO

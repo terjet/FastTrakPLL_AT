@@ -18,3 +18,6 @@ BEGIN
   WHERE sc.StudyId=@StudyId AND sc.PersonId=@PersonId
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetPersonStatus] TO [FastTrak]
+GO

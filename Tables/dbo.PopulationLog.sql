@@ -11,6 +11,9 @@
 ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[PopulationLog] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[PopulationLog]
   ADD CONSTRAINT [FK_PopulationLog_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

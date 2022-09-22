@@ -18,3 +18,6 @@ BEGIN
    WHERE a.OrderBy = 1;
 END
 GO
+
+GRANT EXECUTE ON [report].[GetFormVariableData] TO [FastTrak]
+GO

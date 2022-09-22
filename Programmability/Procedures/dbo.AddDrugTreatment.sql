@@ -48,3 +48,6 @@ BEGIN
   RETURN @TreatId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddDrugTreatment] TO [FastTrak]
+GO

@@ -39,3 +39,9 @@ BEGIN
  END;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddClinProblem] TO [DataImport]
+GO
+
+GRANT EXECUTE ON [dbo].[AddClinProblem] TO [FastTrak]
+GO

@@ -8,3 +8,6 @@ BEGIN
   RETURN (@StudyId);
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetStudyId] TO [FastTrak]
+GO

@@ -5,3 +5,6 @@ BEGIN
   SELECT LabCodeId, LabName, UnitStr FROM dbo.LabCode;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetLabNames] TO [FastTrak]
+GO

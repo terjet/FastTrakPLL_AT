@@ -41,3 +41,9 @@ BEGIN
         EXEC sp_addrolemember @ProfName, @UserName;
 END
 GO
+
+DENY EXECUTE ON [dbo].[UpdateUserProfession] TO [ReadOnly]
+GO
+
+GRANT EXECUTE ON [dbo].[UpdateUserProfession] TO [superuser]
+GO

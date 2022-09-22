@@ -13,3 +13,6 @@ CREATE INDEX [I_MetaNomItem_ItemCode]
   ON [dbo].[MetaNomItem] ([ItemCode])
   ON [PRIMARY]
 GO
+
+GRANT SELECT ON [dbo].[MetaNomItem] TO [FastTrak]
+GO

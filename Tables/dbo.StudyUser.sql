@@ -9,6 +9,9 @@
 ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[StudyUser] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[StudyUser]
   ADD CONSTRAINT [FK_StudyUser_StudyId] FOREIGN KEY ([StudyId]) REFERENCES [dbo].[Study] ([StudyId])
 GO

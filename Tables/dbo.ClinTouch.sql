@@ -11,6 +11,12 @@
 ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[ClinTouch] TO [FastTrak]
+GO
+
+GRANT INSERT ON [dbo].[ClinTouch] TO [superuser]
+GO
+
 ALTER TABLE [dbo].[ClinTouch]
   ADD CONSTRAINT [FK_ClinTouch_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

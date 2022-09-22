@@ -15,3 +15,6 @@ BEGIN
    ORDER BY mia.ItemId,mia.OrderNumber;
 END
 GO
+
+GRANT EXECUTE ON [CRF].[GetStudyAnswers] TO [FastTrak]
+GO

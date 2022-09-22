@@ -25,3 +25,6 @@ BEGIN
   END
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetNomMatch] TO [FastTrak]
+GO

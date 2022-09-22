@@ -23,6 +23,9 @@ CREATE UNIQUE INDEX [IDX_MetaItemAnswer_ItemId_OrderNumber]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[MetaItemAnswer] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[MetaItemAnswer]
   ADD CONSTRAINT [FK_MetaItemAnswer_ItemId] FOREIGN KEY ([ItemId]) REFERENCES [dbo].[MetaItem] ([ItemId])
 GO

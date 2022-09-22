@@ -8,5 +8,5 @@ BEGIN
 END
 GO
 
-GRANT EXECUTE ON [report].[AddSelection] TO [superuser]
+GRANT EXECUTE ON [report].[AddSelection] TO [FastTrak]
 GO

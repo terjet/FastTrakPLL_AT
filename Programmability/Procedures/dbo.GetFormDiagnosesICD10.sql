@@ -10,3 +10,6 @@ BEGIN
   ORDER BY mia.ICD10, ce.EventTime DESC;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetFormDiagnosesICD10] TO [FastTrak]
+GO

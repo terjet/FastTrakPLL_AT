@@ -10,3 +10,6 @@ BEGIN
   WHERE ( msf.StudyId = @StudyId ) AND ( ( @IncludeExpired = 1 ) OR ( GETDATE() BETWEEN fm.ValidFrom AND fm.ValidUntil ) );
 END
 GO
+
+GRANT EXECUTE ON [PROM].[GetStudyPromForms] TO [FastTrak]
+GO

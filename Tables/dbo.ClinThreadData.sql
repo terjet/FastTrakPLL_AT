@@ -35,6 +35,9 @@ BEGIN
 END
 GO
 
+GRANT SELECT ON [dbo].[ClinThreadData] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[ClinThreadData]
   ADD CONSTRAINT [FK_ClinThreadData_EventId] FOREIGN KEY ([EventId]) REFERENCES [dbo].[ClinEvent] ([EventId])
 GO

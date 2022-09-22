@@ -6,6 +6,3 @@ BEGIN
   DELETE FROM dbo.LabCode WHERE LabCodeId = @LabCodeId;
 END
 GO
-
-GRANT EXECUTE ON [dbo].[DeleteLabCode] TO [superuser]
-GO

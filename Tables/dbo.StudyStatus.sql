@@ -11,6 +11,9 @@
 ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[StudyStatus] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[StudyStatus]
   ADD CONSTRAINT [FK_StudyStatus_DisabledBy] FOREIGN KEY ([DisabledBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

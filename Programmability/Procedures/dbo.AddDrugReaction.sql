@@ -12,3 +12,6 @@ BEGIN
   SELECT  SCOPE_IDENTITY() AS DRId;
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[AddDrugReaction] TO [FastTrak]
+GO

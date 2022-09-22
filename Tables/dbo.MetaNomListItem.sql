@@ -20,6 +20,9 @@ CREATE UNIQUE INDEX [I_NomListItem_ListItem]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[MetaNomListItem] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[MetaNomListItem]
   ADD CONSTRAINT [FK_MetaNomListItem_ItemId] FOREIGN KEY ([ItemId]) REFERENCES [dbo].[MetaNomItem] ([ItemId])
 GO

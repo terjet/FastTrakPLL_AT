@@ -31,6 +31,9 @@ CREATE INDEX [IDX_AuditLog_CaseAccess_PersonId]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [AuditLog].[CaseAccess] TO [FastTrak]
+GO
+
 ALTER TABLE [AuditLog].[CaseAccess]
   ADD CONSTRAINT [FK_AuditLog_CaseAccess_ClinRelId] FOREIGN KEY ([ClinRelId]) REFERENCES [dbo].[ClinRelation] ([ClinRelId])
 GO

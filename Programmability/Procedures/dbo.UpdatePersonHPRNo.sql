@@ -13,3 +13,6 @@ BEGIN
   UPDATE dbo.Person SET HPRNo = NULLIF(@HPRNo,0) WHERE PersonId = @PersonId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdatePersonHPRNo] TO [FastTrak]
+GO

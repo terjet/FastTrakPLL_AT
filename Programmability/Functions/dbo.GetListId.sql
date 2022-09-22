@@ -10,3 +10,6 @@ BEGIN
   RETURN @ListId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetListId] TO [FastTrak]
+GO

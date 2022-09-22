@@ -26,3 +26,6 @@ BEGIN
   RETURN @ProbStatus;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetProblemStatus] TO [FastTrak]
+GO

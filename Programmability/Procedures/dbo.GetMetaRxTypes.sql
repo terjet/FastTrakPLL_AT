@@ -6,3 +6,6 @@ BEGIN
   SELECT RxType,RxTypeName FROM MetaRxType
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetMetaRxTypes] TO [FastTrak]
+GO

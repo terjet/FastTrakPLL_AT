@@ -26,3 +26,6 @@ BEGIN
   WHERE ClinFormId=@ClinFormId;
 END
 GO
+
+GRANT EXECUTE ON [CRF].[GetClinForm] TO [FastTrak]
+GO

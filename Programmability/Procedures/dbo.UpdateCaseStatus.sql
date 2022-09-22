@@ -14,3 +14,9 @@ BEGIN
 	WHERE ( StudyId = @StudyId ) AND ( PersonId = @PersonId );
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateCaseStatus] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateCaseStatus] TO [ReadOnly]
+GO

@@ -21,3 +21,6 @@ BEGIN
   END;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetClinData] TO [FastTrak]
+GO

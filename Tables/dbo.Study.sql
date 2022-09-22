@@ -13,3 +13,6 @@
 )
 ON [PRIMARY]
 GO
+
+GRANT SELECT ON [dbo].[Study] TO [FastTrak]
+GO

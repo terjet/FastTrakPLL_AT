@@ -8,3 +8,6 @@ BEGIN
    ORDER BY PackSize
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetRxPackOptionsByName] TO [FastTrak]
+GO

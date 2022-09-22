@@ -17,3 +17,6 @@ BEGIN
   ORDER BY sg.CenterId,sc.StatusDate
 END
 GO
+
+GRANT EXECUTE ON [Dash].[VariableAgeByCenter] TO [FastTrak]
+GO

@@ -10,3 +10,6 @@ BEGIN
     ORDER BY count(*) DESC,mf.FormId DESC;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetMyFavoriteForms] TO [FastTrak]
+GO

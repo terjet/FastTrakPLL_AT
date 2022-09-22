@@ -5,3 +5,6 @@ BEGIN
   EXECUTE NDV.GetPumpWithHighHbA1c @StudyId,21,26,9
 END
 GO
+
+GRANT EXECUTE ON [NDV].[GetPumpAge21To25Hba1cAbove9] TO [FastTrak]
+GO

@@ -74,3 +74,6 @@ BEGIN
   DEALLOCATE interaction_cursor;
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[RuleDrugInteractions] TO [FastTrak]
+GO

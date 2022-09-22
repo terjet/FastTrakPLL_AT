@@ -20,6 +20,12 @@ CREATE UNIQUE INDEX [I_StudyGroup]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[StudyGroup] TO [FastTrak]
+GO
+
+GRANT INSERT ON [dbo].[StudyGroup] TO [superuser]
+GO
+
 ALTER TABLE [dbo].[StudyGroup]
   ADD CONSTRAINT [FK_StudyGroup_CenterId] FOREIGN KEY ([CenterId]) REFERENCES [dbo].[StudyCenter] ([CenterId])
 GO

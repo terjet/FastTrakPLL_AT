@@ -8,3 +8,6 @@ CREATE VIEW [NDV].[Type1NotInsulinPump] AS
   JOIN dbo.Study s ON s.StudyId=v.StudyId AND s.StudyName='NDV'
   WHERE  dbo.GetLastQuantity( v.PersonId, 'NDV_TYPE') = 1 AND NOT dbo.GetLastQuantity( v.PersonId, 'NDV_INSULIN_DEVICE') = 2
 GO
+
+GRANT SELECT ON [NDV].[Type1NotInsulinPump] TO [FastTrak]
+GO

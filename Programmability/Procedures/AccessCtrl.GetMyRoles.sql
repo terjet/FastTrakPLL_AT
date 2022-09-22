@@ -9,3 +9,6 @@ BEGIN
   ORDER BY RoleName;
 END
 GO
+
+GRANT EXECUTE ON [AccessCtrl].[GetMyRoles] TO [FastTrak]
+GO

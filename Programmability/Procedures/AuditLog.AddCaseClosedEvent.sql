@@ -6,3 +6,6 @@ BEGIN
   UPDATE AuditLog.CaseAccess SET ClosedAt = GETDATE(), ClosedBy = USER_ID() WHERE EventGuid = @EventGuid;
 END
 GO
+
+GRANT EXECUTE ON [AuditLog].[AddCaseClosedEvent] TO [FastTrak]
+GO

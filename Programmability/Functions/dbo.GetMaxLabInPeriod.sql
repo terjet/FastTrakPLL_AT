@@ -12,3 +12,6 @@ BEGIN
   RETURN @RetVal; 
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetMaxLabInPeriod] TO [FastTrak]
+GO

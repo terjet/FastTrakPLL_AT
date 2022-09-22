@@ -61,3 +61,6 @@ BEGIN
   EXEC AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'METFORMGFR',@AlertFacet,@HeaderText,@MsgText;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[RuleMetforminGFR] TO [FastTrak]
+GO

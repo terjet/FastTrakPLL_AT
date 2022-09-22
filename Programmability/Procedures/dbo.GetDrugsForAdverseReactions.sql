@@ -8,3 +8,6 @@ BEGIN
   ORDER BY DrugName;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetDrugsForAdverseReactions] TO [FastTrak]
+GO

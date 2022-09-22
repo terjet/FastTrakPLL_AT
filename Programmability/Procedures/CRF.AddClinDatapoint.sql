@@ -55,3 +55,6 @@ BEGIN
   SELECT RowId,Locked,ChangeCount FROM dbo.ClinDatapoint WHERE RowId=@RowId;
 END
 GO
+
+GRANT EXECUTE ON [CRF].[AddClinDatapoint] TO [FastTrak]
+GO

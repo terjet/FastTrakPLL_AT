@@ -5,3 +5,6 @@ BEGIN
   EXECUTE NDV.GetType2WithHighLDL @StudyId,3.51
 END
 GO
+
+GRANT EXECUTE ON [NDV].[GetType2WithLDLAbove35] TO [FastTrak]
+GO

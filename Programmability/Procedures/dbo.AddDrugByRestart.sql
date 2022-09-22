@@ -34,3 +34,6 @@ BEGIN
   RETURN @NewId; -- Deprecated
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddDrugByRestart] TO [FastTrak]
+GO

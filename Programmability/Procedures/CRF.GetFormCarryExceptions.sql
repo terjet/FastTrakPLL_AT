@@ -5,3 +5,6 @@ BEGIN
   SELECT FormId,ItemId,EnumVal FROM dbo.MetaFormCarryException ORDER BY FormId,ItemId,EnumVal
 END
 GO
+
+GRANT EXECUTE ON [CRF].[GetFormCarryExceptions] TO [FastTrak]
+GO

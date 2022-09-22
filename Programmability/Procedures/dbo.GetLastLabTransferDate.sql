@@ -8,3 +8,6 @@ BEGIN
   SELECT Max( CreatedAt ) FROM LabData WHERE PersonId=@PersonId AND BatchId=@BatchId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetLastLabTransferDate] TO [FastTrak]
+GO

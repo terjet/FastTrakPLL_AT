@@ -10,6 +10,9 @@
 ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[PersonAbstraction] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[PersonAbstraction] WITH NOCHECK
   ADD CONSTRAINT [FK_PersonAbstraction_PersonId] FOREIGN KEY ([PersonId]) REFERENCES [dbo].[Person] ([PersonId])
 GO

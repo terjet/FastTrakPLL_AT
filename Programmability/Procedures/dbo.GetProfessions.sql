@@ -8,3 +8,6 @@ BEGIN
   ORDER BY ProfName;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetProfessions] TO [FastTrak]
+GO

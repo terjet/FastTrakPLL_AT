@@ -11,3 +11,6 @@ BEGIN
   WHERE msf.StudyId=@StudyId
 END
 GO
+
+GRANT EXECUTE ON [CRF].[GetStudyFormItems] TO [FastTrak]
+GO

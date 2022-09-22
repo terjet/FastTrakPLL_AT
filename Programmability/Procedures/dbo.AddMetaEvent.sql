@@ -8,3 +8,6 @@ BEGIN
   PRINT 'Not implemented';
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddMetaEvent] TO [FastTrak]
+GO

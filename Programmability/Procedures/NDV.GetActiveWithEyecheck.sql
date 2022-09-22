@@ -12,3 +12,6 @@ BEGIN
   ORDER BY NDV_EYECHECK_DATE
 END
 GO
+
+GRANT EXECUTE ON [NDV].[GetActiveWithEyecheck] TO [FastTrak]
+GO

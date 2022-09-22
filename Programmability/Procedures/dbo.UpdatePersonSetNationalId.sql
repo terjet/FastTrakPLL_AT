@@ -25,3 +25,9 @@ BEGIN
   UPDATE dbo.Person SET NationalId=@NationalId WHERE PersonId=@PersonId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdatePersonSetNationalId] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdatePersonSetNationalId] TO [ReadOnly]
+GO

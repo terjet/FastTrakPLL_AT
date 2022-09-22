@@ -34,6 +34,9 @@ CREATE INDEX [I_Alert_User]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[Alert] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[Alert] WITH NOCHECK
   ADD CONSTRAINT [FK_Alert_AlertFacet] FOREIGN KEY ([AlertFacet]) REFERENCES [dbo].[MetaAlertFacet] ([FacetName])
 GO

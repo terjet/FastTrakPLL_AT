@@ -19,3 +19,6 @@ BEGIN
   ORDER BY su.name;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetUsers] TO [FastTrak]
+GO

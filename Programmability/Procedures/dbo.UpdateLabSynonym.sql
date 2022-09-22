@@ -9,3 +9,9 @@ BEGIN
   INSERT INTO dbo.LabMapping (OrigCodeId,MapToCodeId) VALUES( @OrigCodeId,@MapToCodeId );
 END
 GO
+
+DENY EXECUTE ON [dbo].[UpdateLabSynonym] TO [ReadOnly]
+GO
+
+GRANT EXECUTE ON [dbo].[UpdateLabSynonym] TO [superuser]
+GO

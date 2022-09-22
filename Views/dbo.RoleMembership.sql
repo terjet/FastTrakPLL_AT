@@ -16,3 +16,6 @@ FROM dbo.UserRoleInfo ur
   LEFT JOIN dbo.StudyCenter c ON c.CenterId=ul.CenterId
   LEFT JOIN dbo.Person p ON p.PersonId=ul.PersonId
 GO
+
+GRANT SELECT ON [dbo].[RoleMembership] TO [FastTrak]
+GO

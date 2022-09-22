@@ -6,3 +6,6 @@ BEGIN
 	INSERT INTO PROM.FormOrder (PersonId, FormId, PromUid, FormOrderId) VALUES (@PersonId, @FormId, @PromUid, @FormOrderId);
 END
 GO
+
+GRANT EXECUTE ON [PROM].[AddRequest] TO [FastTrak]
+GO

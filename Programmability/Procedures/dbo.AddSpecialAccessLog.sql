@@ -22,3 +22,6 @@ BEGIN
   VALUES (@PersonId, 'TILGANG', @Justification);
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddSpecialAccessLog] TO [FastTrak]
+GO

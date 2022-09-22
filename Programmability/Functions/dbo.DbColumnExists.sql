@@ -9,3 +9,6 @@ AS BEGIN
   RETURN @ColCount;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[DbColumnExists] TO [superuser]
+GO

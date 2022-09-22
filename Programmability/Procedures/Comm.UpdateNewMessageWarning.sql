@@ -10,3 +10,9 @@ BEGIN
     SELECT PersonId,@NewMsgCount,getdate() FROM dbo.Person WHERE NationalId = @NationalId;
 END
 GO
+
+GRANT EXECUTE ON [Comm].[UpdateNewMessageWarning] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [Comm].[UpdateNewMessageWarning] TO [ReadOnly]
+GO

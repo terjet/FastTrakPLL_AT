@@ -15,3 +15,6 @@ CREATE UNIQUE INDEX [I_KBDrugToProblem_ATCListName]
   ON [dbo].[KBDrugToProblem] ([ATC], [ListName])
   ON [PRIMARY]
 GO
+
+GRANT SELECT ON [dbo].[KBDrugToProblem] TO [FastTrak]
+GO

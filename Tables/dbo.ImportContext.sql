@@ -13,6 +13,9 @@ CREATE UNIQUE INDEX [I_ImportContext_ContextName]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[ImportContext] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[ImportContext]
   ADD CONSTRAINT [FK_ImportContext_StudyId] FOREIGN KEY ([StudyId]) REFERENCES [dbo].[Study] ([StudyId])
 GO

@@ -6,3 +6,6 @@ BEGIN
   JOIN dbo.LabClass lc ON lc.LabClassId=mi.LabClassId
 END
 GO
+
+GRANT EXECUTE ON [CRF].[GetItemToLabMapping] TO [FastTrak]
+GO

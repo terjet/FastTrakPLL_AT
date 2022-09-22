@@ -5,3 +5,6 @@
 )
 ON [PRIMARY]
 GO
+
+GRANT SELECT ON [FEST].[Reseptgruppe] TO [FastTrak]
+GO

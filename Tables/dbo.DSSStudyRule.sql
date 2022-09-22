@@ -9,3 +9,6 @@
 )
 ON [PRIMARY]
 GO
+
+GRANT SELECT ON [dbo].[DSSStudyRule] TO [FastTrak]
+GO

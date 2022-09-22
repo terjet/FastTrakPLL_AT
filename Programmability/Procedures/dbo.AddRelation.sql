@@ -23,3 +23,6 @@ BEGIN
   END;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddRelation] TO [FastTrak]
+GO

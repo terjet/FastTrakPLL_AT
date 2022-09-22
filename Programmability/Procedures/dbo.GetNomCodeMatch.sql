@@ -9,3 +9,6 @@ BEGIN
   ORDER by mi.ItemCode
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetNomCodeMatch] TO [FastTrak]
+GO

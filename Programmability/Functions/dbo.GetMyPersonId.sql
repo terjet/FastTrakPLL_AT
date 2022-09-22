@@ -9,3 +9,6 @@ BEGIN
   RETURN @PersonId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetMyPersonId] TO [FastTrak]
+GO

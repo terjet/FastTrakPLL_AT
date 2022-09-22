@@ -27,3 +27,6 @@ AS
     RETURN @HasSignPrivilege;
   END
 GO
+
+GRANT EXECUTE ON [dbo].[HasSignClinFormPrivilege] TO [FastTrak]
+GO

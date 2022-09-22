@@ -8,3 +8,6 @@ BEGIN
   WHERE lrt.LabDataId IS NULL AND lr.PersonId=@PersonId
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetLabReqTestPending] TO [FastTrak]
+GO

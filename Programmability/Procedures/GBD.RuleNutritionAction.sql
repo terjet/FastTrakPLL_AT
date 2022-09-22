@@ -67,3 +67,6 @@ BEGIN
   END;
 END;
 GO
+
+GRANT EXECUTE ON [GBD].[RuleNutritionAction] TO [FastTrak]
+GO

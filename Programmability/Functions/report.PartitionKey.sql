@@ -8,3 +8,6 @@ BEGIN
   RETURN @RetVal;
 END
 GO
+
+GRANT EXECUTE ON [report].[PartitionKey] TO [FastTrak]
+GO

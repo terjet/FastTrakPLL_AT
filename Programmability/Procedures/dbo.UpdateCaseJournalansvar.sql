@@ -9,3 +9,6 @@ GO
 
 GRANT EXECUTE ON [dbo].[UpdateCaseJournalansvar] TO [Journalansvarlig]
 GO
+
+DENY EXECUTE ON [dbo].[UpdateCaseJournalansvar] TO [ReadOnly]
+GO

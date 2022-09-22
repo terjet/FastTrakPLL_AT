@@ -39,6 +39,9 @@ GRANT
 ON [dbo].[DbProcList] TO [Administrator]
 GO
 
+GRANT SELECT ON [dbo].[DbProcList] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[DbProcList]
   ADD CONSTRAINT [FK_DbProcList_DisabledBy] FOREIGN KEY ([DisabledBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

@@ -9,3 +9,6 @@ BEGIN
    RAISERROR( 'Upgrade requires version %d. Your version is %d!',18,1,@DbVer,@CurrVersion)
 END
 GO
+
+GRANT EXECUTE ON [dbo].[DbCheckVersion] TO [FastTrak]
+GO

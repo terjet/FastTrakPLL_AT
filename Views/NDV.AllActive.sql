@@ -8,3 +8,6 @@ SELECT v.PersonId,v.DOB,v.FullName,sg.GroupName, (CONVERT(FLOAT,getdate()) - CON
   JOIN dbo.StudyGroup sg ON sg.StudyId=sc.StudyId AND sg.GroupId=sc.GroupId AND sg.GroupActive=1 
   JOIN dbo.Study s ON s.StudyId=v.StudyId AND s.StudyName='NDV'
 GO
+
+GRANT SELECT ON [NDV].[AllActive] TO [FastTrak]
+GO

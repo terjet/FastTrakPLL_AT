@@ -11,3 +11,6 @@ BEGIN
 	WHERE fo.FormOrderId = @FormOrderId;
 END
 GO
+
+GRANT EXECUTE ON [PROM].[GetFieldMapping] TO [FastTrak]
+GO

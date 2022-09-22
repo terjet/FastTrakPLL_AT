@@ -16,3 +16,6 @@ BEGIN
     SET @ErrMsg = 'Du har ikke rettigheter til å endre medisinlisten'
 END
 GO
+
+GRANT EXECUTE ON [dbo].[CanModifyDrugTreatment] TO [FastTrak]
+GO

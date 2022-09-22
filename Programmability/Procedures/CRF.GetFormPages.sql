@@ -6,3 +6,6 @@ BEGIN
   SELECT * FROM dbo.MetaFormPage WHERE FormId=@FormId ORDER BY PageNumber
 END
 GO
+
+GRANT EXECUTE ON [CRF].[GetFormPages] TO [FastTrak]
+GO

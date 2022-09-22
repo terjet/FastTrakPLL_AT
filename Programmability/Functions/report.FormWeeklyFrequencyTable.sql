@@ -18,3 +18,6 @@ BEGIN
   RETURN;
 END
 GO
+
+GRANT SELECT ON [report].[FormWeeklyFrequencyTable] TO [FastTrak]
+GO

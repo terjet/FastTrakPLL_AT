@@ -47,6 +47,9 @@ AFTER UPDATE AS
 END
 GO
 
+GRANT SELECT ON [dbo].[ClinProblem] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[ClinProblem]
   ADD CONSTRAINT [FK_ClinProblem_BatchId] FOREIGN KEY ([BatchId]) REFERENCES [dbo].[ImportBatch] ([BatchId]) ON DELETE CASCADE
 GO

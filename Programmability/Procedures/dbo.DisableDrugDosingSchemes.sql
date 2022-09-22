@@ -9,3 +9,6 @@ CREATE PROCEDURE [dbo].[DisableDrugDosingSchemes]( @TreatId INT,@ChangedAt DateT
     AND ( ValidUntil IS NULL OR ValidUntil > @ChangedAt );
   UPDATE dbo.DrugTreatment SET DoseId=NULL WHERE TreatId=@TreatId;
 GO
+
+GRANT EXECUTE ON [dbo].[DisableDrugDosingSchemes] TO [FastTrak]
+GO

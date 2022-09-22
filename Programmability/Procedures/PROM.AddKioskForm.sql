@@ -6,3 +6,6 @@ BEGIN
   INSERT INTO PROM.KioskForm( FormOrderId, ClinFormId, FormTag ) VALUES( @FormOrderId, @ClinFormId, @FormTag );
 END;
 GO
+
+GRANT EXECUTE ON [PROM].[AddKioskForm] TO [FastTrak]
+GO

@@ -9,3 +9,6 @@ FROM dbo.Person p
   JOIN dbo.StudyGroup sg ON sg.StudyId = sc.StudyId AND sg.GroupId = sc.GroupId
   JOIN dbo.UserList ul ON ul.CenterId = sg.CenterId AND ul.UserId = USER_ID();
 GO
+
+GRANT SELECT ON [dbo].[ViewCaseListStub] TO [FastTrak]
+GO

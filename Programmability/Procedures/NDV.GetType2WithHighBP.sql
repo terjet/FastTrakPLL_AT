@@ -11,3 +11,6 @@ BEGIN
   ORDER BY SysBP DESC
 END
 GO
+
+GRANT EXECUTE ON [NDV].[GetType2WithHighBP] TO [FastTrak]
+GO

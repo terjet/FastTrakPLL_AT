@@ -6,3 +6,6 @@ BEGIN
   SELECT @ToPromId, FieldName,ItemId FROM PROM.FieldMapping WHERE PromId=@FromPromId 
 END
 GO
+
+GRANT EXECUTE ON [PROM].[CopyFieldMapping] TO [Administrator]
+GO

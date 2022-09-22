@@ -17,3 +17,6 @@ BEGIN
   DEALLOCATE studcase_cursor;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateDSSAlertsForAll] TO [FastTrak]
+GO

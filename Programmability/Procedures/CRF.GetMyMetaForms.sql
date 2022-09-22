@@ -55,3 +55,6 @@ BEGIN
     END
 END
 GO
+
+GRANT EXECUTE ON [CRF].[GetMyMetaForms] TO [FastTrak]
+GO

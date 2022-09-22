@@ -12,3 +12,6 @@ BEGIN
     AND NationalId = @NationalId
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdatePersonContactInfo] TO [FastTrak]
+GO

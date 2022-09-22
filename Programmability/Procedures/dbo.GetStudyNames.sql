@@ -5,3 +5,6 @@ BEGIN
   SELECT StudyId,StudyName FROM Study WHERE StudyId>0
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetStudyNames] TO [FastTrak]
+GO

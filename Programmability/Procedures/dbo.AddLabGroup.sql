@@ -18,3 +18,6 @@ BEGIN
   END
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddLabGroup] TO [superuser]
+GO

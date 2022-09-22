@@ -12,3 +12,6 @@ BEGIN
   ORDER BY COUNT(*) DESC, i.ItemCode;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetMyFavoriteProblems] TO [FastTrak]
+GO

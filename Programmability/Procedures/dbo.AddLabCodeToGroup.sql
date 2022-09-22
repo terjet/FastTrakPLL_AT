@@ -9,3 +9,6 @@ BEGIN
     INSERT INTO dbo.LabCodeGroup (LabGroupId,LabCodeId) VALUES(@LabGroupId,@LabCodeId)
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddLabCodeToGroup] TO [superuser]
+GO

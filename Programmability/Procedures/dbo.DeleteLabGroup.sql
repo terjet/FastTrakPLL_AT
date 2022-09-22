@@ -6,3 +6,6 @@ BEGIN
   WHERE LabGroupId = @LabGroupId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[DeleteLabGroup] TO [superuser]
+GO

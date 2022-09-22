@@ -12,3 +12,6 @@ BEGIN
   VALUES(@ATC,@ReasonType,@ReasonText)
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddDrugReason] TO [FastTrak]
+GO

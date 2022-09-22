@@ -11,3 +11,6 @@ BEGIN
  UPDATE Alert SET HideUntil=@HideUntil WHERE AlertId=@AlertId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddAlertResponse] TO [FastTrak]
+GO

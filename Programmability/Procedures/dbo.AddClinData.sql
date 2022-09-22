@@ -71,3 +71,6 @@ BEGIN
   SELECT @RowId AS RowId,0 AS Locked,@WhatHappened AS MsgResult;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddClinData] TO [FastTrak]
+GO

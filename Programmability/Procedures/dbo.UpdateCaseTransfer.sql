@@ -7,3 +7,21 @@ BEGIN
   WHERE StudyId = @StudyId AND PersonId = @PersonId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateCaseTransfer] TO [Avdelingsleder]
+GO
+
+GRANT EXECUTE ON [dbo].[UpdateCaseTransfer] TO [FastTrak]
+GO
+
+GRANT EXECUTE ON [dbo].[UpdateCaseTransfer] TO [Gruppeleder]
+GO
+
+GRANT EXECUTE ON [dbo].[UpdateCaseTransfer] TO [Journalansvarlig]
+GO
+
+GRANT EXECUTE ON [dbo].[UpdateCaseTransfer] TO [Leder]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateCaseTransfer] TO [ReadOnly]
+GO

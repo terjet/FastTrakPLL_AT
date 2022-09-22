@@ -7,3 +7,6 @@ BEGIN
   DELETE FROM ImportBatch WHERE ContextId=@ContextId;
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[DeleteImportContext] TO [FastTrak]
+GO

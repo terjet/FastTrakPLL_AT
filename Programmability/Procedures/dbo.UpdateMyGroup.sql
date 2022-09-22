@@ -11,3 +11,6 @@ BEGIN
     UPDATE StudyUser SET GroupId=@GroupId WHERE StudyId=@StudyId AND UserId=USER_ID();
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateMyGroup] TO [FastTrak]
+GO

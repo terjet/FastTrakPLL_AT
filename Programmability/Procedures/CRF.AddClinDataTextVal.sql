@@ -28,3 +28,6 @@ BEGIN
   END
 END
 GO
+
+GRANT EXECUTE ON [CRF].[AddClinDataTextVal] TO [FastTrak]
+GO

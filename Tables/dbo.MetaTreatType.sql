@@ -9,3 +9,6 @@ GO
 
 GRANT UPDATE ON [dbo].[MetaTreatType] TO [Administrator]
 GO
+
+GRANT SELECT ON [dbo].[MetaTreatType] TO [FastTrak]
+GO

@@ -12,3 +12,6 @@ BEGIN
   ORDER BY f.CreatedAt DESC
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetClinFormHistory] TO [FastTrak]
+GO

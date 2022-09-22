@@ -15,6 +15,9 @@ CREATE INDEX [I_AlertResponse_AlertId]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[AlertResponse] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[AlertResponse] WITH NOCHECK
   ADD CONSTRAINT [FK_AlertResponse_ActionId] FOREIGN KEY ([ActionId]) REFERENCES [dbo].[MetaAlertAction] ([ActionId])
 GO

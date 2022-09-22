@@ -21,6 +21,9 @@ CREATE INDEX [I_ClinFormLog_ClinForm]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[ClinFormLog] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[ClinFormLog]
   ADD CONSTRAINT [FK_ClinFormLog_ClinFormId] FOREIGN KEY ([ClinFormId]) REFERENCES [dbo].[ClinForm] ([ClinFormId])
 GO

@@ -8,3 +8,9 @@ BEGIN
   UPDATE UserList SET CenterId=@CenterId WHERE UserId=@UserId AND ISNULL(CenterId,0)<>@CenterId;
 END
 GO
+
+DENY EXECUTE ON [dbo].[UpdateUserCenter] TO [ReadOnly]
+GO
+
+GRANT EXECUTE ON [dbo].[UpdateUserCenter] TO [superuser]
+GO

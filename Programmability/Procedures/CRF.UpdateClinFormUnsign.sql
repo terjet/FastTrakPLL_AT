@@ -21,3 +21,9 @@ BEGIN
   END;
 END
 GO
+
+GRANT EXECUTE ON [CRF].[UpdateClinFormUnsign] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [CRF].[UpdateClinFormUnsign] TO [ReadOnly]
+GO

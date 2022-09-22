@@ -42,6 +42,12 @@ AFTER UPDATE AS
 END
 GO
 
+GRANT SELECT ON [dbo].[StudCase] TO [FastTrak]
+GO
+
+GRANT INSERT ON [dbo].[StudCase] TO [superuser]
+GO
+
 ALTER TABLE [dbo].[StudCase]
   ADD CONSTRAINT [FK_StudCase_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

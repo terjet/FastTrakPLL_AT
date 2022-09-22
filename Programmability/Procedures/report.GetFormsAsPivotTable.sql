@@ -42,3 +42,6 @@ BEGIN
   EXEC sys.sp_executesql  @stmt
 END
 GO
+
+GRANT EXECUTE ON [report].[GetFormsAsPivotTable] TO [FastTrak]
+GO

@@ -9,3 +9,6 @@ BEGIN
   ORDER BY mfi.PageNumber;
 END;
 GO
+
+GRANT EXECUTE ON [CRF].[GetPageActions] TO [FastTrak]
+GO

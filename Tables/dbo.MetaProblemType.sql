@@ -8,3 +8,6 @@
 )
 ON [PRIMARY]
 GO
+
+GRANT SELECT ON [dbo].[MetaProblemType] TO [FastTrak]
+GO

@@ -56,3 +56,6 @@ BEGIN
   
 END
 GO
+
+GRANT EXECUTE ON [NDV].[ReportHbA1cTimeSeries] TO [FastTrak]
+GO

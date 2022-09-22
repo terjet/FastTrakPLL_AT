@@ -7,3 +7,9 @@ BEGIN
     INSERT INTO ClinDrugIndication (ProbId,TreatId,Checked) VALUES(@ProbId,@TreatId,@Checked);
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateClinIndication] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateClinIndication] TO [ReadOnly]
+GO

@@ -7,6 +7,9 @@
 ON [PRIMARY]
 GO
 
+GRANT SELECT ON [FEST].[GruppeVilkar] TO [FastTrak]
+GO
+
 ALTER TABLE [FEST].[GruppeVilkar]
   ADD CONSTRAINT [FK_FEST_GruppeVilkar_RefRefusjonsgruppe] FOREIGN KEY ([RefRefusjonsgruppe]) REFERENCES [FEST].[Refusjonsgruppe] ([Id]) ON DELETE CASCADE
 GO

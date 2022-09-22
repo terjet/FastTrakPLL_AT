@@ -12,3 +12,6 @@ SELECT s.StudyName,mf.FormName,mp.ProfType,COUNT(cf.ClinFormId) as UseCount,MIN(
   WHERE ce.StudyId>0 AND cf.DeletedBy IS NULL
   GROUP BY s.StudyName,mf.FormName,mp.ProfType
 GO
+
+GRANT SELECT ON [dbo].[ViewFormPopularityByProfession] TO [FastTrak]
+GO

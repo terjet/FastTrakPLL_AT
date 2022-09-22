@@ -20,6 +20,9 @@ CREATE INDEX [I_LabReq_Closed]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[LabReq] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[LabReq]
   ADD CONSTRAINT [FK_LabReq_ClosedBy] FOREIGN KEY ([ClosedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

@@ -9,3 +9,6 @@ BEGIN
   GROUP BY TreatType,PackType ORDER BY Count(*) DESC
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetDrugTreatPackType] TO [FastTrak]
+GO

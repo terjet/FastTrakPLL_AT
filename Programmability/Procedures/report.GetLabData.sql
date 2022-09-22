@@ -17,5 +17,5 @@ BEGIN
 END
 GO
 
-GRANT EXECUTE ON [report].[GetLabData] TO [superuser]
+GRANT EXECUTE ON [report].[GetLabData] TO [FastTrak]
 GO

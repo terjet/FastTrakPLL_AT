@@ -16,6 +16,9 @@ CREATE INDEX [I_MetaFormPage_FormId_PageNumber]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[MetaFormPage] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[MetaFormPage]
   ADD CONSTRAINT [FK_MetaFormPage_FormId] FOREIGN KEY ([FormId]) REFERENCES [dbo].[MetaForm] ([FormId])
 GO

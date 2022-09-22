@@ -21,6 +21,9 @@ CREATE INDEX [IDX_DrugPause_TreatId]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[DrugPause] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[DrugPause]
   ADD CONSTRAINT [FK_DrugPause_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

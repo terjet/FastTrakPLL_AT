@@ -5,3 +5,6 @@
 )
 ON [PRIMARY]
 GO
+
+GRANT SELECT ON [dbo].[MetaGender] TO [FastTrak]
+GO

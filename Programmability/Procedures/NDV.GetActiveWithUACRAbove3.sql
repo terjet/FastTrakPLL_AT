@@ -5,3 +5,6 @@ BEGIN
   EXECUTE NDV.GetActiveWithHighUACR @StudyId,3.01
 END
 GO
+
+GRANT EXECUTE ON [NDV].[GetActiveWithUACRAbove3] TO [FastTrak]
+GO

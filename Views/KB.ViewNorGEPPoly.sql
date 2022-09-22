@@ -7,3 +7,6 @@ AS
   GROUP BY PersonId
   HAVING count(*) > 2
 GO
+
+GRANT SELECT ON [KB].[ViewNorGEPPoly] TO [FastTrak]
+GO

@@ -11,5 +11,8 @@ BEGIN
 END
 GO
 
+DENY EXECUTE ON [dbo].[UpdateLabTestGroup] TO [ReadOnly]
+GO
+
 GRANT EXECUTE ON [dbo].[UpdateLabTestGroup] TO [superuser]
 GO

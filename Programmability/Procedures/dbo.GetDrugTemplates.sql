@@ -6,3 +6,6 @@ BEGIN
     FROM DrugTemplate WHERE CreatedBy=user_id() or @UserId=0;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetDrugTemplates] TO [FastTrak]
+GO

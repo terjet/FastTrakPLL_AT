@@ -34,3 +34,9 @@ BEGIN
   END
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[AddSession] TO [DataImport]
+GO
+
+GRANT EXECUTE ON [dbo].[AddSession] TO [FastTrak]
+GO

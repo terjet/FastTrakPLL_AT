@@ -18,3 +18,6 @@ BEGIN
   ORDER BY mfi.PageNumber, mfi.OrderNumber;
 END;
 GO
+
+GRANT EXECUTE ON [CRF].[GetFormItems] TO [FastTrak]
+GO

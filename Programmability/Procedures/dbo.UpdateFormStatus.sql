@@ -29,3 +29,9 @@ BEGIN
   END;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateFormStatus] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateFormStatus] TO [ReadOnly]
+GO

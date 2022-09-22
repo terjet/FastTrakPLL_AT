@@ -24,5 +24,8 @@ BEGIN
 END;
 GO
 
+GRANT EXECUTE ON [dbo].[AddStudyGroup] TO [DataImport]
+GO
+
 GRANT EXECUTE ON [dbo].[AddStudyGroup] TO [superuser]
 GO

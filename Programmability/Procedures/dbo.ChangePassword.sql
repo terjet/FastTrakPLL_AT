@@ -15,3 +15,6 @@ BEGIN
   END
 END
 GO
+
+GRANT EXECUTE ON [dbo].[ChangePassword] TO [FastTrak]
+GO

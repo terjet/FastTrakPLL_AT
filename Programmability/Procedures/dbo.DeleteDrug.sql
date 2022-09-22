@@ -24,3 +24,6 @@ BEGIN
   END;
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[DeleteDrug] TO [FastTrak]
+GO

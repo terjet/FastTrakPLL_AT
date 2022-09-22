@@ -13,3 +13,9 @@ BEGIN
   UPDATE LabGroup SET SortOrder = @NewOrder WHERE LabGroupId=@LabGroupId
 END
 GO
+
+DENY EXECUTE ON [dbo].[UpdateLabGroupMoveUp] TO [ReadOnly]
+GO
+
+GRANT EXECUTE ON [dbo].[UpdateLabGroupMoveUp] TO [superuser]
+GO

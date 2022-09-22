@@ -41,3 +41,12 @@ BEGIN
   END;
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateDrugStop] TO [DataImport]
+GO
+
+GRANT EXECUTE ON [dbo].[UpdateDrugStop] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateDrugStop] TO [ReadOnly]
+GO

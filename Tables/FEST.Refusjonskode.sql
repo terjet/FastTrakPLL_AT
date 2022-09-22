@@ -17,6 +17,9 @@ ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
 GO
 
+GRANT SELECT ON [FEST].[Refusjonskode] TO [FastTrak]
+GO
+
 ALTER TABLE [FEST].[Refusjonskode]
   ADD CONSTRAINT [FK_FEST_Refusjonskode_RefRefusjonsgruppe] FOREIGN KEY ([RefRefusjonsgruppe]) REFERENCES [FEST].[Refusjonsgruppe] ([Id]) ON DELETE CASCADE
 GO

@@ -11,3 +11,6 @@ BEGIN
   END;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetPersonDetails] TO [FastTrak]
+GO

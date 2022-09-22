@@ -16,3 +16,9 @@ BEGIN
     EXEC CRF.UpdateClinFormSignItems @ClinFormId;              
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateFormSignClinId] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateFormSignClinId] TO [ReadOnly]
+GO

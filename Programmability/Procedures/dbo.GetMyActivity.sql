@@ -19,3 +19,6 @@ BEGIN
   ORDER BY LastActivity DESC;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetMyActivity] TO [FastTrak]
+GO

@@ -9,5 +9,8 @@ BEGIN
 END
 GO
 
+GRANT EXECUTE ON [dbo].[UpdateMyProfession] TO [ChangeProfession]
+GO
+
 DENY EXECUTE ON [dbo].[UpdateMyProfession] TO [Systemansvarlig]
 GO

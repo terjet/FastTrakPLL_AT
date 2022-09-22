@@ -11,3 +11,6 @@ BEGIN
   UPDATE dbo.Person SET GSM = @GSM WHERE PersonId = @PersonId
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdatePersonGSM] TO [FastTrak]
+GO

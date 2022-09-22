@@ -10,3 +10,6 @@ BEGIN
   WHERE dt.PersonId=@PersonId AND rx.RxPrint=1 AND rx.RxType=@RxType AND rx.DeletedBy IS NULL
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetRxToPrint] TO [PrintPrescription]
+GO

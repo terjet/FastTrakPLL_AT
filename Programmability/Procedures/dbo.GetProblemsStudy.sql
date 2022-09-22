@@ -13,3 +13,6 @@ BEGIN
   JOIN MetaNomList l on l.ListId=li.ListId
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetProblemsStudy] TO [FastTrak]
+GO

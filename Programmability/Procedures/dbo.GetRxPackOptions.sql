@@ -7,3 +7,6 @@ BEGIN
    WHERE ATC=@ATC AND ISNULL(Strength,0)=ISNULL(@Strength,0) AND DrugForm=@DrugForm ORDER BY PackSize
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetRxPackOptions] TO [FastTrak]
+GO

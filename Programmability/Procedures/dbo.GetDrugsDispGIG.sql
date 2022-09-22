@@ -11,3 +11,6 @@ BEGIN
   ORDER BY CreatedAt DESC
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetDrugsDispGIG] TO [FastTrak]
+GO

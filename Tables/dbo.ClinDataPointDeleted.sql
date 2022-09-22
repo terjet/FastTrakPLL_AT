@@ -24,6 +24,9 @@ ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[ClinDataPointDeleted] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[ClinDataPointDeleted]
   ADD CONSTRAINT [FK_ClinDataPointDeleted_ClinFormId] FOREIGN KEY ([ClinFormId]) REFERENCES [dbo].[ClinForm] ([ClinFormId])
 GO

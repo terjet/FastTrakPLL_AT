@@ -22,6 +22,9 @@ GO
 GRANT INSERT ON [dbo].[LabCode] TO [Administrator]
 GO
 
+GRANT SELECT ON [dbo].[LabCode] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[LabCode] WITH NOCHECK
   ADD CONSTRAINT [FK_LabCode_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

@@ -11,3 +11,6 @@ BEGIN
  RETURN @RetVal;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetLastQuantityInThePast] TO [FastTrak]
+GO

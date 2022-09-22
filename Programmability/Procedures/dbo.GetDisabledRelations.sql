@@ -8,3 +8,6 @@ BEGIN
   ORDER BY mp.ProfName,mr.RelName
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetDisabledRelations] TO [FastTrak]
+GO

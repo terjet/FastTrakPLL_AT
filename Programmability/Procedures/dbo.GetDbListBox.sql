@@ -9,3 +9,6 @@ BEGIN
   ORDER BY ProcDesc
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetDbListBox] TO [FastTrak]
+GO

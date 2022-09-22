@@ -32,3 +32,6 @@ BEGIN
   END;
 END
 GO
+
+GRANT EXECUTE ON [Comm].[SendMessage] TO [FastTrak]
+GO

@@ -19,3 +19,6 @@ BEGIN
 	ORDER BY a.FunctionPointId, a.AccessType, a.Name
 END
 GO
+
+GRANT EXECUTE ON [AccessCtrl].[GetAccessControl] TO [FastTrak]
+GO

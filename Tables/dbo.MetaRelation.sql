@@ -10,6 +10,9 @@
 ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[MetaRelation] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[MetaRelation]
   ADD CONSTRAINT [FK_MetaRelation_DisabledBy] FOREIGN KEY ([DisabledBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

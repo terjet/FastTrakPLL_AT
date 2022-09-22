@@ -7,3 +7,6 @@
 )
 ON [PRIMARY]
 GO
+
+GRANT SELECT ON [KB].[InteractionNorGEP] TO [FastTrak]
+GO

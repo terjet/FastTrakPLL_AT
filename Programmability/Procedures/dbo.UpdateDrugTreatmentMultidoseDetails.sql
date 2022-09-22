@@ -63,3 +63,9 @@ BEGIN
   SELECT @DoseId AS DoseId, @MsgText AS MsgText;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateDrugTreatmentMultidoseDetails] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateDrugTreatmentMultidoseDetails] TO [ReadOnly]
+GO

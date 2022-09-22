@@ -22,3 +22,6 @@ BEGIN
   END
 END
 GO
+
+GRANT EXECUTE ON [CRF].[DeleteMyClinForm] TO [FastTrak]
+GO

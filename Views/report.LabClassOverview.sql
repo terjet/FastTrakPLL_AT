@@ -10,3 +10,6 @@ CREATE VIEW [report].[LabClassOverview] AS
     GROUP BY lc.LabClassId) LabStats
   LEFT JOIN dbo.LabClass cl ON cl.LabClassId = LabStats.LabClassId
 GO
+
+GRANT SELECT ON [report].[LabClassOverview] TO [FastTrak]
+GO

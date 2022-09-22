@@ -12,3 +12,6 @@ BEGIN
   ORDER BY COUNT(*) DESC
 END
 GO
+
+GRANT EXECUTE ON [dbo].[SuggestDrugDosing] TO [FastTrak]
+GO

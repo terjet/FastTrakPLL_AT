@@ -8,3 +8,6 @@ BEGIN
   UPDATE ClinRelation SET ExpiresAt=getdate() WHERE PersonId=@PersonId AND UserId=@UserId;
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[ExpireRelations] TO [FastTrak]
+GO

@@ -30,3 +30,6 @@ BEGIN
   EXEC AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'AFTREATED',@AlertFacet,@HeaderText,@MsgText
 END
 GO
+
+GRANT EXECUTE ON [GBD].[RuleAtrialFibrillation] TO [FastTrak]
+GO

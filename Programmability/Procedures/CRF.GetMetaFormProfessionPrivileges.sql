@@ -8,3 +8,6 @@ BEGIN
   JOIN dbo.MetaProfession mp ON mfpp.ProfType = mp.ProfType;
 END;
 GO
+
+GRANT EXECUTE ON [CRF].[GetMetaFormProfessionPrivileges] TO [FastTrak]
+GO

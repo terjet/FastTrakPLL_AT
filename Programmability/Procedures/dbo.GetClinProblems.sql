@@ -13,3 +13,6 @@ BEGIN
   WHERE cp.PersonId=@PersonId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetClinProblems] TO [FastTrak]
+GO

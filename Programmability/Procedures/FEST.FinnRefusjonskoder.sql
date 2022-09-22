@@ -23,3 +23,6 @@ BEGIN
     ORDER BY t.CodeText,mr.CodeText 
 END
 GO
+
+GRANT EXECUTE ON [FEST].[FinnRefusjonskoder] TO [FastTrak]
+GO

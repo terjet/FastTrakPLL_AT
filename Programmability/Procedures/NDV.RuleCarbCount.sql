@@ -38,3 +38,6 @@ BEGIN
       @AlertMessage;    
 END
 GO
+
+GRANT EXECUTE ON [NDV].[RuleCarbCount] TO [FastTrak]
+GO

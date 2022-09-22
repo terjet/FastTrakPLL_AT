@@ -10,3 +10,6 @@ BEGIN
   WHERE PersonId = @PersonId AND dr.DeletedAt IS NULL AND dr.Avkreftet = 0 AND mr.RelId > 0;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetDrugReactions] TO [FastTrak]
+GO

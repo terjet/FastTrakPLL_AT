@@ -9,3 +9,6 @@ BEGIN
   WHERE PersonId = @PersonId AND AlertClass = 'BEAKER';
 END;
 GO
+
+GRANT EXECUTE ON [LAB].[FinishBeakerImport] TO [FastTrak]
+GO

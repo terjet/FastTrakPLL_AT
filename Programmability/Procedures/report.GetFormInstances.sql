@@ -10,5 +10,5 @@ BEGIN
 END
 GO
 
-GRANT EXECUTE ON [report].[GetFormInstances] TO [superuser]
+GRANT EXECUTE ON [report].[GetFormInstances] TO [FastTrak]
 GO

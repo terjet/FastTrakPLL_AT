@@ -36,3 +36,6 @@ BEGIN
   SELECT @CanSign AS CanSign, @ErrMsg AS ErrMsg;
 END
 GO
+
+GRANT EXECUTE ON [CRF].[CanSignClinForm] TO [FastTrak]
+GO

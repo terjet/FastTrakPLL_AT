@@ -92,39 +92,6 @@ GO
 
 SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-CREATE TRIGGER [dbo].[T_Person_Update]
-ON [dbo].[Person]
-AFTER UPDATE
-AS
-BEGIN
-	SET NOCOUNT ON;
-	IF UPDATE(NationalId)
-		OR UPDATE(FstName)
-		OR UPDATE(MidName)
-		OR UPDATE(LstName)
-		OR UPDATE(DOB)
-		OR UPDATE(GenderId)
-		OR UPDATE(DeceasedDate)
-		OR UPDATE(DeceasedInd)
-		OR UPDATE(TestCase)
-	BEGIN
-		INSERT INTO dbo.PersonLog (PersonId, DOB, FstName, MidName, LstName, GenderId, NationalId, DeceasedDate, DeceasedInd, TestCase)
-			SELECT d.PersonId, d.DOB, d.FstName, d.MidName, d.LstName, d.GenderId, d.NationalId, d.DeceasedDate, d.DeceasedInd, d.TestCase
-			FROM deleted d
-			JOIN inserted i ON i.PersonId = d.PersonId
-			WHERE (ISNULL(i.NationalId, '') <> ISNULL(d.NationalId, ''))
-			OR (i.FullName <> d.FullName)
-			OR (i.DOB <> d.DOB)
-			OR (i.GenderId <> d.GenderId)
-			OR (i.DeceasedDate <> d.DeceasedDate)
-			OR (ISNULL(i.DeceasedInd, 0) <> ISNULL(d.DeceasedInd, 0))
-			OR (ISNULL(i.TestCase,0) <> ISNULL(d.TestCase,0));
-	END;
-END;
-GO
-
-SET QUOTED_IDENTIFIER, ANSI_NULLS ON
-GO
 CREATE TRIGGER [dbo].[T_Person_UpdateDocuments] ON [dbo].[Person] 
 AFTER UPDATE AS 
 BEGIN      
@@ -166,6 +133,42 @@ BEGIN
   END;
 
 END;
+GO
+
+SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE TRIGGER [dbo].[T_Person_Update]
+ON [dbo].[Person]
+AFTER UPDATE
+AS
+BEGIN
+	SET NOCOUNT ON;
+	IF UPDATE(NationalId)
+		OR UPDATE(FstName)
+		OR UPDATE(MidName)
+		OR UPDATE(LstName)
+		OR UPDATE(DOB)
+		OR UPDATE(GenderId)
+		OR UPDATE(DeceasedDate)
+		OR UPDATE(DeceasedInd)
+		OR UPDATE(TestCase)
+	BEGIN
+		INSERT INTO dbo.PersonLog (PersonId, DOB, FstName, MidName, LstName, GenderId, NationalId, DeceasedDate, DeceasedInd, TestCase)
+			SELECT d.PersonId, d.DOB, d.FstName, d.MidName, d.LstName, d.GenderId, d.NationalId, d.DeceasedDate, d.DeceasedInd, d.TestCase
+			FROM deleted d
+			JOIN inserted i ON i.PersonId = d.PersonId
+			WHERE (ISNULL(i.NationalId, '') <> ISNULL(d.NationalId, ''))
+			OR (i.FullName <> d.FullName)
+			OR (i.DOB <> d.DOB)
+			OR (i.GenderId <> d.GenderId)
+			OR (i.DeceasedDate <> d.DeceasedDate)
+			OR (ISNULL(i.DeceasedInd, 0) <> ISNULL(d.DeceasedInd, 0))
+			OR (ISNULL(i.TestCase,0) <> ISNULL(d.TestCase,0));
+	END;
+END;
+GO
+
+GRANT SELECT ON [dbo].[Person] TO [FastTrak]
 GO
 
 GRANT SELECT ON [dbo].[Person] TO [LabImport]

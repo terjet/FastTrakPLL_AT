@@ -5,3 +5,6 @@
 )
 ON [PRIMARY]
 GO
+
+GRANT SELECT ON [dbo].[MetaAlertFacet] TO [FastTrak]
+GO

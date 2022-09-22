@@ -9,3 +9,6 @@ BEGIN
 	ORDER BY mi.ItemId
 END
 GO
+
+GRANT EXECUTE ON [CRF].[GetStudyItems] TO [FastTrak]
+GO

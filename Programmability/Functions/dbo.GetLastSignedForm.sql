@@ -12,3 +12,6 @@ BEGIN
   RETURN @LastFormDate;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetLastSignedForm] TO [FastTrak]
+GO

@@ -51,6 +51,9 @@ BEGIN
 END
 GO
 
+GRANT SELECT ON [dbo].[ClinForm] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[ClinForm]
   ADD CONSTRAINT [FK_ClinForm_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

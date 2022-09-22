@@ -7,6 +7,9 @@
 ON [PRIMARY]
 GO
 
+GRANT SELECT ON [FEST].[KodeVilkar] TO [FastTrak]
+GO
+
 ALTER TABLE [FEST].[KodeVilkar]
   ADD CONSTRAINT [FK_FEST_KodeVilkar_RefRefusjonskode] FOREIGN KEY ([RefRefusjonskode]) REFERENCES [FEST].[Refusjonskode] ([Id]) ON DELETE CASCADE
 GO

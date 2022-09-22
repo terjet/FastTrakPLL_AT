@@ -9,6 +9,9 @@
 ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[DrugReason] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[DrugReason]
   ADD CONSTRAINT [FK_DrugReason_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

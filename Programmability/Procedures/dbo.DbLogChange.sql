@@ -8,3 +8,6 @@ BEGIN
   INSERT INTO DbUpgradeChanges ( DbVer,OrderNumber,ChangeType,Details) VALUES( @DbVer,@OrderNumber+1,@ChangeType,@Details )
 END
 GO
+
+GRANT EXECUTE ON [dbo].[DbLogChange] TO [FastTrak]
+GO

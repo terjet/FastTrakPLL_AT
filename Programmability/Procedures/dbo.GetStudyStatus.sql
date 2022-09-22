@@ -6,3 +6,6 @@ BEGIN
   SELECT StatusId,StatusText FROM StudyStatus WHERE ( StudyId=@StudyId ) AND ( DisabledAt IS NULL ) ORDER BY StatusId
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetStudyStatus] TO [FastTrak]
+GO

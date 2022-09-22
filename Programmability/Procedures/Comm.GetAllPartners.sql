@@ -6,3 +6,6 @@ BEGIN
   FROM Comm.Partner p JOIN Comm.Organization o ON o.OrgId=p.OrgId
 END
 GO
+
+GRANT EXECUTE ON [Comm].[GetAllPartners] TO [FastTrak]
+GO

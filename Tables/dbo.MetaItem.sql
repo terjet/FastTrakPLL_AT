@@ -26,6 +26,9 @@ CREATE INDEX [I_MetaItem_VarName]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[MetaItem] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[MetaItem]
   ADD CONSTRAINT [FK_MetaItem_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

@@ -23,3 +23,6 @@ BEGIN
   ORDER BY NewStatus,ChangedAt desc
 END
 GO
+
+GRANT EXECUTE ON [dbo].[ReportStatusUpdates] TO [FastTrak]
+GO

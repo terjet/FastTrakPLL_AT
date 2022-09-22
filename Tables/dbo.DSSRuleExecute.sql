@@ -10,6 +10,9 @@
 ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[DSSRuleExecute] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[DSSRuleExecute]
   ADD CONSTRAINT [FK_DSSRuleExecute_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

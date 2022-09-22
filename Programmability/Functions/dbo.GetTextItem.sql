@@ -12,3 +12,6 @@ BEGIN
   RETURN @TextValue;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetTextItem] TO [FastTrak]
+GO

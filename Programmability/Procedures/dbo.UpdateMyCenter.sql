@@ -8,3 +8,6 @@ BEGIN
     RAISERROR('Du har ikke rettigheter til å  endre arbeidssted.', 16, 1);
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateMyCenter] TO [FastTrak]
+GO

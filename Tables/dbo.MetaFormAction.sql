@@ -12,6 +12,9 @@
 ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[MetaFormAction] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[MetaFormAction]
   ADD CONSTRAINT [FK_MetaFormAction_FormId] FOREIGN KEY ([FormId]) REFERENCES [dbo].[MetaForm] ([FormId])
 GO

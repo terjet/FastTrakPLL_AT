@@ -9,5 +9,5 @@ BEGIN
 END
 GO
 
-GRANT EXECUTE ON [report].[GetFormClasses] TO [superuser]
+GRANT EXECUTE ON [report].[GetFormClasses] TO [FastTrak]
 GO

@@ -10,5 +10,8 @@ BEGIN
 END
 GO
 
+GRANT EXECUTE ON [dbo].[UpdateShowMyGroup] TO [FastTrak]
+GO
+
 DENY EXECUTE ON [dbo].[UpdateShowMyGroup] TO [SingleGroup]
 GO

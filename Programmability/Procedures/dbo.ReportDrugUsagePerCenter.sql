@@ -22,3 +22,6 @@ BEGIN
   SELECT * FROM #DrugStats WHERE Patients > 10 ORDER BY PercentUse DESC
 END
 GO
+
+GRANT EXECUTE ON [dbo].[ReportDrugUsagePerCenter] TO [FastTrak]
+GO

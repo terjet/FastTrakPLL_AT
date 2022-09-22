@@ -7,3 +7,6 @@ BEGIN
   ORDER BY CenterId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetAllStudyCenters] TO [Support]
+GO

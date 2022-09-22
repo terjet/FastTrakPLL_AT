@@ -16,3 +16,6 @@ BEGIN
   ORDER BY NumResult
 END
 GO
+
+GRANT EXECUTE ON [report].[GetPercentileRanksByName] TO [FastTrak]
+GO

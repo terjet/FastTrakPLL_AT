@@ -19,3 +19,6 @@ BEGIN
   EXEC AddAlertForDSSRule @StudyId,@PersonId,@AlertLevel,'NDVCONSENT',@AlertFacet;    
 END
 GO
+
+GRANT EXECUTE ON [NDV].[RuleConsent] TO [FastTrak]
+GO

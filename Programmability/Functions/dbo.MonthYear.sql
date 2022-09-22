@@ -8,3 +8,6 @@ BEGIN
   RETURN UPPER(SUBSTRING(@InputStr,1,1)) + SUBSTRING(@InputStr,2,DATALENGTH(@InputStr)-1);
 END
 GO
+
+GRANT EXECUTE ON [dbo].[MonthYear] TO [FastTrak]
+GO

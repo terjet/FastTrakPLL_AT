@@ -9,3 +9,12 @@ BEGIN
     AND ((GroupId IS NULL) OR (GroupId<>@GroupId));
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateCaseGroup] TO [DataImport]
+GO
+
+GRANT EXECUTE ON [dbo].[UpdateCaseGroup] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateCaseGroup] TO [ReadOnly]
+GO

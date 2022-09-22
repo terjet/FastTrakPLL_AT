@@ -14,3 +14,9 @@ BEGIN
   WHERE OutId=@OutId;
 END
 GO
+
+GRANT EXECUTE ON [Comm].[UpdateMessageAppRec] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [Comm].[UpdateMessageAppRec] TO [ReadOnly]
+GO

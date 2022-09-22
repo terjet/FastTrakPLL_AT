@@ -5,3 +5,6 @@ BEGIN
   RETURN DATEADD(MONTH, DATEDIFF(MONTH, 0, @SomeDate ), 0)
 END
 GO
+
+GRANT EXECUTE ON [report].[StartOfMonth] TO [FastTrak]
+GO

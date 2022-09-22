@@ -20,5 +20,5 @@ BEGIN
 END
 GO
 
-GRANT EXECUTE ON [report].[AddQuickStat] TO [superuser]
+GRANT EXECUTE ON [report].[AddQuickStat] TO [QuickStat]
 GO

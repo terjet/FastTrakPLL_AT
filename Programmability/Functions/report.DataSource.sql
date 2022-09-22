@@ -8,3 +8,6 @@ BEGIN
   RETURN;
 END
 GO
+
+GRANT SELECT ON [report].[DataSource] TO [FastTrak]
+GO

@@ -52,6 +52,9 @@ BEGIN
 END
 GO
 
+GRANT SELECT ON [dbo].[ClinDataPoint] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[ClinDataPoint]
   ADD CONSTRAINT [FK_ClinDataPoint_EventId] FOREIGN KEY ([EventId]) REFERENCES [dbo].[ClinEvent] ([EventId])
 GO

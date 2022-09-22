@@ -7,3 +7,9 @@ BEGIN
  UPDATE Alert SET HideUntil=@HideUntil WHERE AlertId=@AlertId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateAlertResponse] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateAlertResponse] TO [ReadOnly]
+GO

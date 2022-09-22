@@ -42,3 +42,9 @@ BEGIN
   SELECT ISNULL(@DoseId,-1),@MsgText;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateDrugTreatmentWeekDetails] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateDrugTreatmentWeekDetails] TO [ReadOnly]
+GO

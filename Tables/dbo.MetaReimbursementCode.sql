@@ -7,3 +7,6 @@
 )
 ON [PRIMARY]
 GO
+
+GRANT SELECT ON [dbo].[MetaReimbursementCode] TO [FastTrak]
+GO

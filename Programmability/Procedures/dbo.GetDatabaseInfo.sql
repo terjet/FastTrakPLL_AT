@@ -9,3 +9,6 @@ BEGIN
     FROM DbUpgradeLog WHERE NOT DbUpgradeEnd IS NULL;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetDatabaseInfo] TO [FastTrak]
+GO

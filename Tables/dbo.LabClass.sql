@@ -29,3 +29,6 @@ CREATE UNIQUE INDEX [IDX_LabClass_VarName]
   ON [dbo].[LabClass] ([VarName])
   ON [PRIMARY]
 GO
+
+GRANT SELECT ON [dbo].[LabClass] TO [FastTrak]
+GO

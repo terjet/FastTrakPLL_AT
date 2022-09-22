@@ -10,3 +10,9 @@ BEGIN
     AND ( LastUpdate IS NULL OR LastUpdate < @LastUpdate );
 END
 GO
+
+GRANT EXECUTE ON [dbo].[CloseImportContext] TO [DataImport]
+GO
+
+GRANT EXECUTE ON [dbo].[CloseImportContext] TO [FastTrak]
+GO

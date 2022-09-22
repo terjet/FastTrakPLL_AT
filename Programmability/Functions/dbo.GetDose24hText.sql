@@ -18,3 +18,6 @@ BEGIN
   RETURN @RetVal;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetDose24hText] TO [FastTrak]
+GO

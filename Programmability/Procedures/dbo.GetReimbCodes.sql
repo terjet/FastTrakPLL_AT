@@ -6,3 +6,6 @@ BEGIN
    WHERE CodeId IN (1,2,3,4)
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetReimbCodes] TO [FastTrak]
+GO

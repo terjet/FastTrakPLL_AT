@@ -34,3 +34,6 @@ BEGIN
       ( @PersonId,@LabDate,@LabCodeId,@LabCodeId, @InvestigationId, @NumResult, @DevResult, @TxtResult, @Comment, @ArithmeticComp, @UnitStr, @BatchId, @RefInterval );
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddOrUpdateLabResult] TO [FastTrak]
+GO

@@ -26,3 +26,9 @@ BEGIN
   SELECT ContextId, LastUpdate, @BatchId AS BatchId FROM dbo.ImportContext WHERE ContextId = @ContextId; 
 END
 GO
+
+GRANT EXECUTE ON [dbo].[OpenImportContext] TO [DataImport]
+GO
+
+GRANT EXECUTE ON [dbo].[OpenImportContext] TO [FastTrak]
+GO

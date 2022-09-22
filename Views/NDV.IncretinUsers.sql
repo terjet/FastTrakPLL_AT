@@ -8,3 +8,6 @@ SELECT v.PersonId,v.DOB,v.FullName,sg.GroupName, (CONVERT(FLOAT,getdate()) - CON
   JOIN dbo.Study s ON s.StudyId=v.StudyId AND s.StudyName='NDV'
   WHERE dbo.GetLastQuantity( v.PersonId, 'NDV_INCRETINS') = 1;
 GO
+
+GRANT SELECT ON [NDV].[IncretinUsers] TO [FastTrak]
+GO

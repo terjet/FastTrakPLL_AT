@@ -30,6 +30,9 @@ CREATE INDEX [I_MetaForm_FormName]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[MetaForm] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[MetaForm]
   ADD CONSTRAINT [FK_MetaForm_AfterSaveProcId] FOREIGN KEY ([AfterSaveProcId]) REFERENCES [dbo].[DbProcList] ([ProcId])
 GO

@@ -6,3 +6,6 @@ BEGIN
   DELETE FROM dbo.DrugTemplate WHERE FriendlyName=@FriendlyName
 END
 GO
+
+GRANT EXECUTE ON [dbo].[DeleteDrugTemplate] TO [FastTrak]
+GO

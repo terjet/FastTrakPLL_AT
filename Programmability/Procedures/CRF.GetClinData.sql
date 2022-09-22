@@ -13,3 +13,6 @@ BEGIN
   ORDER BY ce.EventNum,ce.EventId;
 END
 GO
+
+GRANT EXECUTE ON [CRF].[GetClinData] TO [FastTrak]
+GO

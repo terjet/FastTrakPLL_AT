@@ -12,3 +12,9 @@ BEGIN
     SELECT -1,'Update failed';
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdatePackType] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdatePackType] TO [ReadOnly]
+GO

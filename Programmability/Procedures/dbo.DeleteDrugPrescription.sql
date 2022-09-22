@@ -7,3 +7,6 @@ BEGIN
   IF @@ROWCOUNT = 0 RAISERROR( 'Denne resepten kunne ikke slettes.\nDen er allerede slettet eller utskrevet.', 16,1 ); 
 END
 GO
+
+GRANT EXECUTE ON [dbo].[DeleteDrugPrescription] TO [DrugEditor]
+GO

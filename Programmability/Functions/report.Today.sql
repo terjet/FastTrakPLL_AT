@@ -5,3 +5,6 @@ BEGIN
   RETURN DATEADD( DAY, DATEDIFF( DAY, 0, GETDATE()), 0 );
 END
 GO
+
+GRANT EXECUTE ON [report].[Today] TO [FastTrak]
+GO

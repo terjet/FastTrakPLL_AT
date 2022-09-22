@@ -18,3 +18,9 @@ BEGIN
     UPDATE dbo.ClinForm SET Comment=@Comment WHERE ( ClinFormId = @ClinFormId ) AND ( ISNULL(Comment,'') <> ISNULL(@Comment,'') );
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateFormComment] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateFormComment] TO [ReadOnly]
+GO

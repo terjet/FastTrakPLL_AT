@@ -16,6 +16,9 @@
 ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[StudCaseLog] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[StudCaseLog]
   ADD CONSTRAINT [FK_StudCaseLog_ChangedBy] FOREIGN KEY ([ChangedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

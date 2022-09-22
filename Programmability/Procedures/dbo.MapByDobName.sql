@@ -16,3 +16,9 @@ BEGIN
   SELECT @PersonId AS PersonId;
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[MapByDobName] TO [DataImport]
+GO
+
+GRANT EXECUTE ON [dbo].[MapByDobName] TO [FastTrak]
+GO

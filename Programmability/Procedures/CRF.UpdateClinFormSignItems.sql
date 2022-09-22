@@ -15,3 +15,9 @@ BEGIN
   WHERE EventId=@EventId AND LockedBy IS NULL AND ItemId IN (SELECT ItemId from #itemList);
 END
 GO
+
+GRANT EXECUTE ON [CRF].[UpdateClinFormSignItems] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [CRF].[UpdateClinFormSignItems] TO [ReadOnly]
+GO

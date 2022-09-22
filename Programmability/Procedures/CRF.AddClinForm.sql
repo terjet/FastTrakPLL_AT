@@ -45,3 +45,6 @@ BEGIN
   SELECT @EventId AS EventId, @ClinFormId AS ClinFormId, @EventNum AS EventNum;
 END;
 GO
+
+GRANT EXECUTE ON [CRF].[AddClinForm] TO [FastTrak]
+GO

@@ -22,3 +22,6 @@ BEGIN
   ORDER BY dt.StopAt DESC
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetDrugRecentChange] TO [FastTrak]
+GO

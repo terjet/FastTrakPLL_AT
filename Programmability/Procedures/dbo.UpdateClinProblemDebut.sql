@@ -7,3 +7,9 @@ BEGIN
   UPDATE ClinProblem SET ProbDebut = @ProbDebut WHERE ProbId=@ProbId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateClinProblemDebut] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateClinProblemDebut] TO [ReadOnly]
+GO

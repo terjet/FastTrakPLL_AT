@@ -34,3 +34,6 @@ BEGIN
   ORDER BY mtpg.SortOrder, dt.StartAt;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetDrugForMultidoseHistoric] TO [FastTrak]
+GO

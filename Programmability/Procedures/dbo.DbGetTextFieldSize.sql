@@ -7,3 +7,6 @@ BEGIN
   WHERE TABLE_NAME = @TableName AND COLUMN_NAME=@TableColumn;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[DbGetTextFieldSize] TO [FastTrak]
+GO

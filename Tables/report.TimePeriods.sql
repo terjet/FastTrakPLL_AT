@@ -13,3 +13,6 @@ CREATE UNIQUE INDEX [IDX_Report_TimePeriods_StartTime_EndTime]
   ON [report].[TimePeriods] ([StartTime], [EndTime])
   ON [PRIMARY]
 GO
+
+GRANT SELECT ON [report].[TimePeriods] TO [FastTrak]
+GO

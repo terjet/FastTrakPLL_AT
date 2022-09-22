@@ -34,3 +34,6 @@ BEGIN
   SELECT @StartAt AS StartAt, @ThisDate AS StopAt;
 END
 GO
+
+GRANT EXECUTE ON [GBD].[UpdateDashboard] TO [FastTrak]
+GO

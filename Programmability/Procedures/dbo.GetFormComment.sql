@@ -10,3 +10,6 @@ BEGIN
   WHERE EventId=@EventId AND FormId=@FormId
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetFormComment] TO [FastTrak]
+GO

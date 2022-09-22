@@ -17,3 +17,6 @@ BEGIN
   UPDATE dbo.ClinDataPointDeleted SET RestoredAt = GETDATE(), RestoredBy = USER_ID() WHERE ClinFormId=@ClinFormId AND RestoredAt IS NULL;
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[UndeleteClinForm] TO [FastTrak]
+GO

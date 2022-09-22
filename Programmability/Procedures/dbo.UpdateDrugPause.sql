@@ -47,3 +47,9 @@ BEGIN
   END;
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateDrugPause] TO [DrugEditor]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateDrugPause] TO [ReadOnly]
+GO

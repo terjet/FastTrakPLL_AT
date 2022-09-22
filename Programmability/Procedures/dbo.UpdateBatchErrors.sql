@@ -9,3 +9,12 @@ BEGIN
   WHERE Batchid=@BatchId
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateBatchErrors] TO [DataImport]
+GO
+
+GRANT EXECUTE ON [dbo].[UpdateBatchErrors] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateBatchErrors] TO [ReadOnly]
+GO

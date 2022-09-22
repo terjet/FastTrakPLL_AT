@@ -6,3 +6,6 @@ BEGIN
   ORDER BY CenterId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetStudyCenters] TO [FastTrak]
+GO

@@ -13,3 +13,6 @@ BEGIN
   RETURN @StrVal;  
 END
 GO
+
+GRANT EXECUTE ON [dbo].[ShortTime] TO [FastTrak]
+GO

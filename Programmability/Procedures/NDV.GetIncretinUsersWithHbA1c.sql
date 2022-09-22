@@ -5,3 +5,6 @@ BEGIN
   EXECUTE NDV.GetIncretinUsersWithHighHbA1c @StudyId,0,99,0.1
 END
 GO
+
+GRANT EXECUTE ON [NDV].[GetIncretinUsersWithHbA1c] TO [FastTrak]
+GO

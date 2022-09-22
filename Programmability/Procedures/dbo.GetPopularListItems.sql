@@ -11,3 +11,6 @@ BEGIN
   ORDER BY Popularity desc
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[GetPopularListItems] TO [FastTrak]
+GO

@@ -9,6 +9,9 @@
 ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[MetaTreatPackGroup] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[MetaTreatPackGroup]
   ADD CONSTRAINT [FK_MetaTreatPackGroup_PackType] FOREIGN KEY ([PackType]) REFERENCES [dbo].[MetaPackType] ([PackType])
 GO

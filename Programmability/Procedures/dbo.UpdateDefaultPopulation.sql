@@ -7,3 +7,6 @@ BEGIN
   IF @@ROWCOUNT = 0 INSERT INTO StudyUser (StudyId,UserId,CaseList) VALUES( @StudyId, USER_ID(),@ProcId )
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateDefaultPopulation] TO [FastTrak]
+GO

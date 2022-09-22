@@ -7,3 +7,6 @@ BEGIN
   WHERE dt.TreatId=@TreatId
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetDrugTreatDetails] TO [FastTrak]
+GO

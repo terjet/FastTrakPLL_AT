@@ -11,3 +11,9 @@ BEGIN
 	WHERE StudyId = @StudyId AND UserId = @UserId;
 END
 GO
+
+DENY EXECUTE ON [dbo].[UpdateUserGroup] TO [ReadOnly]
+GO
+
+GRANT EXECUTE ON [dbo].[UpdateUserGroup] TO [Support]
+GO

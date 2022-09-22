@@ -8,3 +8,6 @@ AS
   SELECT ReasonText FROM DrugReason
   WHERE ATC=@ATC and ReasonType=@ReasonType ORDER BY ReasonText
 GO
+
+GRANT EXECUTE ON [dbo].[GetDrugReasons] TO [FastTrak]
+GO

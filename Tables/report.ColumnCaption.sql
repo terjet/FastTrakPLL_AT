@@ -9,3 +9,6 @@
 )
 ON [PRIMARY]
 GO
+
+GRANT SELECT ON [report].[ColumnCaption] TO [FastTrak]
+GO

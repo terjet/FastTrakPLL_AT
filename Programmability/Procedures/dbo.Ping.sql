@@ -25,3 +25,6 @@ BEGIN
   SELECT CAST('true' AS BIT) AS Result, 'Your FastTrak session is still valid.' AS Msg;
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[Ping] TO [FastTrak]
+GO

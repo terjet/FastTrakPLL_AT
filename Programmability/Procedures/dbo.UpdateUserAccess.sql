@@ -9,3 +9,6 @@ BEGIN
   ELSE EXEC sp_revokedbaccess @username
 END
 GO
+
+DENY EXECUTE ON [dbo].[UpdateUserAccess] TO [ReadOnly]
+GO

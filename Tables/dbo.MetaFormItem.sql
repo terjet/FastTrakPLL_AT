@@ -45,6 +45,9 @@ GO
 GRANT UPDATE ON [dbo].[MetaFormItem] TO [Administrator]
 GO
 
+GRANT SELECT ON [dbo].[MetaFormItem] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[MetaFormItem]
   ADD CONSTRAINT [FK_MetaFormItem_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

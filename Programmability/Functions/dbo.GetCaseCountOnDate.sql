@@ -25,3 +25,6 @@ BEGIN
   RETURN @CaseCount;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCaseCountOnDate] TO [FastTrak]
+GO

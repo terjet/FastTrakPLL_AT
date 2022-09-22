@@ -45,3 +45,6 @@ BEGIN
   EXECUTE ( 'ALTER ROLE [FastTrak] ADD MEMBER [' + @UserName + ']' );
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddUser] TO [superuser]
+GO

@@ -17,3 +17,9 @@ BEGIN
   WHERE lc.LabCodeId = @LabCodeId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddLabName] TO [DataImport]
+GO
+
+GRANT EXECUTE ON [dbo].[AddLabName] TO [superuser]
+GO

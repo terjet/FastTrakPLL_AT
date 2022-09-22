@@ -18,6 +18,9 @@ GO
 GRANT UPDATE ON [dbo].[LabGroup] TO [Administrator]
 GO
 
+GRANT SELECT ON [dbo].[LabGroup] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[LabGroup]
   ADD CONSTRAINT [FK_LabGroup_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

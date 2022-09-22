@@ -9,3 +9,6 @@ SELECT r.RuleId,r.Title,r.Description,r.RuleClass
   WHERE s.StudyId=@StudyId;  
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetStudyRules] TO [FastTrak]
+GO

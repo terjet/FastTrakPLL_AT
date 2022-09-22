@@ -10,3 +10,6 @@ BEGIN
 	WHERE fm.PromUid = @PromUid;
 END
 GO
+
+GRANT EXECUTE ON [PROM].[GetFieldMappingForm] TO [FastTrak]
+GO

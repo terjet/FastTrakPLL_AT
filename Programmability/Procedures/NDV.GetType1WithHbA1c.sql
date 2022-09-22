@@ -11,3 +11,6 @@ BEGIN
   ORDER BY HbA1c DESC
 END
 GO
+
+GRANT EXECUTE ON [NDV].[GetType1WithHbA1c] TO [FastTrak]
+GO

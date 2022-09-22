@@ -18,3 +18,6 @@ BEGIN
   EXECUTE( 'DENY CONNECT TO [' + @UserName + ']' );   
 END
 GO
+
+GRANT EXECUTE ON [dbo].[DeleteUser] TO [superuser]
+GO

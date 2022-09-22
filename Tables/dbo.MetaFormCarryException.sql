@@ -10,6 +10,9 @@
 ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[MetaFormCarryException] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[MetaFormCarryException]
   ADD CONSTRAINT [FK_MetaFormCarryException_FormId] FOREIGN KEY ([FormId]) REFERENCES [dbo].[MetaForm] ([FormId])
 GO

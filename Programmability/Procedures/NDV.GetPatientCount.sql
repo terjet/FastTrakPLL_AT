@@ -16,3 +16,6 @@ BEGIN
     GROUP BY ta.OrderNumber,ta.OptionText ORDER BY ta.OrderNumber;
 END
 GO
+
+GRANT EXECUTE ON [NDV].[GetPatientCount] TO [FastTrak]
+GO

@@ -33,3 +33,6 @@ BEGIN
   DEALLOCATE rule_list;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateDSSAlerts] TO [FastTrak]
+GO

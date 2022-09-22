@@ -5,3 +5,9 @@ BEGIN
   UPDATE DrugPrescription SET ProbCode=@ProbCode WHERE PrescId=@PrescId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateRxProblemCode] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateRxProblemCode] TO [ReadOnly]
+GO

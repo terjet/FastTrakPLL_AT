@@ -6,3 +6,9 @@ BEGIN
   WHERE OutId=@OutId; 
 END
 GO
+
+GRANT EXECUTE ON [Comm].[UpdatePullStatus] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [Comm].[UpdatePullStatus] TO [ReadOnly]
+GO

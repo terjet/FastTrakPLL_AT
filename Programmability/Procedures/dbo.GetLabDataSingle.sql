@@ -10,3 +10,6 @@ BEGIN
   WHERE ld.PersonId=@PersonId
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetLabDataSingle] TO [FastTrak]
+GO

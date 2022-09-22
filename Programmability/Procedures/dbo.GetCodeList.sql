@@ -9,3 +9,6 @@ BEGIN
   ORDER BY ItemCode 
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCodeList] TO [FastTrak]
+GO

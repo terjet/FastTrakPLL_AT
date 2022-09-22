@@ -26,3 +26,6 @@ BEGIN
   EXEC AddAlertForDSSRule @StudyId,@PersonId,@ActualLevel,@FormName,@AlertFacet
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[RulePeriodicForm] TO [FastTrak]
+GO

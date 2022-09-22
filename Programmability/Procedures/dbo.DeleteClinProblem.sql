@@ -21,3 +21,6 @@ BEGIN
   END;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[DeleteClinProblem] TO [FastTrak]
+GO

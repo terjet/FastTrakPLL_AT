@@ -9,3 +9,6 @@ BEGIN
   WHERE ( @ATC IS NULL ) OR ( dt.ATC LIKE @ATC )
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[GetDrugsStudy] TO [FastTrak]
+GO

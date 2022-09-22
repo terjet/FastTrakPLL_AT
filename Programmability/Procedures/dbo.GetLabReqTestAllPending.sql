@@ -16,3 +16,6 @@ JOIN Person p on p.PersonId=vrp.PersonId
 WHERE (( @IncludeTaken = 1) OR (vrp.TakenAt IS NULL) )
 AND ((vrp.RequestedBy=@UserId) or ( @UserId=0 ) )
 GO
+
+GRANT EXECUTE ON [dbo].[GetLabReqTestAllPending] TO [FastTrak]
+GO

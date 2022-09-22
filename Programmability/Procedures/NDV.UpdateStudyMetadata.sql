@@ -32,3 +32,9 @@ BEGIN
   END
 END
 GO
+
+DENY EXECUTE ON [NDV].[UpdateStudyMetadata] TO [ReadOnly]
+GO
+
+GRANT EXECUTE ON [NDV].[UpdateStudyMetadata] TO [superuser]
+GO

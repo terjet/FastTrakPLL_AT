@@ -9,3 +9,6 @@ BEGIN
     EXEC CRF.GetClinForm @ClinFormId
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetClinForms] TO [FastTrak]
+GO

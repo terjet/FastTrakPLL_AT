@@ -6,3 +6,6 @@ BEGIN
   SELECT * FROM MetaReimbursementCode WHERE CodeId=@CodeId
 END
 GO
+
+GRANT EXECUTE ON [dbo].[LoadReimbursementCode] TO [FastTrak]
+GO

@@ -16,3 +16,6 @@ BEGIN
   ORDER BY cf.ClinFormId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetClinFormComments] TO [FastTrak]
+GO

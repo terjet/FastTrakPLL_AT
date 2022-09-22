@@ -7,3 +7,6 @@ BEGIN
   ORDER BY SortOrder, LabGroupId
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetLabGroups] TO [FastTrak]
+GO

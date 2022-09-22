@@ -53,3 +53,6 @@ BEGIN
 
 END
 GO
+
+GRANT EXECUTE ON [report].[GetClinFormAuditTrail] TO [FastTrak]
+GO

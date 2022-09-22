@@ -5,3 +5,6 @@
 )
 ON [PRIMARY]
 GO
+
+GRANT SELECT ON [Comm].[MetaStatusCode] TO [FastTrak]
+GO

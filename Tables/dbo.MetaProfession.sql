@@ -22,6 +22,9 @@ GO
 GRANT INSERT ON [dbo].[MetaProfession] TO [Administrator]
 GO
 
+GRANT SELECT ON [dbo].[MetaProfession] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[MetaProfession]
   ADD CONSTRAINT [FK_MetaProfession_DisabledBy] FOREIGN KEY ([DisabledBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

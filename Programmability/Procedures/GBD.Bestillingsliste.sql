@@ -14,3 +14,6 @@ BEGIN
   ORDER BY a.ATCCode, Strength
 END
 GO
+
+GRANT EXECUTE ON [GBD].[Bestillingsliste] TO [FastTrak]
+GO

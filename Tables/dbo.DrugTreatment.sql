@@ -69,6 +69,9 @@ CREATE INDEX [IDX_DrugTreatment_PersonId]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[DrugTreatment] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[DrugTreatment]
   ADD CONSTRAINT [FK_DrugTreatment_BatchId] FOREIGN KEY ([BatchId]) REFERENCES [dbo].[ImportBatch] ([BatchId]) ON DELETE CASCADE
 GO

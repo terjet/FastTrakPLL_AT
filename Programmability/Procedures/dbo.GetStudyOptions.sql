@@ -8,3 +8,6 @@ BEGIN
   SELECT * FROM Study WHERE StudName LIKE @StudName;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetStudyOptions] TO [FastTrak]
+GO

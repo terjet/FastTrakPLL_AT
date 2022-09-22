@@ -27,3 +27,6 @@ BEGIN
   END;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetClinEvents] TO [FastTrak]
+GO

@@ -26,6 +26,9 @@ CREATE UNIQUE INDEX [I_ClinRelation_UserIdPersonId]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[ClinRelation] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[ClinRelation]
   ADD CONSTRAINT [FK_ClinRelation_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

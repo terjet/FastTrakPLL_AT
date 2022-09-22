@@ -32,3 +32,9 @@ BEGIN
     WHERE PersonId=@PersonId;
 END
 GO
+
+DENY EXECUTE ON [dbo].[UpdateUserDetails] TO [ReadOnly]
+GO
+
+GRANT EXECUTE ON [dbo].[UpdateUserDetails] TO [superuser]
+GO

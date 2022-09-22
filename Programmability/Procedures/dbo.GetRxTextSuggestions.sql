@@ -17,3 +17,6 @@ BEGIN
   ORDER BY COUNT(*) DESC
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetRxTextSuggestions] TO [FastTrak]
+GO

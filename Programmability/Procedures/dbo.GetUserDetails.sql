@@ -21,3 +21,6 @@ BEGIN
     WHERE u.UserId = @UserId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetUserDetails] TO [FastTrak]
+GO

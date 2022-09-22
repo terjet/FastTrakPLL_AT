@@ -6,3 +6,6 @@ BEGIN
   EXEC GetMyProblemList;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateMyProblemList] TO [FastTrak]
+GO

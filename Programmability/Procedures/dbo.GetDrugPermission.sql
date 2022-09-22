@@ -9,3 +9,6 @@ BEGIN
   SELECT @CanModifyDrugTreatment as 'CanModify', @ErrMsg as 'ErrorMessage'
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetDrugPermission] TO [FastTrak]
+GO

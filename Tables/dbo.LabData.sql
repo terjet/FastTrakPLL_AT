@@ -56,6 +56,9 @@ GO
 GRANT UPDATE ON [dbo].[LabData] TO [Administrator]
 GO
 
+GRANT SELECT ON [dbo].[LabData] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[LabData]
   ADD CONSTRAINT [FK_LabData_BatchId] FOREIGN KEY ([BatchId]) REFERENCES [dbo].[ImportBatch] ([BatchId]) ON DELETE CASCADE
 GO

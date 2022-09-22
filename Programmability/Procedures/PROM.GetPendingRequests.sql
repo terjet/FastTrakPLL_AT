@@ -7,3 +7,6 @@ BEGIN
   AND PersonId = @PersonId;
 END
 GO
+
+GRANT EXECUTE ON [PROM].[GetPendingRequests] TO [FastTrak]
+GO

@@ -18,3 +18,6 @@ BEGIN
   RETURN @RetVal;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[ConvertDoseHourText] TO [FastTrak]
+GO

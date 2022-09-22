@@ -9,3 +9,6 @@ BEGIN
   ORDER BY mp.ProfName, mr.RelName
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetEnabledRelations] TO [FastTrak]
+GO

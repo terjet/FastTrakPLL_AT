@@ -22,3 +22,6 @@ BEGIN
   SELECT * FROM #ResultSet WHERE UsingDrug > 1 ORDER BY PercentUse DESC;
 END
 GO
+
+GRANT EXECUTE ON [report].[DrugUseOverview] TO [FastTrak]
+GO

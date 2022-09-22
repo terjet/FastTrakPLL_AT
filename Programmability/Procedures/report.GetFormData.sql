@@ -21,5 +21,5 @@ BEGIN
 END
 GO
 
-GRANT EXECUTE ON [report].[GetFormData] TO [superuser]
+GRANT EXECUTE ON [report].[GetFormData] TO [FastTrak]
 GO

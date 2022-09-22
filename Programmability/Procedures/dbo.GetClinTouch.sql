@@ -37,3 +37,6 @@ BEGIN
   SELECT ISNULL(@TouchId,-1) AS TouchId, ISNULL(@EventId,-1) AS EventId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetClinTouch] TO [FastTrak]
+GO

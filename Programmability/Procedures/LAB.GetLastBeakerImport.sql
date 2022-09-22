@@ -8,3 +8,6 @@ BEGIN
   WHERE ic.ContextName = CONCAT( 'Epic.', @PersonId );
 END;
 GO
+
+GRANT EXECUTE ON [LAB].[GetLastBeakerImport] TO [FastTrak]
+GO

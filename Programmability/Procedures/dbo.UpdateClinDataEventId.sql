@@ -17,3 +17,9 @@ BEGIN
   AND ItemId IN ( SELECT ItemId FROM #FormItems ); 
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateClinDataEventId] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateClinDataEventId] TO [ReadOnly]
+GO

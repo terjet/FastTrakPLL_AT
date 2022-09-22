@@ -23,6 +23,9 @@ CREATE INDEX [IDX_DrugTemplate_ATC]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[DrugTemplate] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[DrugTemplate]
   ADD CONSTRAINT [FK_DrugTemplate_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

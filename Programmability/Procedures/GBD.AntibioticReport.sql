@@ -20,3 +20,6 @@ BEGIN
   ORDER BY MonthNo,MonthName,dt.StartAt
 END
 GO
+
+GRANT EXECUTE ON [GBD].[AntibioticReport] TO [FastTrak]
+GO

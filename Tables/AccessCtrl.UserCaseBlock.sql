@@ -15,6 +15,9 @@ ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
 GO
 
+GRANT SELECT ON [AccessCtrl].[UserCaseBlock] TO [FastTrak]
+GO
+
 ALTER TABLE [AccessCtrl].[UserCaseBlock]
   ADD CONSTRAINT [FK_AccessCtrl_UserCaseBlock_AllowedBy] FOREIGN KEY ([AllowedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

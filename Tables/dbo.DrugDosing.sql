@@ -33,6 +33,9 @@ CREATE INDEX [I_DrugDosing_TreatId]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[DrugDosing] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[DrugDosing]
   ADD CONSTRAINT [FK_DrugDosing_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

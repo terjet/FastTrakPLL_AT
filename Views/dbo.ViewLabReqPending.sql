@@ -9,3 +9,6 @@ lrt.LabCodeId,lrt.TakenAt,lrt.TakenBy FROM dbo.LabReq lr
 JOIN LabReqTest lrt on lrt.LabReqId=lr.LabReqId
 WHERE lrt.LabDataId IS NULL
 GO
+
+GRANT SELECT ON [dbo].[ViewLabReqPending] TO [FastTrak]
+GO

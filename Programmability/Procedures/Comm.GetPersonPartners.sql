@@ -8,3 +8,6 @@ BEGIN
     WHERE ISNULL(o.HerId,p.HerId) > 0;
 END
 GO
+
+GRANT EXECUTE ON [Comm].[GetPersonPartners] TO [FastTrak]
+GO

@@ -11,3 +11,6 @@ SELECT p.PersonId, p.DOB, p.ReverseName AS FullName, sc.StudyId, sg.GroupId, sg.
   LEFT OUTER JOIN dbo.StudyUser su ON su.UserId = USER_ID() AND su.StudyId = sc.StudyId
   WHERE ( su.GroupId=sc.GroupId ) OR ( su.UserId IS NULL ) OR ( su.GroupId IS NULL ) OR ( su.ShowMyGroup = 0 )
 GO
+
+GRANT SELECT ON [dbo].[ViewActiveCaseListStub] TO [FastTrak]
+GO

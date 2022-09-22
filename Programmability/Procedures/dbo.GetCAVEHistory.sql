@@ -20,3 +20,6 @@ BEGIN
   ORDER BY ChangedAt DESC
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCAVEHistory] TO [FastTrak]
+GO

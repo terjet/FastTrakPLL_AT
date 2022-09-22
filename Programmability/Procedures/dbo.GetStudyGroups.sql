@@ -23,5 +23,8 @@ BEGIN
 END;
 GO
 
+GRANT EXECUTE ON [dbo].[GetStudyGroups] TO [FastTrak]
+GO
+
 DENY EXECUTE ON [dbo].[GetStudyGroups] TO [SingleGroup]
 GO

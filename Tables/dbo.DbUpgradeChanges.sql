@@ -9,6 +9,9 @@ ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[DbUpgradeChanges] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[DbUpgradeChanges]
   ADD CONSTRAINT [FK_DbUpgradeChanges_DbVer] FOREIGN KEY ([DbVer]) REFERENCES [dbo].[DbUpgradeLog] ([DbVer]) ON DELETE CASCADE
 GO

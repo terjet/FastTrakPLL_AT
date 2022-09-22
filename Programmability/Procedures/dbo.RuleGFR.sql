@@ -38,3 +38,6 @@ BEGIN
   EXEC AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'GFR',@Facet,@HeadStr,@MsgStr
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[RuleGFR] TO [FastTrak]
+GO

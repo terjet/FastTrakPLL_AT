@@ -11,3 +11,6 @@ BEGIN
     SELECT '*' as ItemCode, ListName as ItemName FROM dbo.MetaNomList WHERE ListId=@ListId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetProblemGroups] TO [FastTrak]
+GO

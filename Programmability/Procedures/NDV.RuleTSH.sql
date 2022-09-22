@@ -47,3 +47,6 @@ BEGIN
       @AlertMessage;    
 END
 GO
+
+GRANT EXECUTE ON [NDV].[RuleTSH] TO [FastTrak]
+GO

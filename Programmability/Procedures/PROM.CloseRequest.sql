@@ -7,3 +7,6 @@ BEGIN
   WHERE FormOrderId = @FormOrderId
 END;
 GO
+
+GRANT EXECUTE ON [PROM].[CloseRequest] TO [FastTrak]
+GO

@@ -6,3 +6,6 @@ BEGIN
   SELECT ProbId,Checked FROM ClinDrugIndication WHERE TreatId=@TreatId AND Checked=1;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetClinDrugIndication] TO [FastTrak]
+GO

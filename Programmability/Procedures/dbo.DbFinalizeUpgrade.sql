@@ -12,3 +12,6 @@ BEGIN
     PRINT CHAR(13) + 'Upgrade was NOT successful, database version is ' + CONVERT(VARCHAR, dbo.DbVersion()) + '.'
 END
 GO
+
+GRANT EXECUTE ON [dbo].[DbFinalizeUpgrade] TO [Administrator]
+GO

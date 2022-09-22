@@ -19,3 +19,6 @@ BEGIN
   ORDER BY sc.StatusDate
 END
 GO
+
+GRANT EXECUTE ON [Dash].[DrugUsage] TO [FastTrak]
+GO

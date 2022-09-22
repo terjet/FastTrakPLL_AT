@@ -13,3 +13,6 @@ BEGIN
   RETURN @RetVal;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetGroupOnDate] TO [FastTrak]
+GO

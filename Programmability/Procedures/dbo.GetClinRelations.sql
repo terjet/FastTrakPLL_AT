@@ -14,3 +14,6 @@ BEGIN
   WHERE cr.PersonId=@PersonId AND ( cr.CreatedAt > getdate()-@Lookback or cr.ExpiresAt > getdate() - @Lookback );
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetClinRelations] TO [FastTrak]
+GO

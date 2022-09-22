@@ -18,3 +18,9 @@ CREATE UNIQUE INDEX [I_Study_CenterName]
   ON [dbo].[StudyCenter] ([CenterName])
   ON [PRIMARY]
 GO
+
+GRANT SELECT ON [dbo].[StudyCenter] TO [FastTrak]
+GO
+
+GRANT UPDATE ON [dbo].[StudyCenter] TO [superuser]
+GO

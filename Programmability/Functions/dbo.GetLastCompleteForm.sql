@@ -11,3 +11,6 @@ BEGIN
   RETURN @LastFormDate;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetLastCompleteForm] TO [FastTrak]
+GO

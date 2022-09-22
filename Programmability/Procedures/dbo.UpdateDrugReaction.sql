@@ -10,3 +10,9 @@ BEGIN
   WHERE DRId=@DRId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateDrugReaction] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateDrugReaction] TO [ReadOnly]
+GO

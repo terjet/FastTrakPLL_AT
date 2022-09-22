@@ -8,3 +8,6 @@ BEGIN
   EXEC Drug.UpdateDrugTreatmentDosetteDetails @TreatId, 0, @Dose08, @Dose13, @Dose18, @Dose21, 0, @ChangedAt;
 END;
 GO
+
+DENY EXECUTE ON [dbo].[UpdateDrugTreatmentDosetteDetails] TO [ReadOnly]
+GO

@@ -11,3 +11,6 @@ CREATE VIEW [GBD].[Tvangsvedtak] AS
   LEFT JOIN dbo.ClinDatapoint cpstop ON cpstop.EventId = ce.EventId AND cpstop.ItemId = 4497 
   LEFT JOIN dbo.ClinDatapoint cpaction ON cpaction.EventId = ce.EventId AND cpaction.ItemId = 6888
 GO
+
+GRANT SELECT ON [GBD].[Tvangsvedtak] TO [FastTrak]
+GO

@@ -7,3 +7,6 @@ BEGIN
   WHERE fo.OrderStatus = 'Waiting'
 END
 GO
+
+GRANT EXECUTE ON [PROM].[GetPeopleWithPendingRequests] TO [FastTrak]
+GO

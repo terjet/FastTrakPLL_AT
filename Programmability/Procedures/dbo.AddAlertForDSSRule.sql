@@ -13,3 +13,6 @@ BEGIN
   EXEC AddAlertForPerson @StudyId,@PersonId,@AlertLevel,@AlertClass,@AlertFacet,@HeadStr,@MsgStr;
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[AddAlertForDSSRule] TO [FastTrak]
+GO

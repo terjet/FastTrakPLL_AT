@@ -5,3 +5,6 @@ BEGIN
 	SELECT FormId, PromUid FROM PROM.FormMapping;
 END
 GO
+
+GRANT EXECUTE ON [PROM].[GetFormMapping] TO [FastTrak]
+GO

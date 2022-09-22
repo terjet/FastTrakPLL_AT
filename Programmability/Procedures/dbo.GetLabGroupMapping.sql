@@ -9,3 +9,6 @@ BEGIN
   ORDER BY lg.SortOrder, lc.LabName, lc.UnitStr
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetLabGroupMapping] TO [FastTrak]
+GO

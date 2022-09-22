@@ -15,6 +15,9 @@ CREATE UNIQUE INDEX [I_ClinDrugIndication_ProbTreat]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[ClinDrugIndication] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[ClinDrugIndication]
   ADD CONSTRAINT [FK_ClinDrugIndication_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

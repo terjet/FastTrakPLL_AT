@@ -14,3 +14,6 @@ AS
       OR ( IS_MEMBER('ChangeWorksite')=1 OR IS_MEMBER('db_owner') = 1 )
     WHERE ul.UserId = USER_ID()
 GO
+
+GRANT SELECT ON [dbo].[MyStudyCenters] TO [FastTrak]
+GO

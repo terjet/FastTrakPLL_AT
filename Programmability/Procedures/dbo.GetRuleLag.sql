@@ -7,3 +7,6 @@ BEGIN
   SELECT ISNULL( RuleLag,0) FROM StudCase WHERE StudyId=@StudyId AND PersonId=@PersonId
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetRuleLag] TO [FastTrak]
+GO

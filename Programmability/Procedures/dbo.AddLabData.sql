@@ -45,3 +45,9 @@ BEGIN
   UPDATE dbo.StudCase SET LastWrite=GetDate() WHERE PersonId=@PersonId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddLabData] TO [DataImport]
+GO
+
+GRANT EXECUTE ON [dbo].[AddLabData] TO [FastTrak]
+GO

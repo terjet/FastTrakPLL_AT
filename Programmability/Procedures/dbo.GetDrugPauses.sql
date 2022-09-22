@@ -18,3 +18,6 @@ BEGIN
   WHERE dt.PersonId = @PersonId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetDrugPauses] TO [FastTrak]
+GO

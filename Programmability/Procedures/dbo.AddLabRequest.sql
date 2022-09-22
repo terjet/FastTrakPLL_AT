@@ -18,3 +18,6 @@ END;
 /* Add lab test to this request */
 INSERT INTO LabReqTest (LabReqId,LabCodeId) VALUES(@LabReqId,@LabCodeId);
 GO
+
+GRANT EXECUTE ON [dbo].[AddLabRequest] TO [FastTrak]
+GO

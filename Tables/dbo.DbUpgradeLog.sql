@@ -8,6 +8,12 @@
 ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[DbUpgradeLog] TO [FastTrak]
+GO
+
+GRANT DELETE ON [dbo].[DbUpgradeLog] TO [superuser]
+GO
+
 ALTER TABLE [dbo].[DbUpgradeLog]
   ADD CONSTRAINT [FK_DbUpgradeLog_UpgradedBy] FOREIGN KEY ([UpgradedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

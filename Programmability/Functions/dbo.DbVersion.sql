@@ -10,3 +10,6 @@ BEGIN
   RETURN @DbVer
 END
 GO
+
+GRANT EXECUTE ON [dbo].[DbVersion] TO [FastTrak]
+GO

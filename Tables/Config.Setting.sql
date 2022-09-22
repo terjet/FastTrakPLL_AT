@@ -13,6 +13,13 @@ ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
 GO
 
+GRANT
+  DELETE,
+  INSERT,
+  UPDATE
+ON [Config].[Setting] TO [Administrator]
+GO
+
 ALTER TABLE [Config].[Setting]
   ADD CONSTRAINT [FK_Config_Setting_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[UserList] ([UserId])
 GO

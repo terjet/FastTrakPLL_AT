@@ -9,6 +9,9 @@
 ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[LabMapping] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[LabMapping]
   ADD CONSTRAINT [FK_LabMapping_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

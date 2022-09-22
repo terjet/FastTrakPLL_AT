@@ -9,3 +9,6 @@ BEGIN
   UPDATE dbo.MetaStudyForm SET SurveyStatus=@SurveyStatus WHERE StudyId=@StudyId AND FormId=@FormId;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[AddMetaStudyForm] TO [FastTrak]
+GO

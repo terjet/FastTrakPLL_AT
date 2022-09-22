@@ -5,3 +5,6 @@ BEGIN
   RETURN CONVERT( VARCHAR, @TimeAxis, 112 );
 END
 GO
+
+GRANT EXECUTE ON [report].[RowKey] TO [FastTrak]
+GO

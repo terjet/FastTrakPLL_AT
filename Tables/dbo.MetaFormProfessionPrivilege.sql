@@ -20,10 +20,7 @@ CREATE UNIQUE INDEX [IDX_MetaFormProfessionPrivilege]
   ON [PRIMARY]
 GO
 
-GRANT
-  INSERT,
-  UPDATE
-ON [dbo].[MetaFormProfessionPrivilege] TO [superuser]
+GRANT SELECT ON [dbo].[MetaFormProfessionPrivilege] TO [FastTrak]
 GO
 
 ALTER TABLE [dbo].[MetaFormProfessionPrivilege]

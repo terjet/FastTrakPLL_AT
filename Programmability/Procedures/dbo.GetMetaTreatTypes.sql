@@ -5,3 +5,6 @@ BEGIN
   SELECT TreatType,TreatDesc FROM MetaTreatType
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetMetaTreatTypes] TO [FastTrak]
+GO

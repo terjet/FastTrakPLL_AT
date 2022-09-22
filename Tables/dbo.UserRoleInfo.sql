@@ -10,3 +10,6 @@
 ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
 GO
+
+GRANT SELECT ON [dbo].[UserRoleInfo] TO [FastTrak]
+GO

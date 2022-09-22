@@ -11,3 +11,6 @@ BEGIN
     VALUES( @ScopeName,@KeyName,@TextValue )
 END;
 GO
+
+GRANT EXECUTE ON [dbo].[AddTextItem] TO [superuser]
+GO

@@ -14,3 +14,6 @@ JOIN dbo.ViewActiveCaseListStub v ON v.PersonId = a.PersonId
 JOIN dbo.Study s ON s.StudyId = v.StudyId AND s.StudyName = 'NDV'
 WHERE a.ReverseOrderBy=1 AND a.NDV_TYPE=1;
 GO
+
+GRANT SELECT ON [NDV].[Type1] TO [FastTrak]
+GO

@@ -19,6 +19,9 @@ ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
 GO
 
+GRANT SELECT ON [Comm].[OutBox] TO [FastTrak]
+GO
+
 ALTER TABLE [Comm].[OutBox]
   ADD CONSTRAINT [FK_Comm_OutBox_ClinFormId] FOREIGN KEY ([ClinFormId]) REFERENCES [dbo].[ClinForm] ([ClinFormId])
 GO

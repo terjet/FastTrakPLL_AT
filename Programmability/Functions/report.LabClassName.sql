@@ -5,3 +5,6 @@ BEGIN
   RETURN FORMAT( @LabClassId, 'LAB0000#' );
 END;
 GO
+
+GRANT EXECUTE ON [report].[LabClassName] TO [FastTrak]
+GO

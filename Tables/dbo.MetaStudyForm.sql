@@ -27,6 +27,9 @@ CREATE UNIQUE INDEX [I_MetaStudyForm_StudyForm]
   ON [PRIMARY]
 GO
 
+GRANT SELECT ON [dbo].[MetaStudyForm] TO [FastTrak]
+GO
+
 ALTER TABLE [dbo].[MetaStudyForm]
   ADD CONSTRAINT [FK_MetaStudyForm_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

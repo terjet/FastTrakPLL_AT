@@ -6,3 +6,6 @@ BEGIN
   SELECT * FROM dbo.MetaFormAction WHERE FormId=@FormId
 END
 GO
+
+GRANT EXECUTE ON [CRF].[GetFormActions] TO [FastTrak]
+GO

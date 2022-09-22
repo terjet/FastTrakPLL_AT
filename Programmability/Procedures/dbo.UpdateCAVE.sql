@@ -9,3 +9,9 @@ BEGIN
     VALUES (@PersonId, 'CAVE', 'CAVE redigert  av ' + USER_NAME());
 END
 GO
+
+GRANT EXECUTE ON [dbo].[UpdateCAVE] TO [FastTrak]
+GO
+
+DENY EXECUTE ON [dbo].[UpdateCAVE] TO [ReadOnly]
+GO

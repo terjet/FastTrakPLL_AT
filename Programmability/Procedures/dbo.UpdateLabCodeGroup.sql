@@ -15,3 +15,9 @@ BEGIN
     INSERT INTO dbo.LabCodeGroup (LabGroupId,LabCodeId) VALUES( @AddToGroupId, @LabCodeId );
 END
 GO
+
+DENY EXECUTE ON [dbo].[UpdateLabCodeGroup] TO [ReadOnly]
+GO
+
+GRANT EXECUTE ON [dbo].[UpdateLabCodeGroup] TO [superuser]
+GO
