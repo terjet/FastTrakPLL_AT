@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [eResept] AUTHORIZATION [dbo]
+GO

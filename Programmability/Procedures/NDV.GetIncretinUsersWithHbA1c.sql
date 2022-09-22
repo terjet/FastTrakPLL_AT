@@ -1,0 +1,7 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [NDV].[GetIncretinUsersWithHbA1c] ( @StudyId INT ) AS 
+BEGIN
+  EXECUTE NDV.GetIncretinUsersWithHighHbA1c @StudyId,0,99,0.1
+END
+GO

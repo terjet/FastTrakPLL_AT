@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [AdminTool] AUTHORIZATION [dbo]
+GO

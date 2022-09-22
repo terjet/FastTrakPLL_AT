@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [AccessCtrl] AUTHORIZATION [dbo]
+GO

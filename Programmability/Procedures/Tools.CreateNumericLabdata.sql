@@ -1,0 +1,8 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [Tools].[CreateNumericLabdata] AS
+BEGIN
+  UPDATE LabData SET NumResult = CONVERT(FLOAT,REPLACE(SUBSTRING(TxtResult,1,255),'.',',')), TxtResult=NULL
+    WHERE ( ISNUMERIC(REPLACE(SUBSTRING(TxtResult,1,255),'.',','))=1 ) AND NumResult=-1
+END
+GO

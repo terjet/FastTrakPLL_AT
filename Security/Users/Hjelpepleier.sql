@@ -1,0 +1,3 @@
+﻿CREATE USER [Hjelpepleier]
+  WITHOUT LOGIN
+GO

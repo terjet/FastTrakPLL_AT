@@ -1,0 +1,7 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[GetCaseListNews]( @StudyId INT ) AS
+BEGIN
+  EXEC GetCaseListNewForms @StudyId,1
+END
+GO

@@ -1,0 +1,7 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [GBD].[RuleBP30Days]( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  EXEC RulePeriodicData @StudyId, @PersonId, 'SBP_UNSPEC',30, 2
+END
+GO

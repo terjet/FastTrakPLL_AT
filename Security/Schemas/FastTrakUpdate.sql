@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [FastTrakUpdate] AUTHORIZATION [dbo]
+GO

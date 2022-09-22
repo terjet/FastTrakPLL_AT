@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [Pandemic] AUTHORIZATION [dbo]
+GO

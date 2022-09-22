@@ -1,0 +1,2 @@
+﻿CREATE SYNONYM [dbo].[PIA] FOR [FEST].[PIA]
+GO

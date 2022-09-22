@@ -1,0 +1,8 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE FUNCTION [dbo].[TruncDate]( @InputDate DateTime ) RETURNS DateTime
+AS
+BEGIN
+  RETURN CONVERT(DateTime,CONVERT(INT,@InputDate - 0.5));
+END
+GO

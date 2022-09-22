@@ -1,0 +1,7 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [AdminTool].[GetMetaProfessions] AS
+BEGIN
+	SELECT * FROM dbo.MetaProfession;
+END;
+GO

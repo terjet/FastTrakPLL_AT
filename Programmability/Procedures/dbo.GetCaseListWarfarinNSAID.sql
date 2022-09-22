@@ -1,0 +1,7 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[GetCaseListWarfarinNSAID]( @StudyId INT ) AS
+BEGIN
+  EXEC GetCaseListDrugCombo @StudyId,'B01AA03','M01A%'
+END
+GO

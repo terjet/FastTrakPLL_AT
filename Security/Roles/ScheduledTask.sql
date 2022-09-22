@@ -1,0 +1,2 @@
+﻿CREATE ROLE [ScheduledTask]
+GO

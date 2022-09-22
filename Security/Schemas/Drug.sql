@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [Drug] AUTHORIZATION [dbo]
+GO

@@ -1,0 +1,3 @@
+﻿CREATE USER [Lege1]
+  WITHOUT LOGIN
+GO

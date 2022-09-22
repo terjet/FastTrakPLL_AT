@@ -1,0 +1,7 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[GetCaseListN02A]( @StudyId INT ) AS
+BEGIN
+  EXEC dbo.GetCaseListDrug @StudyId,'N02A%'
+END
+GO

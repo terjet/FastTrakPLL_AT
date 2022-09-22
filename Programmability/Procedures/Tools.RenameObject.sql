@@ -1,0 +1,8 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [Tools].[RenameObject]( @ObjectName NVARCHAR(128), @NewName NVARCHAR(128) ) AS
+BEGIN
+  IF NOT OBJECT_ID(@ObjectName) IS NULL
+    EXEC sp_rename @ObjectName,@NewName,'OBJECT'
+END
+GO

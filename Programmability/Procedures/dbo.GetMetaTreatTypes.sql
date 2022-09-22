@@ -1,0 +1,7 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[GetMetaTreatTypes] AS
+BEGIN
+  SELECT TreatType,TreatDesc FROM MetaTreatType
+END
+GO

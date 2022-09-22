@@ -1,0 +1,8 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [CRF].[GetFormPages]( @FormId INT )
+AS
+BEGIN
+  SELECT * FROM dbo.MetaFormPage WHERE FormId=@FormId ORDER BY PageNumber
+END
+GO

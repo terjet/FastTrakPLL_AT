@@ -1,0 +1,10 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [eResept].[FMEnabledForUser]( @UserId INT ) AS
+BEGIN
+  SELECT IS_ROLEMEMBER('FMUser', USER_NAME(@UserId)) AS Result;
+END
+GO
+
+GRANT EXECUTE ON [eResept].[FMEnabledForUser] TO [FastTrak]
+GO

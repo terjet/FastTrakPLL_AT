@@ -1,0 +1,3 @@
+﻿CREATE USER [Sykepleier2]
+  WITHOUT LOGIN
+GO

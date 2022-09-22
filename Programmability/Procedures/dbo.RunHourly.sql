@@ -1,0 +1,7 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[RunHourly] AS
+BEGIN
+  PRINT 'Nothing to do';
+END
+GO

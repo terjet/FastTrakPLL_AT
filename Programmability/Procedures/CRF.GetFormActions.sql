@@ -1,0 +1,8 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [CRF].[GetFormActions]( @FormId INT )
+AS
+BEGIN
+  SELECT * FROM dbo.MetaFormAction WHERE FormId=@FormId
+END
+GO

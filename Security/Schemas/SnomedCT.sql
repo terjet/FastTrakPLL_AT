@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [SnomedCT] AUTHORIZATION [dbo]
+GO
