@@ -18,6 +18,10 @@ BEGIN
   BEGIN
     SELECT @SrcColNames = REPLACE( @SrcColNames, 'CaveId', 'FMCAVEId AS CaveId' );
   END;
+  IF @TableName LIKE '%Person%' 
+  BEGIN
+    SELECT @SrcColNames = REPLACE( @SrcColNames, 'FMPatientId', 'ExternalId AS FMPatientId' );
+  END;
   PRINT 'ColNames in target: ' + @TrgColNames;
   PRINT 'ColNames in source: ' + @SrcColNames;
   DECLARE @DrugTreatmentQuery VARCHAR(MAX);
@@ -39,7 +43,7 @@ BEGIN
   END
   ELSE
   BEGIN
-    SET @ErrMsg = CONCAT( 'The tables ', @TableName,' have differences in ', @RowCnt, ' rows.' );  
+    SET @ErrMsg = CONCAT( 'The two ', @TableName,' tables have differences in ', @RowCnt, ' rows.' );  
     SET @ErrLvl = 16;
    END;
   RAISERROR( @ErrMsg, @ErrLvl, 1 );
