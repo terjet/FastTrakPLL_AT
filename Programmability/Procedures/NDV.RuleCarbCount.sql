@@ -4,21 +4,28 @@ CREATE PROCEDURE [NDV].[RuleCarbCount]( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @TrainDate DateTime;
   DECLARE @AlertFacet VARCHAR(16);
-  DECLARE @AlertLevel INT; 
-  IF dbo.GetLastQuantity( @PersonId, 'NDV_TYPE' ) <> 1
+  DECLARE @AlertLevel INT;                      
+         
+  -- Make sure we have a Type-1 diabetes patient
+  
+  IF ISNULL(dbo.GetLastEnumVal( @PersonId, 'NDV_TYPE' ),-1) <> 1
   BEGIN
+    -- Not relevant for patients without Type-1 diabetes                                                
     SET @AlertFacet = 'Exclude';
     SET @AlertLevel = 0; 
   END
-  ELSE BEGIN                                                         
-    SELECT TOP 1 @TrainDate=DTVal FROM ClinObservation co
-    JOIN ClinEvent ce ON co.EventId=ce.EventId 
-    WHERE ( ce.StudyId=@StudyId ) AND ( ce.PersonId=@PersonId ) AND ( co.VarName='DIAPOL_TRAIN_CARBCOUNT' )
+  ELSE 
+  BEGIN
+    -- Find date where Carbohydrate counting was taught                                               
+    SELECT TOP 1 @TrainDate = DTVal 
+    FROM dbo.ClinDataPoint cdp
+    JOIN dbo.ClinEvent ce ON ce.EventId = cdp.EventId 
+    WHERE ( ce.PersonId = @PersonId ) AND ( cdp.ItemId = 5713 )
     ORDER BY DTVal DESC;   
     IF @TrainDate IS NULL
     BEGIN
       SET @AlertFacet = 'DataMissing';
-      SET @AlertLevel = 2;
+      SET @AlertLevel = 1;
     END
     ELSE
     BEGIN
@@ -31,11 +38,8 @@ BEGIN
   SET @AlertHeader = dbo.GetTextItem( 'NDV.RuleCarbCount', @AlertFacet +'.Header' );
   SET @AlertMessage = dbo.GetTextItem( 'NDV.RuleCarbCount', @AlertFacet );
   IF NOT @TrainDate IS NULL                        
-  BEGIN
     SET @AlertMessage = REPLACE( @AlertMessage, '@TrainDate', dbo.LongTime( @TrainDate ) );
-  END
-  EXEC AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'CARBCOUNT',@AlertFacet,@AlertHeader,
-      @AlertMessage;    
+  EXEC dbo.AddAlertForPerson @StudyId, @PersonId, @AlertLevel,'CARBCOUNT', @AlertFacet, @AlertHeader, @AlertMessage;    
 END
 GO
 

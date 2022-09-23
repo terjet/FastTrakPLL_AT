@@ -1,0 +1,10 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [GBD].[RuleNEWS2]( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  EXEC dbo.RulePeriodicForm @StudyId, @PersonId, 'NEWS2', 30, 2;
+END
+GO
+
+GRANT EXECUTE ON [GBD].[RuleNEWS2] TO [FastTrak]
+GO

@@ -1,0 +1,10 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [GBD].[RuleKDV]( @StudyId INT, @PersonId INT ) AS
+BEGIN
+  EXEC dbo.RulePeriodicForm @StudyId,@PersonId,'KDV',180,2;
+END;
+GO
+
+GRANT EXECUTE ON [GBD].[RuleKDV] TO [FastTrak]
+GO

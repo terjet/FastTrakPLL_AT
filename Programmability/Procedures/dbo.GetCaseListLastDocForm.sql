@@ -23,3 +23,15 @@ BEGIN
   ORDER BY t2.LastEvent
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListLastDocForm] TO [Gruppeleder]
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListLastDocForm] TO [Lege]
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListLastDocForm] TO [Sykepleier]
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListLastDocForm] TO [Vernepleier]
+GO

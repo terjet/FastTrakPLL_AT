@@ -2,13 +2,12 @@
 GO
 CREATE PROCEDURE [NDV].[GetType1WithHbA1c]( @StudyId INT ) AS
 BEGIN
-  -- Create temporary table
-  SELECT p.PersonId,p.DOB,p.FullName,p.GroupName,dbo.GetLastValue(PersonId,'HBA1C') AS HbA1c INTO #temp
-  FROM NDV.Type1 p;
-  -- Read data
-  SELECT PersonId,DOB,FullName,GroupName,'HbA1c = ' + CONVERT(VARCHAR,HbA1c) as InfoText 
-  FROM #temp 
-  ORDER BY HbA1c DESC
+  SELECT p.PersonId,p.DOB,p.FullName,p.GroupName,
+    COALESCE(ld.LabName + ' = ' + CONVERT(VARCHAR,ld.NumResult ) +' (' +
+    CONVERT(VARCHAR,DATEPART(YYYY,ld.LabDate)) + ')','(ikke målt)') AS InfoText
+  FROM NDV.Type1 p
+  LEFT JOIN dbo.GetLastLabDataTable( 1058, '3000-01-01' ) ld ON ld.PersonId= p.PersonId
+  ORDER BY ISNULL(ld.NumResult,999) DESC
 END
 GO
 

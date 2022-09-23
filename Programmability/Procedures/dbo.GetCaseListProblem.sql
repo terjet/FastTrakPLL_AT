@@ -11,3 +11,6 @@ BEGIN
   ORDER BY GroupName
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListProblem] TO [FastTrak]
+GO

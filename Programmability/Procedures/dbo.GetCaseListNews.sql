@@ -2,6 +2,9 @@
 GO
 CREATE PROCEDURE [dbo].[GetCaseListNews]( @StudyId INT ) AS
 BEGIN
-  EXEC GetCaseListNewForms @StudyId,1
+  EXEC dbo.GetCaseListNewForms @StudyId,1;
 END
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListNews] TO [FastTrak]
 GO

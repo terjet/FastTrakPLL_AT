@@ -5,3 +5,6 @@ BEGIN
   EXEC GetCaseListLastForm @StudyId,'HULTEN',90
 END
 GO
+
+GRANT EXECUTE ON [GBD].[GetCaseListNoHulten3Months] TO [FastTrak]
+GO

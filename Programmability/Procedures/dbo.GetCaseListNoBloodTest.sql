@@ -15,3 +15,6 @@ BEGIN
   ORDER BY LabDate;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListNoBloodTest] TO [Lege]
+GO

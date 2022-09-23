@@ -1,0 +1,10 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [Dash].[BdrHbA1cBelow53] AS
+BEGIN
+  EXEC Dash.BdrHbA1cBelowInPeriod 53, 6, 6, 5;
+END
+GO
+
+GRANT EXECUTE ON [Dash].[BdrHbA1cBelow53] TO [FastTrak]
+GO

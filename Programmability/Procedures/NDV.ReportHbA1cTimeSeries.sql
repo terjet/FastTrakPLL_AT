@@ -6,7 +6,11 @@ BEGIN
   DECLARE @NumPatientsType1 INT;
   DECLARE @YearStart DateTime;
   DECLARE @YearEnd DateTime;
-
+  
+  -- Merge labdata from ClinDatapoint to LabData
+                                      
+  EXEC NDV.MergeHba1cToLabdata;
+  
   -- Find start and end of the year passed in as a parameter.
 
   SELECT @YearStart = CONVERT(DateTime,CONVERT(VARCHAR, @Year) + '-01-01');
@@ -49,7 +53,7 @@ BEGIN
 	  MAX(NumResult) AS MaxHbA1c, 
 	  AVG(NumResult) AS AvgHbA1cAboveCutoff
 	FROM #Selection cas
-    JOIN dbo.GetLastLabDataTable( 45, months.StartTime ) lab ON lab.PersonId = cas.PersonId
+    JOIN dbo.GetLastLabDataTable( 1058, months.StartTime ) lab ON lab.PersonId = cas.PersonId
     WHERE NumResult >= @HbA1cCutoff
   ) labs
   WHERE @NumPatientsType1 > 0;

@@ -1,0 +1,16 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [GBD].[GetCaseListA10BK] ( @StudyId INT) AS
+BEGIN
+ EXEC dbo.GetCaseListDrug @StudyId,'A10BK%'
+END
+GO
+
+GRANT EXECUTE ON [GBD].[GetCaseListA10BK] TO [Farmasøyt]
+GO
+
+GRANT EXECUTE ON [GBD].[GetCaseListA10BK] TO [Gruppeleder]
+GO
+
+GRANT EXECUTE ON [GBD].[GetCaseListA10BK] TO [Lege]
+GO

@@ -16,3 +16,15 @@ BEGIN
   SELECT Personid,DOB,FullName,GroupName,InfoText FROM #temp order by GFR;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListMetforminGFR] TO [Farmasøyt]
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListMetforminGFR] TO [Lege]
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListMetforminGFR] TO [Sykepleier]
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListMetforminGFR] TO [Vernepleier]
+GO

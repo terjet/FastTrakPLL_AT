@@ -2,33 +2,32 @@
 
 SET ANSI_NULLS ON
 GO
-CREATE PROCEDURE [dbo].[RulePeriodicData]( @StudyId INT, @PersonId INT, @VarName VarChar(24), 
-  @DaysBetween INT, @MissingLevel tinyint ) AS
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[RulePeriodicData]( @StudyId INT, @PersonId INT, @VarName VARCHAR(64), @DaysBetween INT, @MissingLevel tinyint ) AS
 BEGIN
+  SET NOCOUNT ON;
   DECLARE @RuleName VARCHAR(24);
-  DECLARE @LabDate DateTime;
-  DECLARE @ClinDate DateTime;
   DECLARE @LastDate DateTime; 
+  DECLARE @LastEventNum INT; 
   DECLARE @AlertLevel tinyint; 
   DECLARE @AlertFacet VARCHAR(16);    
-  SET @RuleName = @VarName + CONVERT(VARCHAR,@DaysBetween) + 'D';
-  /* Find latest data from lab table */
-  SELECT @LabDate = MAX(LabDate) FROM LabData ld JOIN LabCode lc
-    ON lc.LabCodeId=ld.LabCodeId AND lc.VarName=@VarName                      
-  WHERE ld.PersonId=@PersonId AND ( ld.NumResult >= 0 );
-  /* Find latest data from ClinData */
-  SELECT @ClinDate = MAX(ce.EventTime) FROM ClinObservation co JOIN ClinEvent ce on ce.EventId=co.EventId 
-  WHERE co.VarName=@VarName AND ce.PersonId=@PersonId AND ( co.Quantity >= 0 );
-  /* Consolidate into @LastDate */
-  SET @ClinDate = ISNULL(@ClinDate,0);
-  SET @LabDate = ISNULL(@LabDate,0);
-  IF @LabDate > @ClinDate SET @LastDate=@LabDate ELSE SET @LastDate=@ClinDate;
+  DECLARE @ItemId INT;
+  SET @RuleName = SUBSTRING( @VarName, 1, 20 ) + CONVERT(VARCHAR,@DaysBetween) + 'D';
+  SELECT @ItemId = ItemId FROM dbo.MetaItem WHERE VarName = @VarName;
+  /* Find latest data from ClinDataPoint */
+  SELECT TOP 1 @LastEventNum = ce.EventNum 
+  FROM dbo.ClinDataPoint cdp WITH (NOLOCK) 
+  JOIN dbo.ClinEvent ce WITH (NOLOCK) ON ce.EventId = cdp.EventId
+  WHERE ce.StudyId = @StudyId AND ce.PersonId = @PersonId AND cdp.ItemId = @ItemId AND ( cdp.Quantity >= 0 )
+  ORDER BY ce.EventNum DESC;
+  SET @LastDate = dbo.FnEventNumToDate( @LastEventNum );
   /* Evaluate */
-  IF @LastDate = 0 BEGIN
+  IF @LastEventNum IS NULL BEGIN
     SET @AlertFacet = 'DataMissing';
     SET @AlertLevel = @MissingLEvel;
   END
-  ELSE IF @LastDate < getdate() - @DaysBetween BEGIN
+  ELSE IF @LastDate < GETDATE() - @DaysBetween BEGIN
     SET @AlertFacet = 'DataOld';
     SET @AlertLevel = @MissingLevel;
   END
@@ -36,7 +35,7 @@ BEGIN
     SET @AlertFacet = 'DataFound';
     SET @AlertLevel = 0;
   END;
-  EXEC AddAlertForDSSRule @StudyId,@PersonId,@AlertLevel,@RuleName,@AlertFacet
+  EXEC dbo.AddAlertForDSSRule @StudyId,@PersonId,@AlertLevel,@RuleName,@AlertFacet;
 END
 GO
 

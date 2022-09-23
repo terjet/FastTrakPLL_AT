@@ -10,7 +10,8 @@ BEGIN
   SET @HasAF = dbo.GetProblemStatus( @PersonId,4, 'I48%' );
   IF @HasAF = 1
   BEGIN
-    IF EXISTS( SELECT TreatId FROM OngoingTreatment WHERE PersonId=@PersonId AND ( ATC LIKE 'B01AA%' OR ATC LIKE 'B01AC%' ) )
+    IF EXISTS( SELECT TreatId FROM dbo.OngoingTreatment 
+      WHERE PersonId=@PersonId AND ATC COLLATE Latin1_General_CI_AS LIKE 'B01A[ABCEF]%' COLLATE Latin1_General_CI_AS )
     BEGIN
       SET @AlertLevel = 0;
       SET @AlertFacet = 'DrugFound';
@@ -27,7 +28,7 @@ BEGIN
   END;
   SET @MsgText = dbo.GetTextItem( 'AFTREATED', @AlertFacet )  
   SET @HeaderText = dbo.GetTextItem( 'AFTREATED', @AlertFacet + '.Header' )  
-  EXEC AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'AFTREATED',@AlertFacet,@HeaderText,@MsgText
+  EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'AFTREATED',@AlertFacet,@HeaderText,@MsgText
 END
 GO
 

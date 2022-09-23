@@ -5,3 +5,12 @@ BEGIN
   EXEC dbo.GetCaseListDrug @StudyId,'N02BE%'
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListN02BE] TO [Farmasøyt]
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListN02BE] TO [Gruppeleder]
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListN02BE] TO [Lege]
+GO

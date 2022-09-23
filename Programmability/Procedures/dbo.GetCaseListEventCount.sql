@@ -25,3 +25,6 @@ BEGIN
   ORDER BY EventsPerDay 
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListEventCount] TO [FastTrak]
+GO

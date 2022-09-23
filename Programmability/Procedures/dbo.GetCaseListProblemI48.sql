@@ -5,3 +5,6 @@ BEGIN
   EXECUTE dbo.GetCaseListProblem @StudyId,'I48%'
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListProblemI48] TO [FastTrak]
+GO

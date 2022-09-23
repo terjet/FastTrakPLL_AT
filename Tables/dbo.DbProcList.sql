@@ -33,12 +33,6 @@ BEGIN
 END
 GO
 
-GRANT
-  DELETE,
-  UPDATE
-ON [dbo].[DbProcList] TO [Administrator]
-GO
-
 GRANT SELECT ON [dbo].[DbProcList] TO [FastTrak]
 GO
 

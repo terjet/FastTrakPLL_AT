@@ -5,3 +5,18 @@ BEGIN
   EXECUTE dbo.GetCaseListProblem @StudyId,'E10%'
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListProblemE10] TO [Farmasøyt]
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListProblemE10] TO [Gruppeleder]
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListProblemE10] TO [Lege]
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListProblemE10] TO [Sykepleier]
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListProblemE10] TO [Vernepleier]
+GO

@@ -20,3 +20,6 @@ BEGIN
   ORDER BY t2.LastEvent
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListNoRecentForm] TO [FastTrak]
+GO

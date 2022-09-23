@@ -1,0 +1,11 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [NDV].[GetGravideType1] ( @StudyId INT )
+AS
+BEGIN
+  EXEC NDV.GetPregnantByType @StudyId, 1
+END
+GO
+
+GRANT EXECUTE ON [NDV].[GetGravideType1] TO [FastTrak]
+GO

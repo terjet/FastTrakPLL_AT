@@ -15,19 +15,19 @@ BEGIN
   -- Finn eksisterende signert kostsamtale-skjema
   SET @LastInnkomstDate = dbo.GetLastSignedForm( @StudyId,@PersonId,'SAMTALE_KOST' );
   SET @LastInnkomstDateStr = CONVERT(VARCHAR,@LastInnkomstDate,104);
-  SET @KostLege = ISNULL( dbo.GetLastQuantity( @PersonId, 'KOST_Lege' ), 1 );
+  SET @KostLege = ISNULL( dbo.GetLastEnumVal( @PersonId, 'KOST_Lege' ), 1 );
   IF ( @LastInnkomstDate IS NULL ) OR ( @KostLege = -1 )
   BEGIN          
     -- Finnes ikke noen signert eller skikkelig utfylt kostsamtale, varsling gult nivå, ekskluder for tiltak. 
-    EXEC AddAlertForDSSRule @StudyId, @PersonId, 2, 'KostSamtale', 'DataMissing';
-    EXEC AddAlertForDSSRule @StudyId, @PersonId, 0, 'KostTiltak', 'Exclude';
+    EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, 2, 'KostSamtale', 'DataMissing';
+    EXEC dbo.AddAlertForDSSRule @StudyId, @PersonId, 0, 'KostTiltak', 'Exclude';
   END
   ELSE 
   BEGIN                      
     -- Kostsamtale er funnet, legg til i Alert på debug nivå 
     EXEC dbo.GetAlertText 'KostSamtale', 'DataFound', @AlertHdr OUT, @AlertMsg OUT; 
     SET @AlertMsg = REPLACE( @AlertMsg,'@LastInnkomstDate', @LastInnkomstDateStr );
-    EXEC AddAlertForPerson @StudyId, @PersonId, 0, 'KostSamtale', 'DataFound', @AlertHdr,@AlertMsg;
+    EXEC dbo.AddAlertForPerson @StudyId, @PersonId, 0, 'KostSamtale', 'DataFound', @AlertHdr,@AlertMsg;
     -- Nødvendig med tilsyn av lege?
     IF @KostLege = 1
     BEGIN
@@ -63,7 +63,7 @@ BEGIN
     EXEC dbo.GetAlertText 'KostTiltak', @AlertFacet, @AlertHdr OUT, @AlertMsg OUT;
     IF NOT @LastTiltakDateStr IS NULL SET @AlertMsg = REPLACE( @AlertMsg,'@LastTiltakDate', @LastTiltakDateStr );
     IF NOT @LastInnkomstDateStr IS NULL SET @AlertMsg = REPLACE( @AlertMsg,'@LastInnkomstDate', @LastInnkomstDateStr );
-    EXEC AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'KostTiltak',@AlertFacet,@AlertHdr,@AlertMsg;
+    EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'KostTiltak',@AlertFacet,@AlertHdr,@AlertMsg;
   END;
 END;
 GO

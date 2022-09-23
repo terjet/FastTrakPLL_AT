@@ -9,3 +9,6 @@ BEGIN
   WHERE v.StudyId=@StudyId AND sc.FinState = 2;
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListFocused] TO [FastTrak]
+GO

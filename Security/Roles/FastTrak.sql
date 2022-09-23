@@ -7,6 +7,12 @@ GO
 EXEC sp_addrolemember N'FastTrak', N'DIPS-AD\moe'
 GO
 
+EXEC sp_addrolemember N'FastTrak', N'DIPS-AD\tty'
+GO
+
+EXEC sp_addrolemember N'FastTrak', N'Hjelpepleier'
+GO
+
 EXEC sp_addrolemember N'FastTrak', N'LabImport'
 GO
 

@@ -5,7 +5,7 @@ BEGIN
   DECLARE @FormId INT
   SELECT @FormId = MAX(FormId) from dbo.MetaForm where FormName = 'LS3'
   SELECT vcldh.PersonId, DOB, FullName, StudyId, GroupName, vcldh.DeathRegisteredAt, 
-    StatusText = 
+    InfoText = 
       CASE 
         WHEN ft.CreatedAt IS NULL THEN 'Livets siste dager: Mangler!' 
       ELSE  
@@ -16,5 +16,11 @@ BEGIN
       END 
   FROM GBD.ViewCaseListDiedHere AS vcldh 
   LEFT JOIN dbo.GetLastFormTable( @FormId, NULL ) ft ON ft.PersonId = vcldh.PersonId
-END;
+END
+GO
+
+GRANT EXECUTE ON [GBD].[GetCaseListDiedHere] TO [Gruppeleder]
+GO
+
+GRANT EXECUTE ON [GBD].[GetCaseListDiedHere] TO [Lege]
 GO

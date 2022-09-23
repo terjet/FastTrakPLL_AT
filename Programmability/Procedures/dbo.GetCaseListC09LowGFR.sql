@@ -15,3 +15,15 @@ BEGIN
   ORDER BY FullName
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListC09LowGFR] TO [Farmasøyt]
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListC09LowGFR] TO [Lege]
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListC09LowGFR] TO [Sykepleier]
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListC09LowGFR] TO [Vernepleier]
+GO

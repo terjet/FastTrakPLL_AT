@@ -2,6 +2,9 @@
 GO
 CREATE PROCEDURE [dbo].[GetCaseListNewsMonth]( @StudyId INT ) AS
 BEGIN
-  EXEC GetCaseListNewForms @StudyId,30
+  EXEC dbo.GetCaseListNewForms @StudyId,30;
 END
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListNewsMonth] TO [Administrator]
 GO

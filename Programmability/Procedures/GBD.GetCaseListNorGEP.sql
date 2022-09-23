@@ -26,3 +26,9 @@ BEGIN
   
 END
 GO
+
+GRANT EXECUTE ON [GBD].[GetCaseListNorGEP] TO [Farmasøyt]
+GO
+
+GRANT EXECUTE ON [GBD].[GetCaseListNorGEP] TO [Lege]
+GO

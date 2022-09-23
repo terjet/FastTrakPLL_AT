@@ -7,7 +7,7 @@ BEGIN
   -- Excel has a bug for the year 1900, See https://www.joelonsoftware.com/2006/06/16/my-first-billg-review/.
   SELECT a.* FROM
   (
-    SELECT ce.PersonId, mi.VarName, ISNULL(dp.Quantity, DATEDIFF(DD,'1899-12-30',dp.DTVal)) AS Quantity, ce.EventTime, dp.RowId,
+    SELECT ce.PersonId, mi.VarName, ISNULL(dp.Quantity, ISNULL(DATEDIFF(DD,'1899-12-30',dp.DTVal),DATALENGTH(dp.TextVal))) AS Quantity, ce.EventTime, dp.RowId,
       RANK() OVER ( PARTITION BY mi.ItemId ORDER BY ce.EventTime, dp.RowId DESC ) AS OrderBy 
     FROM dbo.ClinDatapoint dp 
       JOIN dbo.ClinEvent ce ON ce.EventId = dp.EventId

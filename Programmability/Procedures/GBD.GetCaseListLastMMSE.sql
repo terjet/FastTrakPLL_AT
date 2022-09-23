@@ -1,0 +1,10 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [GBD].[GetCaseListLastMMSE]( @StudyId INT ) AS
+BEGIN
+  EXEC dbo.GetCaseListLastForm @StudyId, 'MMSE_NR3'
+END
+GO
+
+GRANT EXECUTE ON [GBD].[GetCaseListLastMMSE] TO [FastTrak]
+GO

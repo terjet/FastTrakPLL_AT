@@ -13,3 +13,6 @@ BEGIN
   ORDER BY tl.LabDate
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListOldLab] TO [Lege]
+GO

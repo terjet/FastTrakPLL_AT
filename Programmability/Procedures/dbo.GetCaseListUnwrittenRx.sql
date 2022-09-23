@@ -10,3 +10,6 @@ BEGIN
   ORDER BY dp.CreatedAt DESC
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListUnwrittenRx] TO [FastTrak]
+GO

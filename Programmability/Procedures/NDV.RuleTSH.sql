@@ -4,28 +4,30 @@ CREATE PROCEDURE [NDV].[RuleTSH]( @StudyId INT, @PersonId INT ) AS
 BEGIN
   DECLARE @LabName VARCHAR(40);
   DECLARE @LabVal FLOAT;     
-  DECLARE @LabDate DateTime;
+  DECLARE @LabDate DATETIME;
   DECLARE @AlertFacet VARCHAR(16);
   DECLARE @AlertLevel INT; 
-  IF dbo.GetLastQuantity( @PersonId, 'NDV_TYPE' ) <> 1
+  IF ISNULL( dbo.GetLastEnumVal( @PersonId, 'NDV_TYPE' ), -1 ) <> 1
   BEGIN
     SET @AlertFacet = 'Exclude';
     SET @AlertLevel = 0; 
   END
-  ELSE BEGIN                                                         
-    SELECT TOP 1 @LabName=lc.LabName,@LabDate=ld.LabDate,@LabVal=ld.NumResult
-    FROM dbo.LabData ld JOIN LabCode lc ON lc.LabCodeId=ld.LabCodeId 
-    WHERE ( ld.PersonId=@PersonId ) AND ( ld.NumResult > 0 ) AND ( lc.VarName='S_TSH' )
+  ELSE 
+  BEGIN                                                         
+    SELECT TOP 1 @LabName = lc.LabName, @LabDate = ld.LabDate, @LabVal = ld.NumResult
+    FROM dbo.LabData ld 
+    JOIN dbo.LabCode lc ON lc.LabCodeId=ld.LabCodeId 
+    WHERE ( ld.PersonId = @PersonId ) AND ( ld.NumResult > 0 ) AND ( lc.LabClassId = 83 )
     ORDER BY ld.LabDate DESC;   
     IF @LabDate IS NULL
     BEGIN
       SET @AlertFacet = 'DataMissing';
-      SET @AlertLevel = 2;
+      SET @AlertLevel = 1;
     END
-    ELSE IF @LabDate < getdate()-730
+    ELSE IF @LabDate < GETDATE()-730
     BEGIN
       SET @AlertFacet = 'DataOld';
-      SET @AlertLevel = 2;
+      SET @AlertLevel = 1;
     END
     ELSE
     BEGIN
@@ -42,9 +44,8 @@ BEGIN
     SET @AlertMessage = REPLACE( @AlertMessage, '@LabDate', dbo.LongTime( @LabDate ) );
     SET @AlertMessage = REPLACE( @AlertMessage, '@LabValue', CONVERT(VARCHAR,@LabVal) );
     SET @AlertMessage = REPLACE( @AlertMessage, '@LabName', @LabName );
-  END
-  EXEC AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'NDVTSH',@AlertFacet,@AlertHeader,
-      @AlertMessage;    
+  END;
+  EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'NDVTSH',@AlertFacet,@AlertHeader, @AlertMessage;    
 END
 GO
 

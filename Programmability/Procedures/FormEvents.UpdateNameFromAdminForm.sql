@@ -19,5 +19,8 @@ BEGIN
     UPDATE dbo.Person SET FstName = @FirstName WHERE PersonId = @PersonId;
   IF DATALENGTH( @LastName ) > 1 
     UPDATE dbo.Person SET LstName = @LastName WHERE PersonId = @PersonId;
-END;
+END
+GO
+
+GRANT EXECUTE ON [FormEvents].[UpdateNameFromAdminForm] TO [FastTrak]
 GO

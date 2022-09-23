@@ -27,19 +27,22 @@ BEGIN
       IF @GFR < 60
       BEGIN
         SET @AlertFacet = 'RiskHigh';
-        IF @GFR < 30
-        BEGIN
+        IF @GFR < 30 BEGIN
           SET @AlertLevel = 4;
-            IF @GFR < 15
-              SET @MsgText = @MsgText + ' Nyresykdom grad 4, betydelig nedsatt GFR. '
+          IF @GFR < 15
+            SET @MsgText = @MsgText + ' Nyresykdom grad 4, betydelig nedsatt GFR. '
           ELSE
-              SET @MsgText = @MsgText + ' Nyresykdom grad 5, nyresvikt. ';
+            SET @MsgText = @MsgText + ' Nyresykdom grad 5, nyresvikt. ';
+        END
+        ELSE BEGIN
+          SET @MsgText = @MsgText + ' Nyresykdom grad 3, moderat redusert GFR. ';
+          IF @GFR < 50
+            SET @AlertLevel = 3
+          ELSE BEGIN
+            -- Mellom 50 og 60
+            SET @AlertLevel = 2;
+            SET @AlertFacet = 'RiskMedium'
           END
-        ELSE
-        BEGIN
-          -- Mellom 30 og 60
-          SET @AlertLevel = 3;
-       SET @MsgText = @MsgText + ' Nyresykdom grad 3, moderat redusert GFR. ';
         END;
       END;
     END
@@ -58,7 +61,7 @@ BEGIN
     SET @AlertFacet = 'Exclude';
     SET @AlertLevel = 0;
   END;
-  EXEC AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'METFORMGFR',@AlertFacet,@HeaderText,@MsgText;
+  EXEC dbo.AddAlertForPerson @StudyId,@PersonId,@AlertLevel,'METFORMGFR',@AlertFacet,@HeaderText,@MsgText;
 END
 GO
 

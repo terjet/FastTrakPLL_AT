@@ -2,7 +2,7 @@
 GO
 CREATE PROCEDURE [NDV].[GetPumpAge0To21Hba1cAbove9]( @StudyId INT ) AS 
 BEGIN
-  EXECUTE NDV.GetPumpWithHighHbA1c @StudyId,0,21,9
+  EXECUTE NDV.GetPumpWithHighHbA1c @StudyId,0,21,75;
 END
 GO
 

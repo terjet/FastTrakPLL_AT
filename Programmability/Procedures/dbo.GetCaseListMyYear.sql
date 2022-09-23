@@ -4,6 +4,9 @@ CREATE PROCEDURE [dbo].[GetCaseListMyYear]( @StudyId INT ) AS
 BEGIN
   DECLARE @UserId INT;
   SET @UserId = USER_ID();
-  EXEC GetCaseListNewForms @StudyId,365,@UserId;
+  EXEC dbo.GetCaseListNewForms @StudyId,365,@UserId;
 END
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListMyYear] TO [FastTrak]
 GO

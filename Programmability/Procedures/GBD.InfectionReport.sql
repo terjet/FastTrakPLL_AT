@@ -1,53 +1,81 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-CREATE PROCEDURE [GBD].[InfectionReport]( @StartAt DateTime = NULL, @StopAt DateTime = NULL )
-AS
+CREATE PROCEDURE [GBD].[InfectionReport] ( @StudyId INT, @StartAt DateTime = NULL, @StopAt DateTime = NULL ) AS
 BEGIN
-  SET LANGUAGE Norwegian;
-  IF @StartAt IS NULL SET @StartAt = getdate()-90;
-  IF @StopAt IS NULL SET @StopAt = getdate();
-  SELECT ce.PersonId,ce.EventId,ce.EventTime,
-    dbo.MonthYear( ce.EventTime) as MonthName,
-    c.CenterId,c.CenterName,
-    sg.GroupId,sg.GroupName,
-    mia1.OptionText as InfeksjonsType,
-    mia7.OptionText as KjentAgens, 
-    co6.TextVal as Agens,
-    mia8.OptionText as GittMedisin,        
-    co9.TextVal as MedisinNavn,
-    co2.DTVal as StartDato,co3.DTVal as SluttDato,
-    mia4.OptionText as SykehusInnleggelse, mia5.OptionText as [PasientDøde],
-    ul.UserId,up.PersonId as UserPersonId,up.ReverseName as Brukernavn
-  INTO #temp
-  FROM ClinEvent ce 
-  JOIN ClinForm cf ON cf.EventId=ce.EventId AND cf.DeletedAt IS NULL 
-  JOIN MetaForm mf ON mf.FormId=cf.FormId AND mf.FormName='GBD_INFECTION'
-  LEFT OUTER JOIN ClinObservation co1 ON co1.EventId=ce.EventId AND co1.VarName='INFECT_TYPE'
-  LEFT OUTER JOIN MetaItemAnswer mia1 ON mia1.ItemId=769 and mia1.OrderNumber=co1.EnumVal
-  LEFT OUTER JOIN ClinObservation co2 ON co2.EventId=ce.EventId AND co2.VarName='INFECT_DATE_START'
-  LEFT OUTER JOIN ClinObservation co3 ON co3.EventId=ce.EventId AND co3.VarName='INFECT_DATE_END'
-  LEFT OUTER JOIN ClinObservation co4 ON co4.EventId=ce.EventId AND co4.VarName='INFEKSJON_INNLEGGELSE'
-  LEFT OUTER JOIN MetaItemAnswer mia4 ON mia4.ItemId=777 and mia4.OrderNumber=co4.EnumVal
-  LEFT OUTER JOIN ClinObservation co5 ON co5.EventId=ce.EventId AND co5.VarName='INFEKSJON_DØD'
-  LEFT OUTER JOIN MetaItemAnswer mia5 ON mia5.ItemId=778 and mia5.OrderNumber=co5.EnumVal
-  LEFT OUTER JOIN ClinObservation co6 ON co6.EventId=ce.EventId AND co6.VarName='INFECT_AGENT_NAMES'
-  LEFT OUTER JOIN ClinObservation co7 ON co7.EventId=ce.EventId AND co7.VarName='INFECT_AGENT_KNOWN'
-  LEFT OUTER JOIN MetaItemAnswer mia7 ON mia7.ItemId=3498 and mia7.OrderNumber=co7.EnumVal
-  LEFT OUTER JOIN ClinObservation co8 ON co8.EventId=ce.EventId AND co8.VarName='INFECT_DRUG_GIVEN'
-  LEFT OUTER JOIN MetaItemAnswer mia8 ON mia8.ItemId=3499 and mia8.OrderNumber=co8.EnumVal
-  LEFT OUTER JOIN ClinObservation co9 ON co9.EventId=ce.EventId AND co9.VarName='INFECT_DRUG_NAMES'
-  JOIN UserList ul ON ul.UserId=cf.CreatedBy
-  JOIN UserList my ON my.UserId=USER_ID()
-  JOIN Person up ON up.PersonId=ul.PersonId
-  JOIN StudCase sc ON sc.StudyId=ce.StudyId AND sc.PersonId=ce.PersonId
-  JOIN Study s ON s.StudyId=sc.StudyId AND s.StudyName='GBD'
-  JOIN StudyGroup sg ON sg.StudyId=sc.StudyId AND sg.GroupId=sc.GroupId
-  JOIN StudyCenter c ON c.CenterId=sg.CenterId AND c.CenterId=my.CenterId
-  LEFT OUTER JOIN StudyUser su ON su.UserId=USER_ID() AND su.StudyId=sc.StudyId
-  WHERE ( ce.EventTime > @StartAt AND ce.EventTime < @StopAt )
-  AND (( su.GroupId=sc.GroupId ) OR ( su.UserId IS NULL ) OR ( su.GroupId IS NULL ) OR ( su.ShowMyGroup = 0 ));
-  SELECT * FROM #temp ORDER BY EventTime;
+  SET LANGUAGE Norwegian; 
+  IF @StartAt IS NULL SET @StartAt = GETDATE()-365;
+  IF @StopAt IS NULL SET @StopAt = GETDATE();
+  /* Conform to Population field names */
+  SELECT 
+    sc.PersonId, sg.CenterId, sg.GroupId, sg.GroupName, 
+    ce.EventId, ce.EventTime, 
+    cf.ClinFormId, cf.FormStatus, cf.FormComplete, cf.Comment,
+    dbo.MonthYear( ce.EventTime ) AS MonthYear,
+    DATENAME( mm, ce.EventTime ) AS MonthName,
+    DATEPART( hh, ce.EventTime ) AS EventHour,
+    DATEPART( ww, ce.EventTime ) AS EventWeek,
+    v768.DTVal AS T768,
+    v769.EnumVal AS E769,
+    a769.OptionText AS T769,
+    CONVERT(VARCHAR(16),v771.TextVal) AS T771,
+    v777.EnumVal AS E777,
+    a777.OptionText AS T777,
+    v778.EnumVal AS E778,
+    a778.OptionText AS T778,
+    CONVERT(VARCHAR(16),v3495.TextVal) AS T3495,
+    v3498.EnumVal AS E3498,
+    a3498.OptionText AS T3498,
+    v3499.EnumVal AS E3499,
+    a3499.OptionText AS T3499,
+    v3500.DTVal AS T3500,
+    cf.CreatedAt, cf.CreatedBy, 
+    pcr.Signature AS CreatedBySign, pcr.FullName AS CreatedByName, 
+    ROW_NUMBER() OVER ( PARTITION BY ce.PersonId ORDER BY EventTime DESC ) AS OrderNo 
+  FROM dbo.ClinForm cf
+  JOIN dbo.ClinEvent ce ON ( ce.EventId = cf.EventId ) 
+  JOIN dbo.MetaForm mf ON mf.FormId=cf.FormId 
+  JOIN dbo.StudCase sc ON ( sc.StudyId = ce.StudyId ) AND ( sc.PersonId = ce.PersonId ) 
+  JOIN dbo.StudyGroup sg ON ( sg.StudyId = ce.StudyId ) AND ( sg.GroupId = ce.GroupId ) 
+  JOIN dbo.StudyUser su ON ( su.StudyId = sg.StudyId ) AND ( su.UserId = USER_ID() ) 
+  JOIN dbo.UserList my ON ( my.UserId = USER_ID() ) 
+  JOIN dbo.StudyCenter c ON ( c.CenterId = sg.CenterId ) 
+  JOIN dbo.UserList ucr ON ucr.UserId = cf.CreatedBy
+  LEFT OUTER JOIN dbo.Person pcr ON pcr.PersonId = ucr.PersonId 
+    LEFT OUTER JOIN dbo.ClinDataPoint v768 ON v768.EventId=ce.EventId AND v768.ItemId = 768
+    LEFT OUTER JOIN dbo.ClinDataPoint v769 ON v769.EventId=ce.EventId AND v769.ItemId = 769
+      LEFT OUTER JOIN dbo.MetaItemAnswer a769 ON a769.ItemId=769 AND v769.EnumVal = a769.OrderNumber
+    LEFT OUTER JOIN dbo.ClinDataPoint v771 ON v771.EventId=ce.EventId AND v771.ItemId = 771
+    LEFT OUTER JOIN dbo.ClinDataPoint v777 ON v777.EventId=ce.EventId AND v777.ItemId = 777
+      LEFT OUTER JOIN dbo.MetaItemAnswer a777 ON a777.ItemId=777 AND v777.EnumVal = a777.OrderNumber
+    LEFT OUTER JOIN dbo.ClinDataPoint v778 ON v778.EventId=ce.EventId AND v778.ItemId = 778
+      LEFT OUTER JOIN dbo.MetaItemAnswer a778 ON a778.ItemId=778 AND v778.EnumVal = a778.OrderNumber
+    LEFT OUTER JOIN dbo.ClinDataPoint v3495 ON v3495.EventId=ce.EventId AND v3495.ItemId = 3495
+    LEFT OUTER JOIN dbo.ClinDataPoint v3498 ON v3498.EventId=ce.EventId AND v3498.ItemId = 3498
+      LEFT OUTER JOIN dbo.MetaItemAnswer a3498 ON a3498.ItemId=3498 AND v3498.EnumVal = a3498.OrderNumber
+    LEFT OUTER JOIN dbo.ClinDataPoint v3499 ON v3499.EventId=ce.EventId AND v3499.ItemId = 3499
+      LEFT OUTER JOIN dbo.MetaItemAnswer a3499 ON a3499.ItemId=3499 AND v3499.EnumVal = a3499.OrderNumber
+    LEFT OUTER JOIN dbo.ClinDataPoint v3500 ON v3500.EventId=ce.EventId AND v3500.ItemId=3500
+  WHERE ( cf.DeletedAt IS NULL )
+    AND ( mf.FormName='GBD_INFECTION' )
+    AND ( ( su.GroupId = sg.GroupId ) OR ( su.ShowMyGroup = 0 ) ) 
+    AND ( sg.CenterId = my.CenterId ) 
+    AND ( sc.StudyId = @StudyId ) 
+    AND ( ce.EventTime >= @StartAt ) AND ( ce.EventTime < @StopAt )
+  ORDER BY ce.EventTime DESC;
 END
+GO
 
-GRANT EXECUTE ON GBD.InfectionReport to public
+GRANT EXECUTE ON [GBD].[InfectionReport] TO [Farmasøyt]
+GO
+
+GRANT EXECUTE ON [GBD].[InfectionReport] TO [Gruppeleder]
+GO
+
+GRANT EXECUTE ON [GBD].[InfectionReport] TO [Lege]
+GO
+
+GRANT EXECUTE ON [GBD].[InfectionReport] TO [Sykepleier]
+GO
+
+GRANT EXECUTE ON [GBD].[InfectionReport] TO [Vernepleier]
 GO

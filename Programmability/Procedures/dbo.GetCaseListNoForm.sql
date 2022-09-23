@@ -9,3 +9,6 @@ BEGIN
   AND NOT EXISTS ( SELECT ce.EventId FROM ClinEvent ce WHERE ce.PersonId=v.PersonId and ce.StudyId=v.StudyId );
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListNoForm] TO [superuser]
+GO

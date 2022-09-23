@@ -10,3 +10,15 @@ BEGIN
   ORDER BY a.AlertLevel DESC,vcl.PersonId
 END
 GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListAlert] TO [Avdelingsleder]
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListAlert] TO [Leder]
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListAlert] TO [Lege]
+GO
+
+GRANT EXECUTE ON [dbo].[GetCaseListAlert] TO [superuser]
+GO

@@ -2,18 +2,29 @@
 GO
 CREATE PROCEDURE [NDV].[GetPatientCount] AS
 BEGIN
-  SELECT PersonId,ISNULL(CONVERT(INT,dbo.GetLastQuantity(PersonId,'NDV_CONSENT')),-1) AS OrderNumber
+
+    SET NOCOUNT ON;
+
+    -- Create temp table to be able to do percentages.
+
+    SELECT DISTINCT vac.PersonId, ISNULL(ev.EnumVal,0) AS OrderNumber, ISNULL(ev.OptionText,'Samtykke er ubesvart!') AS OptionText
     INTO #temp
-    FROM ViewActiveCaseListStub v
-    JOIN Study s ON s.StudyId=v.StudyId AND s.StudyName='NDV';
-  SELECT mia.OrderNumber,SUBSTRING(mia.OptionText,1,16) as OptionText
-    INTO #tempAnswer
-    FROM MetaItemAnswer mia 
-    JOIN MetaItem mi ON mi.ItemId=mia.ItemId AND mi.VarName='NDV_CONSENT';
-  INSERT INTO #tempAnswer (OrderNumber,OptionText) VALUES( -1,'(ubesvart)');
-  SELECT ta.OrderNumber,ta.OptionText,count(t.PersonId) AS PatientCount 
-    FROM #temp t JOIN  #tempAnswer ta ON ta.OrderNumber=t.OrderNumber
-    GROUP BY ta.OrderNumber,ta.OptionText ORDER BY ta.OrderNumber;
+    FROM dbo.ViewActiveCaseListStub vac
+    JOIN dbo.Study s ON ( s.StudyId = vac.StudyId ) AND ( s.StudyName IN ( 'NDV','ENDO' ) )
+    LEFT JOIN dbo.GetLastEnumValuesTable( 3389, NULL ) ev ON ev.PersonId=vac.PersonId;
+
+    -- Count total
+    DECLARE @PatientCount FLOAT;
+    SELECT @PatientCount = COUNT(PersonId) FROM #temp;
+
+  -- Get final resultset
+
+    SELECT OrderNumber,REPLACE( OptionText,'*', '') AS OptionText,
+    COUNT(PersonId) AS PatientCount, 100 * COUNT(PersonId)/@PatientCount AS PercentOfTotal
+    FROM #temp
+    GROUP BY OrderNumber, OptionText
+    ORDER BY OrderNumber
+
 END
 GO
 

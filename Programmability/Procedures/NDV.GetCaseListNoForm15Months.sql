@@ -5,3 +5,6 @@ BEGIN
   EXEC GetCaseListNoRecentForm @StudyId,456;
 END
 GO
+
+GRANT EXECUTE ON [NDV].[GetCaseListNoForm15Months] TO [FastTrak]
+GO
