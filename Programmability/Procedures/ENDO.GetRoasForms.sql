@@ -7,5 +7,8 @@ BEGIN
 END
 GO
 
+GRANT EXECUTE ON [ENDO].[GetRoasForms] TO [DataImport]
+GO
+
 GRANT EXECUTE ON [ENDO].[GetRoasForms] TO [FastTrak]
 GO

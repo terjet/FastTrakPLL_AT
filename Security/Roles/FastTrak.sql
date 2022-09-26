@@ -22,6 +22,9 @@ GO
 EXEC sp_addrolemember N'FastTrak', N'Lege2'
 GO
 
+EXEC sp_addrolemember N'FastTrak', N'Lege3'
+GO
+
 EXEC sp_addrolemember N'FastTrak', N'Sykepleier1'
 GO
 

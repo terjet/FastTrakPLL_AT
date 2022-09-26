@@ -19,9 +19,6 @@ CREATE UNIQUE INDEX [I_MetaProfession_ProfName]
   ON [PRIMARY]
 GO
 
-GRANT INSERT ON [dbo].[MetaProfession] TO [Administrator]
-GO
-
 GRANT SELECT ON [dbo].[MetaProfession] TO [FastTrak]
 GO
 

@@ -53,9 +53,6 @@ BEGIN
 END
 GO
 
-GRANT UPDATE ON [dbo].[LabData] TO [Administrator]
-GO
-
 GRANT SELECT ON [dbo].[LabData] TO [FastTrak]
 GO
 

@@ -42,9 +42,6 @@ CREATE INDEX [I_MetaFormItem_FormItem]
   ON [PRIMARY]
 GO
 
-GRANT UPDATE ON [dbo].[MetaFormItem] TO [Administrator]
-GO
-
 GRANT SELECT ON [dbo].[MetaFormItem] TO [FastTrak]
 GO
 

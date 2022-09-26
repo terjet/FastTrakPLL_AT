@@ -1,6 +1,6 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-CREATE PROCEDURE [eResept].[UpdateCave] ( @PersonId INT, @XmlString NVARCHAR(MAX) ) AS
+CREATE PROCEDURE [eResept].[UpdateCaveTest] ( @PersonId INT, @XmlString NVARCHAR(MAX) ) AS
 BEGIN
 
   SET NOCOUNT ON;
@@ -84,10 +84,10 @@ BEGIN
       CONVERT(BIT, CAST(c.query('data(Innaktiv)') AS NVARCHAR(MAX))) AS Inaktiv,
 
       -- LegemiddelId
-      NULLIF(CAST(c.query('data(LegemiddelMerkevare/LegemiddelId)') AS NVARCHAR(MAX)), '') AS LegemiddelId,
+      NULLIF(CAST(c.query('data(LegemiddelMerkevare/LegemiddelId)') AS NVARCHAR(MAX)), '') AS LegemiddelIdListe,
 
       -- LegemiddelNavn
-      NULLIF(CAST(c.query('data(LegemiddelMerkevare/LegemiddelNavn)') AS NVARCHAR(MAX)), '') AS LegemiddelNavn,
+      NULLIF(CAST(c.query('data(LegemiddelMerkevare/LegemiddelNavn)') AS NVARCHAR(MAX)), '') AS LegemiddelNavnListe,
 
       -- ATCKodeV
       NULLIF(CAST(c.query('data(LegemiddelMerkevare/ATCKode/@V)') AS NVARCHAR(MAX)), '') AS ATCKodeV,
@@ -159,6 +159,8 @@ BEGIN
   WHERE VirkestoffIdAlt IS NOT NULL
   AND VirkestoffIdListe IS NULL;
 
+  SELECT * FROM @DrugReactions;
+
   SELECT @TraceMessage = 'No of rows found in XML: ' + CAST(COUNT(*) AS VARCHAR)
   FROM @DrugReactions;
 
@@ -176,7 +178,7 @@ BEGIN
     THEN UPDATE
       SET Trg.DRDate = Src.RegistreringsDato,
       Trg.ATC = Src.ATCKodeV,
-      Trg.DrugName = COALESCE(Src.LegemiddelNavn, Src.VirkestoffNavnListe),
+      Trg.DrugName = COALESCE(Src.VirkestoffNavnListe, Src.LegemiddelNavn),
       Trg.Severity = Src.AlvorlighetsgradV,
       Trg.Relatedness = Src.SannsynlighetV,
       Trg.DescriptiveText = Src.ReaksjonDN,
@@ -220,9 +222,9 @@ BEGIN
       VALUES 
         ( 
           Src.RegistreringsDato, 0, @PersonId, Src.ATCKodeV,
-          COALESCE(Src.LegemiddelNavn, Src.VirkestoffNavnListe ), 
+          COALESCE(Src.VirkestoffNavnListe, Src.LegemiddelNavn ), 
           Src.AlvorlighetsgradV, Src.SannsynlighetV, Src.ReaksjonDN,
-          Src.CaveId, 4, Src.VirkestoffIdListe, Src.LegemiddelId, GETDATE(), USER_ID(), src.HjelpestoffReaksjon,
+          Src.CaveId, 4, Src.VirkestoffIdListe, Src.LegemiddelNavn, GETDATE(), USER_ID(), src.HjelpestoffReaksjon,
           Src.GrunnlagForCAVE, src.Signatur, Src.LegemiddelNavn, Src.VirkestoffNavnListe,
           Src.ReaksjonV, Src.ReaksjonDN,
           Src.KildeV, Src.KildeDN, 
@@ -328,13 +330,8 @@ BEGIN
        AND COALESCE(Oppdaget_Dato,'1900-01-01') = '1900-01-01'
        AND COALESCE(Oppdaget_Alder,-1) = -1
        AND PersonId = @PersonId;
-
   SELECT *
   FROM dbo.DrugReaction dr
   WHERE dr.PersonId = @PersonId;
-
 END
-GO
-
-GRANT EXECUTE ON [eResept].[UpdateCave] TO [FastTrak]
 GO

@@ -12,7 +12,7 @@
   [guid] [uniqueidentifier] NOT NULL CONSTRAINT [DF_UserList_guid] DEFAULT (newid()),
   [BaseProfId] [int] NULL,
   [FMUserName] [varchar](50) NULL,
-  [FMPassword] [varchar](50) MASKED WITH (FUNCTION = 'default()') NULL,
+  [FMPassword] [varchar](50) NULL,
   CONSTRAINT [PK_UserList] PRIMARY KEY CLUSTERED ([UserId]),
   CONSTRAINT [C_UserList_Zero] CHECK ([UserId]<>(0))
 )

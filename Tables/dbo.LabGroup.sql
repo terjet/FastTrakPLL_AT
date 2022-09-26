@@ -15,9 +15,6 @@ CREATE UNIQUE INDEX [I_LabGroup_LabGroupName]
   ON [PRIMARY]
 GO
 
-GRANT UPDATE ON [dbo].[LabGroup] TO [Administrator]
-GO
-
 GRANT SELECT ON [dbo].[LabGroup] TO [FastTrak]
 GO
 

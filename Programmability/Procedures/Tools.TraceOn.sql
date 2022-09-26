@@ -1,9 +1,9 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-CREATE PROCEDURE [Tools].[TraceOn] AS
+CREATE PROCEDURE [Tools].[TraceOn]( @UserId INT ) AS
 BEGIN
-  DECLARE @UserId INT;
-  SELECT @UserId = USER_ID();
+  SET NOCOUNT ON;
+  SELECT @UserId = COALESCE( @UserId, USER_ID() );
   EXEC Config.AddBitSetting 'Trace', 'Enabled', 1, @UserId;
 END
 GO

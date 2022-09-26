@@ -9,5 +9,8 @@ BEGIN
 END
 GO
 
+GRANT EXECUTE ON [dbo].[GetActiveCasesWithoutId] TO [FastTrak]
+GO
+
 GRANT EXECUTE ON [dbo].[GetActiveCasesWithoutId] TO [superuser]
 GO

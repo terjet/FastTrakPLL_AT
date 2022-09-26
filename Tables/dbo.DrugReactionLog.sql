@@ -28,5 +28,5 @@ ALTER TABLE [dbo].[DrugReactionLog]
 GO
 
 ALTER TABLE [dbo].[DrugReactionLog]
-  ADD CONSTRAINT [FK_DrugReactionLog_DRId] FOREIGN KEY ([DRId]) REFERENCES [dbo].[DrugReaction] ([DRId])
+  ADD CONSTRAINT [FK_DrugReactionLog_DRId] FOREIGN KEY ([DRId]) REFERENCES [dbo].[DrugReaction] ([DRId]) ON DELETE CASCADE
 GO

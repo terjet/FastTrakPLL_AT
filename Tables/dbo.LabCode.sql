@@ -19,9 +19,6 @@ CREATE UNIQUE INDEX [I_LabCode_LabName_UnitStr]
   ON [PRIMARY]
 GO
 
-GRANT INSERT ON [dbo].[LabCode] TO [Administrator]
-GO
-
 GRANT SELECT ON [dbo].[LabCode] TO [FastTrak]
 GO
 
