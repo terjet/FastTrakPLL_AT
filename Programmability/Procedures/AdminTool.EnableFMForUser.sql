@@ -8,5 +8,5 @@ BEGIN
 END
 GO
 
-GRANT EXECUTE ON [AdminTool].[EnableFMForUser] TO [Administrator]
+GRANT EXECUTE ON [AdminTool].[EnableFMForUser] TO [Support]
 GO

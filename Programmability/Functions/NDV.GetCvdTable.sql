@@ -29,3 +29,6 @@ BEGIN
   RETURN;
 END
 GO
+
+GRANT SELECT ON [NDV].[GetCvdTable] TO [Administrator]
+GO

@@ -12,5 +12,5 @@ BEGIN
 END
 GO
 
-GRANT EXECUTE ON [eResept].[GetFMLoginInfo] TO [FastTrak]
+GRANT EXECUTE ON [eResept].[GetFMLoginInfo] TO [FMUser]
 GO

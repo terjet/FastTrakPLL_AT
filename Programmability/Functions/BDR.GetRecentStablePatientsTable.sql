@@ -19,3 +19,9 @@ BEGIN
   RETURN;
 END
 GO
+
+GRANT SELECT ON [BDR].[GetRecentStablePatientsTable] TO [Administrator]
+GO
+
+GRANT SELECT ON [BDR].[GetRecentStablePatientsTable] TO [QuickStat]
+GO

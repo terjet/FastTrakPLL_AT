@@ -336,5 +336,5 @@ BEGIN
 END
 GO
 
-GRANT EXECUTE ON [eResept].[UpdateCave] TO [FastTrak]
+GRANT EXECUTE ON [eResept].[UpdateCave] TO [FMUser]
 GO

@@ -11,18 +11,12 @@
   [ProbListId] [int] NULL CONSTRAINT [DF_UserList_ProbListId] DEFAULT (4),
   [guid] [uniqueidentifier] NOT NULL CONSTRAINT [DF_UserList_guid] DEFAULT (newid()),
   [BaseProfId] [int] NULL,
-  [FMUserName] [varchar](50) NULL,
-  [FMPassword] [varchar](50) NULL,
+  [FMUserName] [varchar](32) NULL,
+  [FMPassword] [varchar](32) NULL,
   CONSTRAINT [PK_UserList] PRIMARY KEY CLUSTERED ([UserId]),
   CONSTRAINT [C_UserList_Zero] CHECK ([UserId]<>(0))
 )
 ON [PRIMARY]
-GO
-
-CREATE UNIQUE INDEX [I_UserList_FMUserName]
-  ON [dbo].[UserList] ([FMUserName])
-  WHERE ([FMUserName] IS NOT NULL)
-  ON [PRIMARY]
 GO
 
 CREATE INDEX [I_UserList_PersonId]

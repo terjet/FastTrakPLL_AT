@@ -1,0 +1,3 @@
+﻿CREATE USER [Bojan]
+  WITHOUT LOGIN
+GO

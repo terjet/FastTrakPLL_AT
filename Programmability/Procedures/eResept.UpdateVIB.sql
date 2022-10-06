@@ -355,5 +355,5 @@ BEGIN
 END
 GO
 
-GRANT EXECUTE ON [eResept].[UpdateVIB] TO [FastTrak]
+GRANT EXECUTE ON [eResept].[UpdateVIB] TO [FMUser]
 GO

@@ -26,11 +26,9 @@
   [LegemiddelNavn] [varchar](max) NULL,
   [VirkestoffNavn] [varchar](max) NULL,
   [ReaksjonV] [int] NULL,
-  [ReaksjonDN] [varchar](100) NULL,
+  [ReaksjonDN] [varchar](64) NULL,
   [KildeV] [int] NULL,
   [KildeDN] [varchar](100) NULL,
-  [AlvorlighetsgradV] [varchar](1) NULL,
-  [AlvorlighetsgradDN] [varchar](100) NULL,
   [SannsynlighetV] [int] NULL,
   [SannsynlighetDN] [varchar](100) NULL,
   [Avkreftet] [bit] NOT NULL CONSTRAINT [DF_DrugReaction_Avkreftet] DEFAULT (0),
@@ -39,6 +37,8 @@
   [Oppdaget_Dato] [date] NULL,
   [Oppdaget_Ukjent] [bit] NULL,
   [Oppdaget] [varchar](100) NULL,
+  [AlvorlighetsgradV] [varchar](1) NULL,
+  [AlvorlighetsgradDN] [varchar](100) NULL,
   CONSTRAINT [PK_DrugReaction] PRIMARY KEY CLUSTERED ([DRId])
 )
 ON [PRIMARY]
@@ -52,6 +52,12 @@ GO
 
 CREATE INDEX [IDX_DrugReaction_PersonId]
   ON [dbo].[DrugReaction] ([PersonId])
+  ON [PRIMARY]
+GO
+
+CREATE UNIQUE INDEX [UIDX_DrugReaction_CaveId]
+  ON [dbo].[DrugReaction] ([CaveId])
+  WHERE ([CaveId] IS NOT NULL)
   ON [PRIMARY]
 GO
 

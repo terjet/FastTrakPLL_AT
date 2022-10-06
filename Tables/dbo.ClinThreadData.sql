@@ -51,7 +51,7 @@ ALTER TABLE [dbo].[ClinThreadData]
 GO
 
 ALTER TABLE [dbo].[ClinThreadData]
-  ADD CONSTRAINT [FK_ClinThreadData_ThreadId] FOREIGN KEY ([ThreadId]) REFERENCES [dbo].[ClinThread] ([ThreadId]) ON DELETE CASCADE
+  ADD CONSTRAINT [FK_ClinThreadData_ThreadId_Cascade] FOREIGN KEY ([ThreadId]) REFERENCES [dbo].[ClinThread] ([ThreadId]) ON DELETE CASCADE
 GO
 
 ALTER TABLE [dbo].[ClinThreadData]

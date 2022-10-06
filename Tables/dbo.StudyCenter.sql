@@ -10,6 +10,7 @@
   [CenterActive] [tinyint] NOT NULL CONSTRAINT [DF_StudyCenter_CenterActive] DEFAULT (1),
   [guid] [uniqueidentifier] NOT NULL CONSTRAINT [DF_StudyCenter_guid] DEFAULT (newid()) ROWGUIDCOL,
   [ReshId] [int] NULL,
+  [HerId] [int] NULL,
   CONSTRAINT [PK_StudyCenter] PRIMARY KEY CLUSTERED ([CenterId])
 )
 ON [PRIMARY]

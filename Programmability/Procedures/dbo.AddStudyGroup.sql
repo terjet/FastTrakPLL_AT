@@ -4,14 +4,14 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE PROCEDURE [dbo].[AddStudyGroup]( @StudyId INT, @GroupName varchar(24), @CenterId INT = NULL ) AS
+CREATE PROCEDURE [dbo].[AddStudyGroup]( @StudyId INT, @GroupName VARCHAR(24), @CenterId INT = NULL ) AS
 BEGIN
   DECLARE @GroupId INT;
   SET NOCOUNT ON;       
   IF @CenterId IS NULL 
     SELECT @CenterId = CenterId FROM dbo.UserList WHERE UserId=USER_ID();  
   IF @CenterId IS NULL BEGIN
-     INSERT INTO dbo.StudyCenter (CenterName) VALUES('FastTrak User Site' );
+     INSERT INTO dbo.StudyCenter (CenterName) VALUES('DIPS AS' );
      SET @CenterId=SCOPE_IDENTITY();
      UPDATE dbo.UserList SET CenterId=@CenterId;
   END;      

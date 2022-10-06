@@ -14,3 +14,6 @@ BEGIN
   RETURN;
 END
 GO
+
+GRANT SELECT ON [BDR].[LipidTable] TO [Administrator]
+GO

@@ -3,7 +3,7 @@
   [PersonId] [int] NOT NULL,
   [ATC] [varchar](7) NULL,
   [ATCVersion] [int] NULL CONSTRAINT [DF_DrugTreatment_ATCVersion] DEFAULT (0),
-  [DrugName] [varchar](128) NOT NULL,
+  [DrugName] [varchar](256) NULL,
   [DrugForm] [varchar](64) NULL,
   [TreatType] [char](1) NOT NULL CONSTRAINT [DF_DrugTreatment_TreatType] DEFAULT ('X'),
   [PackType] [char](1) NOT NULL CONSTRAINT [DF_DrugTreatment_PackType] DEFAULT ('X'),

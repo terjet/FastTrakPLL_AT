@@ -1,0 +1,3 @@
+﻿CREATE USER [Magne]
+  WITHOUT LOGIN
+GO
