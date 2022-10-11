@@ -20,3 +20,6 @@ BEGIN
   END CATCH;
 END;
 GO
+
+GRANT EXECUTE ON [Test].[RegretFmActivation] TO [FastTrak]
+GO

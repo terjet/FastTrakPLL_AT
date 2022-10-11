@@ -2,7 +2,8 @@
 GO
 CREATE PROCEDURE [dbo].[GetDrugReactions]( @PersonId INT ) AS
 BEGIN
-  SELECT * FROM Drug.AdverseReaction WHERE PersonId = @PersonId
+  SELECT * FROM Drug.AdverseReaction 
+  WHERE PersonId = @PersonId;
 END
 GO
 

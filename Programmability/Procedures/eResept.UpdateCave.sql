@@ -153,6 +153,8 @@ BEGIN
     FROM @DrugReactionsXml r
     CROSS APPLY XML.nodes('LesCaveSvar/CAVE') x (c);
 
+  SELECT 'Temp' AS Src, * FROM @DrugReactions;
+
   -- Dersom det er virkestoff og ikke legemiddel så skal virkestoffnavnet inn i LegemiddelNavn
   UPDATE @DrugReactions
   SET VirkestoffIdListe = VirkestoffIdAlt, LegemiddelNavn = VirkestoffNavnAlt
@@ -171,7 +173,7 @@ BEGIN
   -- Oppdater DrugReaction: Legg inn dersom den ikke finnes, oppdater dersom den finnes, slett dersom det finnes noen som vi ikke får tilbake.
   MERGE
   INTO dbo.DrugReaction AS Trg USING @DrugReactions AS Src
-  ON (Trg.CaveId = Src.CaveId)
+  ON (Trg.CaveId = Src.CaveId AND Trg.PersonId = @PersonId )
   WHEN MATCHED
     THEN UPDATE
       SET Trg.DRDate = Src.RegistreringsDato,
@@ -230,7 +232,7 @@ BEGIN
           Src.Oppdaget_IkkeOppgitt, Src.Oppdaget_Dato, Src.Oppdaget_Alder, Src.Oppdaget_Ukjent
         )
   WHEN NOT MATCHED BY SOURCE
-    AND (Trg.PersonId = @Personid AND trg.DeletedBy IS NULL)
+    AND ( Trg.PersonId = @PersonId AND trg.DeletedBy IS NULL )
     THEN UPDATE SET trg.DeletedAt = GETDATE(), trg.DeletedBy = USER_ID();
 
   PRINT ' Inserting into @GrunnlagForCaveTab.';
@@ -336,5 +338,5 @@ BEGIN
 END
 GO
 
-GRANT EXECUTE ON [eResept].[UpdateCave] TO [FMUser]
+GRANT EXECUTE ON [eResept].[UpdateCave] TO [FastTrak]
 GO

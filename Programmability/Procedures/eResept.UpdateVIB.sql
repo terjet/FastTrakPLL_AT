@@ -2,6 +2,9 @@
 GO
 CREATE PROCEDURE [eResept].[UpdateVIB] (@Personid INT, @XmlString NVARCHAR(MAX) ) AS
 BEGIN
+
+  SET NOCOUNT ON;
+
   BEGIN TRY
 
   DECLARE @Xml NVARCHAR(MAX) = @XmlString;
@@ -276,17 +279,13 @@ BEGIN
   SET ATC = COALESCE(NULLIF(LegemiddelpakningATC, ''), NULLIF(LegemiddelVirkestoffATC, ''));
 
   -- Handelsvarer skal være TreatType X
-  -- Varenummer som begynner med 601-604
-  -- FIB uinteressant
-  -- Vaksiner uinteressant
-  -- Sjekk med Magne om næringmidler kan legges inn i PIA - eller, det kommer ikke over allikevel.
-
+  -- Varenummer som begynner med 601-604, FIB uinteressant, Vaksiner uinteressante.
+  
   MERGE
-  INTO dbo.DrugTreatment Trg USING (SELECT * FROM @DrugTreatment WHERE TreatType IS NOT NULL) Src
-  ON (Trg.PersonId = @Personid
-    AND Trg.FMLibId = Src.LibId)
+  INTO dbo.DrugTreatment Trg USING ( SELECT * FROM @DrugTreatment WHERE TreatType IS NOT NULL ) Src
+  ON ( Trg.PersonId = @PersonId AND Trg.FmLibId = Src.LibId )
   WHEN NOT MATCHED BY TARGET
-    THEN INSERT (FMLibId, PersonId, ATC, DrugName, DrugForm, StartAt, StartReason, Strength,
+    THEN INSERT ( FmLibId, PersonId, ATC, DrugName, DrugForm, StartAt, StartReason, Strength,
       StrengthUnit, RxText, TreatType, InteraksjonsNiva, InteraksjonsKommentar,
       DobbeltForskrivningsvarsel, SignedBy, CaveIdList, StopAt,
       DoseCode, Forskrivningskladd, Seponeringskladd, SeponertAv, Seponeringsgrunn, RegistrertAv,
@@ -327,9 +326,8 @@ BEGIN
       Trg.VarselSlvOverskrift = Src.VarselSlvOverskrift,
       Trg.VarselSlvTekst = Src.VarselSlvVarseltekst
   WHEN NOT MATCHED BY SOURCE
-    AND ((Trg.StopAt IS NULL
-    OR Trg.StopAt > GETDATE())
-    AND Trg.PersonId = @Personid)
+    AND ( ( Trg.StopAt IS NULL OR Trg.StopAt > GETDATE() ) OR ( Trg.Seponeringskladd = 1 ) )
+    AND ( Trg.PersonId = @PersonId )
     THEN UPDATE
       SET Trg.StopAt = GETDATE(),
       Trg.StopBy = DATABASE_PRINCIPAL_ID(),
@@ -352,6 +350,7 @@ BEGIN
     RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
 
   END CATCH;
+
 END
 GO
 

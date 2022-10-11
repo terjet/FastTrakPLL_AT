@@ -19,23 +19,23 @@ BEGIN
     dt.DrugForm,
     dbo.GetDose24hText(dt.TreatId) AS Dose24hText,
     dt.Strength, dt.StrengthUnit, dt.Dose24hDD,
-    CONVERT(FLOAT, ISNULL(dt.StopAt, @ShowDate + 1) - @ShowDate) AS DaysLeft, dt.PauseStatus,
+    CONVERT( FLOAT, ISNULL( dt.StopAt, @ShowDate + 1 ) - @ShowDate ) AS DaysLeft, dt.PauseStatus,
     dp.PauseReason
   FROM dbo.DrugTreatment dt
-  JOIN dbo.MetaPackType mp ON mp.PackType = dt.PackType
-  JOIN dbo.MetaTreatType mt ON mt.TreatType = dt.TreatType
-  LEFT OUTER JOIN dbo.DrugDosing dd ON dd.DoseId = dt.DoseId  
-  LEFT OUTER JOIN dbo.DrugPause dp ON dp.TreatId = dt.TreatId AND dp.RestartAt IS NULL AND dt.PauseStatus = 1 
-  LEFT OUTER JOIN dbo.UserList u1 ON u1.UserId = dt.SignedBy
-  LEFT OUTER JOIN dbo.Person p1 ON p1.PersonId = u1.PersonId
-  LEFT OUTER JOIN dbo.UserList u2 ON u2.UserId = dt.StopBy
-  LEFT OUTER JOIN dbo.Person p2 ON p2.PersonId = u2.PersonId
-  LEFT OUTER JOIN dbo.UserList u3 ON u3.UserId = dt.CreatedBy
-  LEFT OUTER JOIN dbo.Person p3 ON p3.PersonId = u3.PersonId
-  LEFT OUTER JOIN dbo.MetaTreatPackGroup mtpg ON dt.TreatType = mtpg.TreatType AND dt.PackType = mtpg.PackType
+    JOIN dbo.MetaPackType mp ON mp.PackType = dt.PackType
+    JOIN dbo.MetaTreatType mt ON mt.TreatType = dt.TreatType
+    LEFT OUTER JOIN dbo.DrugDosing dd ON dd.DoseId = dt.DoseId  
+    LEFT OUTER JOIN dbo.DrugPause dp ON dp.TreatId = dt.TreatId AND dp.RestartAt IS NULL AND dt.PauseStatus = 1 
+    LEFT OUTER JOIN dbo.UserList u1 ON u1.UserId = dt.SignedBy
+    LEFT OUTER JOIN dbo.Person p1 ON p1.PersonId = u1.PersonId
+    LEFT OUTER JOIN dbo.UserList u2 ON u2.UserId = dt.StopBy
+    LEFT OUTER JOIN dbo.Person p2 ON p2.PersonId = u2.PersonId
+    LEFT OUTER JOIN dbo.UserList u3 ON u3.UserId = dt.CreatedBy
+    LEFT OUTER JOIN dbo.Person p3 ON p3.PersonId = u3.PersonId
+    LEFT OUTER JOIN dbo.MetaTreatPackGroup mtpg ON dt.TreatType = mtpg.TreatType AND dt.PackType = mtpg.PackType
   WHERE dt.PersonId = @PersonId
-    AND ((dt.StopAt IS NULL) OR ((@ShowDate < dt.StopAt) AND (dt.StartAt < dt.StopAt)))
-    AND (dt.CreatedAt <= @ShowDate)
+    AND ( ( dt.StopAt IS NULL ) OR ( ( @ShowDate < dt.StopAt ) AND ( dt.StartAt < dt.StopAt ) ) )
+    AND ( dt.CreatedAt <= @ShowDate) AND ( dt.Seponeringskladd = 0 )
   ORDER BY mtpg.SortOrder, dt.StartAt;
 END
 GO
