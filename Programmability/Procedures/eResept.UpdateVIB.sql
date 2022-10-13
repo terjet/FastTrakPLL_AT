@@ -293,7 +293,7 @@ BEGIN
         VALUES (Src.LibId, @PersonId, Src.ATC, Src.DrugName, Src.DrugForm, 
         Src.StartAt, SUBSTRING(Src.StartReason,1,64), Src.Strength,
         Src.StrengthUnit, Src.RxText, Src.TreatType, Src.InteraksjonsNiva, Src.InteraksjonsKommentar,
-        Src.DobbeltForskrivningsvarsel, Src.RegistrertAvUserId, Src.CaveIdList, Src.Seponeringsdato, -- Skal src.CaveIdList være her?
+        Src.DobbeltForskrivningsvarsel, Src.RegistrertAvUserId, Src.CaveIdList, Src.Seponeringstidspunkt, -- Skal src.CaveIdList være her?
         SUBSTRING(Src.DoseCode,1,32),
         ISNULL(Src.Forskrivningskladd,0), ISNULL(Src.Seponeringskladd,0), Src.SeponertAv, Src.Seponeringsgrunn, Src.RegistrertAv,
         Src.VarselSlvTypeV, Src.VarselSlvTypeDN, Src.VarselSlvOverskrift, Src.VarselSlvVarseltekst)
@@ -308,7 +308,7 @@ BEGIN
       Trg.StrengthUnit = Src.StrengthUnit,
       Trg.RxText = Src.RxText,
       Trg.TreatType = Src.TreatType,
-      Trg.StopAt = Src.Seponeringsdato,
+      Trg.StopAt = Src.Seponeringstidspunkt,
       Trg.StopReason = Src.Seponeringsgrunn,
       Trg.StopBy = Src.StopBy,
       Trg.InteraksjonsNiva = Src.InteraksjonsNiva, Trg.InteraksjonsKommentar = Src.InteraksjonsKommentar,
