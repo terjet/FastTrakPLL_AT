@@ -171,8 +171,8 @@ BEGIN
 
       -- Kortdose: Enten fra KortdoseDN, eller fra DosVeiledEnkel
       COALESCE(
-      NULLIF(CAST(c.query('data(Forskrivning/Kortdose/@DN)') AS VARCHAR(MAX)), ''),
-      NULLIF(CAST(c.query('data(Forskrivning/DosVeiledEnkel)') AS VARCHAR(MAX)), '')) AS DoseCode,
+        NULLIF(CAST(c.query('data(Forskrivning/Kortdose/@DN)') AS VARCHAR(MAX)), ''),
+        'Se tekst') AS DoseCode,
 
       -- DosVeiledEnkel
       CAST(c.query('data(Forskrivning/DosVeiledEnkel)') AS VARCHAR(MAX)) AS RxText,
