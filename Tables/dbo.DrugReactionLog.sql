@@ -6,7 +6,7 @@
   [DescriptiveText] [varchar](1024) NULL,
   [Severity] [tinyint] NOT NULL,
   [Relatedness] [tinyint] NOT NULL,
-  [Resolved] [tinyint] NOT NULL,
+  [Resolved] [tinyint] NULL,
   [ChangedAt] [datetime] NULL,
   [ChangedBy] [int] NULL,
   [DeletedAt] [datetime] NULL,

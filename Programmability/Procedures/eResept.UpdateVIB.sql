@@ -7,9 +7,10 @@ BEGIN
 
   BEGIN TRY
 
-  DECLARE @Xml NVARCHAR(MAX) = @XmlString;
-  SELECT @Xml = REPLACE(@Xml, 'xmlns="http://www.kith.no/xmlstds/eresept/forskrivning/2013-10-08"', '')
-  SELECT @Xml = REPLACE(@Xml, 'xmlns="http://www.kith.no/xmlstds/eresept/m1/2013-10-08"', '')
+  -- RAISERROR ( 'Her kommer en feilmelding fra UpdateVIB generert for testformål.',16,1);
+
+  SELECT @XmlString = REPLACE(@XmlString, 'xmlns="http://www.kith.no/xmlstds/eresept/forskrivning/2013-10-08"', '')
+  SELECT @XmlString = REPLACE(@XmlString, 'xmlns="http://www.kith.no/xmlstds/eresept/m1/2013-10-08"', '')
   --SELECT @Xml = REPLACE(@Xml, 'xmlns=""http://www.kith.no/xmlstds/eresept/m1/2013-10-08""', '')
 
   DECLARE @TraceMethod VARCHAR(50) = 'eResept.UpdateVIB';
@@ -18,21 +19,21 @@ BEGIN
   SELECT @TraceMessage = 'Enter eResept.UpdateVIB: PersonId=' + CAST(@PersonId AS VARCHAR)
 
   EXEC Tools.AddTraceMessage @TraceMethod, 0, @TraceMessage;
-  EXEC Tools.AddTraceMessage @TraceMethod, 0, @Xml;
+  EXEC Tools.AddTraceMessage @TraceMethod, 0, @XmlString;
 
   DECLARE @DrugTreatmentXml TABLE (
     XML XML NOT NULL
   );
 
   INSERT INTO @DrugTreatmentXml
-    VALUES (CONVERT(XML, @Xml));
+    VALUES (CONVERT(XML, @XmlString));
 
   DECLARE @DrugTreatment TABLE (
-    LibId VARCHAR(MAX) NOT NULL,
+    LibId VARCHAR(40) NOT NULL,
     LegemiddelpakningATC VARCHAR(7) NULL,
     LegemiddelVirkestoffATC VARCHAR(7) NULL,
     ATC VARCHAR(7) NULL,
-    DrugName VARCHAR(1024) NULL,
+    DrugName VARCHAR(256) NULL,
     DrugForm VARCHAR(64) NULL,
     StrengthStr VARCHAR(MAX) NULL,
     Varenr INTEGER NULL,
@@ -61,8 +62,8 @@ BEGIN
     RegistrertAv VARCHAR(MAX) NULL,
     RegistrertAvUserId INT NULL,
     CaveIdList VARCHAR(MAX),
-    VarselSlvTypeV INT NULL,
-    VarselSlvTypeDN VARCHAR(50) NULL,
+    VarselSlvTypeV TINYINT NULL,
+    VarselSlvTypeDN VARCHAR(32) NULL,
     VarselSlvOverskrift VARCHAR(100) NULL,
     VarselSlvVarseltekst VARCHAR(MAX) NULL
   );
@@ -71,56 +72,31 @@ BEGIN
   INSERT INTO @DrugTreatment (LibId, Drugname, Varenr, StartAt, StartReason, RxText, Seponeringstidspunkt, Seponeringsdato, Seponeringsgrunn,
   SeponertAv, Forskrivningskladd, RegistrertAv, Seponeringskladd, TreatType)
     SELECT
-      -- LibId
-      NULLIF(CAST(c.query('data(../LibId)') AS VARCHAR(64)), '') AS LibId,
-
-      -- Varnavn
-      NULLIF(CAST(c.query('data(ProdGruppe/@DN)') AS VARCHAR(1024)), '') AS DrugName,
-
-      -- Varenr
-      CONVERT(INTEGER, CAST(c.query('data(RefHjemmel/@V)') AS VARCHAR(10))) AS Varenr,
-
-      -- StartAt
+      NULLIF(CAST(c.query('data(../LibId)') AS                                                   VARCHAR(40)), '')  AS LibId,
+      NULLIF(CAST(c.query('data(ProdGruppe/@DN)') AS                                             VARCHAR(256)), '') AS DrugName,
+      CONVERT(INTEGER, CAST(c.query('data(RefHjemmel/@V)') AS                                    VARCHAR(8)))       AS Varenr,
       CASE
         WHEN CAST(c.query('data(../InstitueringsDato)') AS VARCHAR(MAX)) = '' THEN NULL
-        ELSE TRY_CONVERT(DATETIME2, CAST(c.query('data(../InstitueringsDato)') AS VARCHAR(MAX)))
-      END AS StartAt,
-
-      -- Bruksomrade
-      CAST(c.query('data(Bruksveiledning)') AS VARCHAR(MAX)) AS StartReason,
-
-      -- DosVeiledEnkel
-      CAST(c.query('data(Merknad)') AS VARCHAR(MAX)) AS RxText,
-
-      -- Seponeringstidspunkt
+        ELSE TRY_CONVERT(DATETIME, CAST(c.query('data(../InstitueringsDato)') AS                 VARCHAR(MAX)))
+      END                                                                                                           AS StartAt,
+      CAST(c.query('data(Bruksveiledning)') AS                                                   VARCHAR(MAX))      AS StartReason,
+      CAST(c.query('data(Merknad)') AS                                                           VARCHAR(MAX))      AS RxText,
       CASE
         WHEN
           CAST(c.query('data(../SeponeringsInfomasjon/Seponeringstidspunkt)') AS VARCHAR(MAX)) = '' THEN NULL
-        ELSE TRY_CONVERT(DATETIME2, CAST(c.query('data(../SeponeringsInfomasjon/Seponeringstidspunkt)') AS VARCHAR(MAX)))
-      END AS Seponeringstidspunkt,
-
-      -- Seponeringsdato
+        ELSE TRY_CONVERT(DATETIME, CAST(c.query('data(../SeponeringsInfomasjon/Seponeringstidspunkt)') AS VARCHAR(MAX)))
+      END                                                                                                           AS Seponeringstidspunkt,
       CASE
         WHEN
           CAST(c.query('data(../SeponeringsInfomasjon/Seponeringsdato)') AS VARCHAR(MAX)) = '' THEN NULL
-        ELSE TRY_CONVERT(DATETIME2, CAST(c.query('data(../SeponeringsInfomasjon/Seponeringsdato)') AS VARCHAR(MAX)))
+        ELSE TRY_CONVERT(DATETIME, CAST(c.query('data(../SeponeringsInfomasjon/Seponeringsdato)') AS VARCHAR(MAX)))
       END AS Seponeringsdato,
-
-      -- Seponeringsgrunn
-      NULLIF(CAST(c.query('data(../SeponeringsInfomasjon/Seponeringsgrunn)') AS VARCHAR(MAX)), '') AS Seponeringsgrunn,
-
-      -- SeponertAv
-      NULLIF(CAST(c.query('data(../SeponeringsInfomasjon/SeponertAv)') AS VARCHAR(MAX)), '') AS SeponertAv,
-
-      -- Kladd
-      CONVERT(BIT, CAST(c.query('data(../Kladd)') AS NVARCHAR(MAX))) AS Forskrivingskladd,
-
-      -- RegistrertAv
-      NULLIF(CAST(c.query('data(../RegistrertAv )') AS VARCHAR(MAX)), '') AS RegistrertAv,
-
-      -- SeponeringsInfomasjon/Kladd
-      CONVERT(BIT, CAST(c.query('data(../SeponeringsInfomasjon/Kladd)') AS NVARCHAR(MAX))) AS Seponeringskladd,
-      'N' AS TreatType
+      NULLIF(CAST(c.query('data(../SeponeringsInfomasjon/Seponeringsgrunn)') AS                  VARCHAR(MAX)), '') AS Seponeringsgrunn,
+      NULLIF(CAST(c.query('data(../SeponeringsInfomasjon/SeponertAv)') AS                        VARCHAR(MAX)), '') AS SeponertAv,
+      CONVERT(BIT, CAST(c.query('data(../Kladd)') AS                                             VARCHAR(MAX)))     AS Forskrivingskladd,
+      NULLIF(CAST(c.query('data(../RegistrertAv )') AS                                           VARCHAR(MAX)), '') AS RegistrertAv,
+      CONVERT(BIT, CAST(c.query('data(../SeponeringsInfomasjon/Kladd)') AS                       VARCHAR(MAX)))     AS Seponeringskladd,
+      'N'                                                                                                           AS TreatType
     FROM @DrugTreatmentXml dtx
     CROSS APPLY Xml.nodes('LesVarerIBrukSvar/Resept/ReseptDokHandelsvare') x (c);
 
@@ -133,114 +109,57 @@ BEGIN
   Seponeringsgrunn, SeponertAv, DobbeltForskrivningsvarsel, Forskrivningskladd, RegistrertAv, CaveIdList,
   Seponeringskladd, VarselSlvTypeV, VarselSlvTypeDN, VarselSlvOverskrift, VarselSlvVarseltekst)
     SELECT
-      -- InteraksjonsNiva
-      CONVERT(INT, CAST(c.query('data(../InteraksjonsInformasjon/InteraksjonsNiva/@V)') AS VARCHAR(10))) AS InteraksjonsNiva,
-
-      -- InteraksjonsKommentar
-      NULLIF(CAST(c.query('data(../InteraksjonsInformasjon/Kommentar)') AS VARCHAR(MAX)), '') AS InteraksjonsKommentar,
-
-      -- LibId
-      NULLIF(CAST(c.query('data(../LibId)') AS VARCHAR(64)), '') AS LibId,
-
-      -- ATC fra Legemiddelpakning
-      NULLIF(CAST(c.query('data(Forskrivning/Legemiddelpakning/Atc/@V)') AS VARCHAR(7)), '') AS LegemiddelpakningATC,
-
-      -- ATC fra LegemiddelVirkestoff
-      NULLIF(CAST(c.query('data(Forskrivning/LegemiddelVirkestoff/Atc/@V)') AS VARCHAR(7)), '') AS LegemiddelVirkestoffATC,
-
-      -- Varnavn
-      NULLIF(CAST(c.query('data(../Varenavn)') AS VARCHAR(1024)), '') AS DrugName,
-
-      -- Legemiddelform
-      NULLIF(CAST(c.query('data(../Legemiddelform)') AS VARCHAR(MAX)), '') AS DrugForm,
-
-      -- Styrke
-      NULLIF(CAST(c.query('data(../Styrke)') AS VARCHAR(MAX)), '') AS StrengthStr,
-
-      -- Varenr
-      CONVERT(INTEGER, CAST(c.query('data(Forskrivning/Legemiddelpakning/Varenr)') AS VARCHAR(10))) AS Varenr,
-
-      -- StartAt
+      CONVERT(INT, CAST(c.query('data(../InteraksjonsInformasjon/InteraksjonsNiva/@V)') AS       VARCHAR(10)))      AS InteraksjonsNiva,
+      NULLIF(CAST(c.query('data(../InteraksjonsInformasjon/Kommentar)') AS                       VARCHAR(MAX)), '') AS InteraksjonsKommentar,
+      NULLIF(CAST(c.query('data(../LibId)') AS                                                   VARCHAR(40)), '')  AS LibId,
+      NULLIF(CAST(c.query('data(Forskrivning/Legemiddelpakning/Atc/@V)') AS                      VARCHAR(7)), '')   AS LegemiddelpakningATC,
+      NULLIF(CAST(c.query('data(Forskrivning/LegemiddelVirkestoff/Atc/@V)') AS                   VARCHAR(7)), '')   AS LegemiddelVirkestoffATC,
+      NULLIF(CAST(c.query('data(../Varenavn)') AS                                                VARCHAR(256)), '') AS DrugName,
+      NULLIF(CAST(c.query('data(../Legemiddelform)') AS                                          VARCHAR(MAX)), '') AS DrugForm,
+      NULLIF(CAST(c.query('data(../Styrke)') AS                                                  VARCHAR(MAX)), '') AS StrengthStr,
+      CONVERT(INTEGER, CAST(c.query('data(Forskrivning/Legemiddelpakning/Varenr)') AS            VARCHAR(8)))       AS Varenr,
       CASE
         WHEN CAST(c.query('data(../InstitueringsDato)') AS VARCHAR(MAX)) = '' THEN NULL
-        ELSE TRY_CONVERT(DATETIME2, CAST(c.query('data(../InstitueringsDato)') AS VARCHAR(MAX)))
+        ELSE TRY_CONVERT(DATETIME, CAST(c.query('data(../InstitueringsDato)') AS                 VARCHAR(MAX)))
       END AS StartAt,
-
-      -- Bruksomrade
-      CAST(c.query('data(Forskrivning/Bruksomrade)') AS VARCHAR(MAX)) AS StartReason,
-
-      -- Kortdose: Enten fra KortdoseDN, eller fra DosVeiledEnkel
-      COALESCE(
-        NULLIF(CAST(c.query('data(Forskrivning/Kortdose/@DN)') AS VARCHAR(MAX)), ''),
-        'Se tekst') AS DoseCode,
-
-      -- DosVeiledEnkel
-      CAST(c.query('data(Forskrivning/DosVeiledEnkel)') AS VARCHAR(MAX)) AS RxText,
-
-      -- TreatType: Mappet
-      CASE CAST(c.query('data(Forskrivning/Bruk/@V)') AS VARCHAR(MAX))
+      CAST(c.query('data(Forskrivning/Bruksomrade)') AS                                          VARCHAR(MAX))      AS StartReason,
+      CAST(c.query('data(Forskrivning/Kortdose/@DN)') AS                                         VARCHAR(MAX))      AS DoseCode,
+      CAST(c.query('data(Forskrivning/DosVeiledEnkel)') AS                                      NVARCHAR(MAX))      AS RxText,
+      CASE CAST(c.query('data(Forskrivning/Bruk/@V)') AS                                         VARCHAR(MAX))
         WHEN '1' THEN 'F'
         WHEN '2' THEN 'K'
         WHEN '3' THEN 'B'
         ELSE NULL
-      END AS TreatType,
-
+      END                                                                                                           AS TreatType,
       -- PatindexStrength: Extract where the first char which is not part of a number begins
-      PATINDEX('%[^0-9,.]%', CAST(c.query('data(../Styrke)') AS VARCHAR(MAX))) AS PatindexStrength,
-
-      -- PackType
-      NULLIF(CAST(c.query('data(../Administrering/Type)') AS VARCHAR(1)), '') AS PackType,
-
-      -- Seponeringstidspunkt
+      PATINDEX('%[^0-9,.]%', CAST(c.query('data(../Styrke)') AS                                  VARCHAR(MAX)))     AS PatindexStrength,
+      NULLIF(CAST(c.query('data(../Administrering/Type)') AS                                     VARCHAR(1)), '')   AS PackType,
       CASE
         WHEN
           CAST(c.query('data(../SeponeringsInfomasjon/Seponeringstidspunkt)') AS VARCHAR(MAX)) = '' THEN NULL
-        ELSE TRY_CONVERT(DATETIME2, CAST(c.query('data(../SeponeringsInfomasjon/Seponeringstidspunkt)') AS VARCHAR(MAX)))
-      END AS Seponeringstidspunkt,
-
-      -- Seponeringsdato
+        ELSE TRY_CONVERT(DATETIME, CAST(c.query('data(../SeponeringsInfomasjon/Seponeringstidspunkt)') AS VARCHAR(MAX)))
+      END                                                                                                           AS Seponeringstidspunkt,
       CASE
         WHEN
           CAST(c.query('data(../SeponeringsInfomasjon/Seponeringsdato)') AS VARCHAR(MAX)) = '' THEN NULL
-        ELSE TRY_CONVERT(DATETIME2, CAST(c.query('data(../SeponeringsInfomasjon/Seponeringsdato)') AS VARCHAR(MAX)))
-      END AS Seponeringsdato,
-
-      -- Seponeringsgrunn
-      NULLIF(CAST(c.query('data(../SeponeringsInfomasjon/Seponeringsgrunn)') AS VARCHAR(MAX)), '') AS Seponeringsgrunn,
-
-      -- SeponertAv
-      NULLIF(CAST(c.query('data(../SeponeringsInfomasjon/SeponertAv)') AS VARCHAR(MAX)), '') AS SeponertAv,
-
-      -- DobbeltForskrivningsvarsel
-      NULLIF(CAST(c.query('data(../DobbeltForskrivningsvarsel)') AS VARCHAR(MAX)), '') AS DobbeltForskrivningsvarsel,
-
-      -- Kladd
-      CONVERT(BIT, CAST(c.query('data(../Kladd)') AS NVARCHAR(MAX))) AS Forskrivningskladd,
-
-      -- RegistrertAv
-      NULLIF(CAST(c.query('data(../RegistrertAv )') AS VARCHAR(MAX)), '') AS RegistrertAv,
-
-      -- CaveId
-      NULLIF(CAST(c.query('data(../CaveVarsel/CaveId)') AS VARCHAR(40)), '') AS CaveId,
-
-      -- SeponeringsInfomasjon/Kladd
-      CONVERT(BIT, CAST(c.query('data(../SeponeringsInfomasjon/Kladd)') AS NVARCHAR(MAX))) AS Seponeringskladd,
-
-      CONVERT(BIT, CAST(c.query('data(../VarselSlv/Type/@V)') AS NVARCHAR(MAX))) AS VarselSlvTypeV,
-
-      NULLIF(CAST(c.query('data(../VarselSlv/Type/@DN)') AS VARCHAR(MAX)), '') AS VarselSlvTypeDN,
-
-      NULLIF(CAST(c.query('data(../VarselSlv/Overskrift)') AS VARCHAR(MAX)), '') AS VarselSlvOverskrift,
-
-      NULLIF(CAST(c.query('data(../VarselSlv/Varseltekst)') AS VARCHAR(MAX)), '') AS VarselSlvVarseltekst
+        ELSE TRY_CONVERT(DATETIME, CAST(c.query('data(../SeponeringsInfomasjon/Seponeringsdato)') AS VARCHAR(MAX)))
+      END                                                                                                           AS Seponeringsdato,
+      NULLIF(CAST(c.query('data(../SeponeringsInfomasjon/Seponeringsgrunn)') AS                  VARCHAR(MAX)), '') AS Seponeringsgrunn,
+      NULLIF(CAST(c.query('data(../SeponeringsInfomasjon/SeponertAv)') AS                        VARCHAR(MAX)), '') AS SeponertAv,
+      NULLIF(CAST(c.query('data(../DobbeltForskrivningsvarsel)') AS                              VARCHAR(MAX)), '') AS DobbeltForskrivningsvarsel,
+      CONVERT(BIT, CAST(c.query('data(../Kladd)') AS                                             VARCHAR(MAX)))     AS Forskrivningskladd,
+      NULLIF(CAST(c.query('data(../RegistrertAv )') AS                                           VARCHAR(MAX)), '') AS RegistrertAv,
+      NULLIF(CAST(c.query('data(../CaveVarsel/CaveId)') AS                                       VARCHAR(MAX)), '') AS CaveIdList,
+      CONVERT(BIT, CAST(c.query('data(../SeponeringsInfomasjon/Kladd)') AS                       VARCHAR(MAX)))     AS Seponeringskladd,
+      CONVERT(TINYINT, CAST(c.query('data(../VarselSlv/Type/@V)') AS                             VARCHAR(MAX)))     AS VarselSlvTypeV,
+      NULLIF(CAST(c.query('data(../VarselSlv/Type/@DN)') AS                                      VARCHAR(MAX)), '') AS VarselSlvTypeDN,
+      NULLIF(CAST(c.query('data(../VarselSlv/Overskrift)') AS                                    VARCHAR(MAX)), '') AS VarselSlvOverskrift,
+      NULLIF(CAST(c.query('data(../VarselSlv/Varseltekst)') AS                                   VARCHAR(MAX)), '') AS VarselSlvVarseltekst
     FROM @DrugTreatmentXml dtx
     CROSS APPLY Xml.nodes('LesVarerIBrukSvar/Resept/ReseptDokLegemiddel') x (c);
 
-  UPDATE @DrugTreatment
-  SET DobbeltForskrivningsvarsel = NULL
-  WHERE DobbeltForskrivningsvarsel = '';
-
   -- Extract Strength and StrengthUnit
+
   UPDATE @DrugTreatment
   SET Strength = CAST(REPLACE(SUBSTRING(StrengthStr, 0, PatindexStrength), ',', '.') AS DECIMAL(12, 4)),
   StrengthUnit = RIGHT(StrengthStr, LEN(StrengthStr) - PatindexStrength)
@@ -341,7 +260,7 @@ BEGIN
   END TRY
   BEGIN CATCH
 
-    DECLARE @ErrorMessage NVARCHAR(MAX),
+    DECLARE @ErrorMessage VARCHAR(MAX),
             @ErrorSeverity INT,
             @ErrorState INT;
     SELECT @ErrorMessage = CONCAT( ERROR_MESSAGE(), ' Line ', ERROR_LINE()), @ErrorSeverity = ERROR_SEVERITY(), @ErrorState = ERROR_STATE();
@@ -352,7 +271,4 @@ BEGIN
   END CATCH;
 
 END
-GO
-
-GRANT EXECUTE ON [eResept].[UpdateVIB] TO [FMUser]
 GO
