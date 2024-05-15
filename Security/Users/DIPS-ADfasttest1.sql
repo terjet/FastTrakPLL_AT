@@ -1,0 +1,3 @@
+﻿CREATE USER [DIPS-AD\fasttest1]
+  WITHOUT LOGIN
+GO

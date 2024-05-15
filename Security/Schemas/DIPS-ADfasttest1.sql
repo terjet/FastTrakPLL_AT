@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [DIPS-AD\fasttest1] AUTHORIZATION [DIPS-AD\fasttest1]
+GO

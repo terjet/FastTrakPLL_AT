@@ -1,6 +1,12 @@
 ﻿CREATE ROLE [FastTrak]
 GO
 
+EXEC sp_addrolemember N'FastTrak', N'DIPS-AD\fasttest1'
+GO
+
+EXEC sp_addrolemember N'FastTrak', N'DIPS-AD\fasttest2'
+GO
+
 EXEC sp_addrolemember N'FastTrak', N'DIPS-AD\krm'
 GO
 
