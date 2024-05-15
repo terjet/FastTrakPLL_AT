@@ -24,6 +24,13 @@ GO
 GRANT SELECT ON [dbo].[ClinFormLog] TO [FastTrak]
 GO
 
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[ClinFormLog] TO [public]
+GO
+
 ALTER TABLE [dbo].[ClinFormLog]
   ADD CONSTRAINT [FK_ClinFormLog_ClinFormId] FOREIGN KEY ([ClinFormId]) REFERENCES [dbo].[ClinForm] ([ClinFormId])
 GO

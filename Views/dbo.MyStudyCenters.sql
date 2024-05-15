@@ -17,3 +17,10 @@ GO
 
 GRANT SELECT ON [dbo].[MyStudyCenters] TO [FastTrak]
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[MyStudyCenters] TO [public]
+GO

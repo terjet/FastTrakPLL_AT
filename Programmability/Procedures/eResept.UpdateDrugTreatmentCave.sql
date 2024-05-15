@@ -1,8 +1,5 @@
 ﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-
--- eResept.UpdateDrugTreatmentCave ================================================================
-
 CREATE PROCEDURE [eResept].[UpdateDrugTreatmentCave]( @PersonId INT ) AS
 BEGIN
 
@@ -23,7 +20,7 @@ BEGIN
   DECLARE treat_cur CURSOR FAST_FORWARD FOR
   SELECT gc.TreatId, CONCAT( dr.ReaksjonDN, ', ', ISNULL(dr.DescriptiveText, '(ingen ytterligere detaljer)'), '. '  )
   FROM dbo.DrugReaction dr
-    JOIN @GrunnlagForCaveTab gc ON CHARINDEX( dr.CaveId, gc.CaveIdList ) > 0
+    JOIN @GrunnlagForCaveTab gc ON CHARINDEX( CAST( dr.CaveId AS VARCHAR(36)), gc.CaveIdList ) > 0
   WHERE dr.PersonId = @PersonId;
 
   OPEN treat_cur;
@@ -40,9 +37,8 @@ BEGIN
   CLOSE treat_cur;
   DEALLOCATE treat_cur;
 
-  MERGE
-  INTO dbo.DrugTreatment AS Trg USING @GrunnlagForCaveTab AS Src
-  ON ( Trg.TreatId = Src.TreatId )
+  MERGE INTO dbo.DrugTreatment AS Trg USING @GrunnlagForCaveTab AS Src
+    ON ( Trg.TreatId = Src.TreatId )
   WHEN MATCHED
     THEN UPDATE
       SET Trg.CAVE = Src.CaveText;

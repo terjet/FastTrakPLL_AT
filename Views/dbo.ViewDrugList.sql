@@ -9,3 +9,10 @@ GO
 
 GRANT SELECT ON [dbo].[ViewDrugList] TO [FastTrak]
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[ViewDrugList] TO [public]
+GO

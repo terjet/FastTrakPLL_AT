@@ -8,3 +8,10 @@ SELECT p.PersonId,sc.StudyId,c.CenterId FROM dbo.Person p
   JOIN dbo.StudyStatus ss ON ss.StatusId=sc.FinState AND ss.StudyId=sc.StudyId AND ss.StatusActive=1
   JOIN dbo.StudyCenter c ON c.CenterId=sg.CenterId
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[AllActiveCases] TO [public]
+GO

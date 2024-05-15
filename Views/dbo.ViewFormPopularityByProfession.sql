@@ -15,3 +15,10 @@ GO
 
 GRANT SELECT ON [dbo].[ViewFormPopularityByProfession] TO [FastTrak]
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[ViewFormPopularityByProfession] TO [public]
+GO

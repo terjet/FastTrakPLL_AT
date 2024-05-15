@@ -34,6 +34,13 @@ GO
 GRANT SELECT ON [AuditLog].[CaseAccess] TO [FastTrak]
 GO
 
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [AuditLog].[CaseAccess] TO [public]
+GO
+
 ALTER TABLE [AuditLog].[CaseAccess]
   ADD CONSTRAINT [FK_AuditLog_CaseAccess_ClinRelId] FOREIGN KEY ([ClinRelId]) REFERENCES [dbo].[ClinRelation] ([ClinRelId])
 GO

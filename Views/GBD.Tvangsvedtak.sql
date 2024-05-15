@@ -14,3 +14,10 @@ GO
 
 GRANT SELECT ON [GBD].[Tvangsvedtak] TO [FastTrak]
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [GBD].[Tvangsvedtak] TO [public]
+GO

@@ -55,6 +55,13 @@ GO
 GRANT SELECT ON [dbo].[ClinDataPoint] TO [FastTrak]
 GO
 
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[ClinDataPoint] TO [public]
+GO
+
 ALTER TABLE [dbo].[ClinDataPoint]
   ADD CONSTRAINT [FK_ClinDataPoint_EventId] FOREIGN KEY ([EventId]) REFERENCES [dbo].[ClinEvent] ([EventId])
 GO

@@ -32,7 +32,7 @@
   [StopAuthorizedByName] [varchar](30) NULL,
   [ClinFormId] [int] NULL,
   [DoseUnit] [varchar](24) NULL,
-  [FMLibId] [varchar](40) NULL,
+  [FMLibId] [uniqueidentifier] NULL,
   [Forskrivningskladd] [bit] NOT NULL CONSTRAINT [DF_DrugTreatment_Forskrivningskladd] DEFAULT (0),
   [FMUpdated] [bit] NULL,
   [InteraksjonsNiva] [int] NULL,
@@ -48,6 +48,7 @@
   [VarselSlvTypeDN] [varchar](50) NULL,
   [VarselSlvOverskrift] [varchar](100) NULL,
   [VarselSlvTekst] [varchar](max) NULL,
+  [Varenr] [int] NULL,
   CONSTRAINT [PK_DrugTreatment] PRIMARY KEY CLUSTERED ([TreatId])
 )
 ON [PRIMARY]
@@ -69,7 +70,20 @@ CREATE INDEX [IDX_DrugTreatment_PersonId]
   ON [PRIMARY]
 GO
 
+CREATE UNIQUE INDEX [UIDX_DrugTreatment_FmLibId]
+  ON [dbo].[DrugTreatment] ([FMLibId])
+  WHERE ([FmLibId] IS NOT NULL)
+  ON [PRIMARY]
+GO
+
 GRANT SELECT ON [dbo].[DrugTreatment] TO [FastTrak]
+GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[DrugTreatment] TO [public]
 GO
 
 ALTER TABLE [dbo].[DrugTreatment]

@@ -17,3 +17,10 @@ GO
 
 GRANT SELECT ON [NDV].[Type1] TO [FastTrak]
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [NDV].[Type1] TO [public]
+GO

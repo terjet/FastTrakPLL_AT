@@ -56,6 +56,9 @@ GO
 GRANT SELECT ON [dbo].[LabData] TO [FastTrak]
 GO
 
+DENY DELETE ON [dbo].[LabData] TO [public]
+GO
+
 ALTER TABLE [dbo].[LabData]
   ADD CONSTRAINT [FK_LabData_BatchId] FOREIGN KEY ([BatchId]) REFERENCES [dbo].[ImportBatch] ([BatchId]) ON DELETE CASCADE
 GO

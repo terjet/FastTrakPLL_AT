@@ -12,3 +12,10 @@ GO
 
 GRANT SELECT ON [dbo].[ViewLabReqPending] TO [FastTrak]
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[ViewLabReqPending] TO [public]
+GO

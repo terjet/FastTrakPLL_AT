@@ -19,3 +19,10 @@ GO
 
 GRANT SELECT ON [dbo].[RoleMembership] TO [FastTrak]
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[RoleMembership] TO [public]
+GO

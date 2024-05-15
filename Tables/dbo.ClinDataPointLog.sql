@@ -16,6 +16,14 @@ ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
 GO
 
+DENY
+  DELETE,
+  INSERT,
+  SELECT,
+  UPDATE
+ON [dbo].[ClinDataPointLog] TO [public]
+GO
+
 ALTER TABLE [dbo].[ClinDataPointLog]
   ADD CONSTRAINT [FK_ClinDataPointLog_ChangedBy] FOREIGN KEY ([ChangedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

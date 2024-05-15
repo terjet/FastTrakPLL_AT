@@ -11,3 +11,10 @@ GO
 
 GRANT SELECT ON [NDV].[IncretinUsers] TO [FastTrak]
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [NDV].[IncretinUsers] TO [public]
+GO

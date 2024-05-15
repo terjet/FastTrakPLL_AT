@@ -8,3 +8,10 @@ GO
 
 GRANT SELECT ON [dbo].[OngoingTreatment] TO [FastTrak]
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[OngoingTreatment] TO [public]
+GO

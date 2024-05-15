@@ -14,3 +14,10 @@ GO
 
 GRANT SELECT ON [dbo].[ViewActiveCaseListStub] TO [FastTrak]
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[ViewActiveCaseListStub] TO [public]
+GO

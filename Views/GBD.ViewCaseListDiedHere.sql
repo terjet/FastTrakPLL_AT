@@ -14,3 +14,10 @@ SELECT PersonId,DOB,FullName,StudyId,GroupName,GenderId,NationalId,ChangedAt AS 
   ) deaths
 WHERE OrderNo = 1
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [GBD].[ViewCaseListDiedHere] TO [public]
+GO

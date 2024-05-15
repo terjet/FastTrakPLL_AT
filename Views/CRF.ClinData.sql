@@ -8,3 +8,10 @@ CREATE VIEW [CRF].[ClinData] AS
       JOIN dbo.ClinEvent e ON e.EventId=co.EventId 
       JOIN dbo.MetaItem mi ON mi.ItemId=co.ItemId
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [CRF].[ClinData] TO [public]
+GO

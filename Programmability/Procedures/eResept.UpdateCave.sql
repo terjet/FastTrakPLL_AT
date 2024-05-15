@@ -212,3 +212,6 @@ BEGIN
   END CATCH;
 END
 GO
+
+GRANT EXECUTE ON [eResept].[UpdateCave] TO [FastTrak]
+GO

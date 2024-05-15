@@ -10,3 +10,10 @@ JOIN UserList ul on ul.UserId=dt.CreatedBy
 JOIN Person pu ON pu.PersonId=ul.PersonId
 WHERE StopAt < StartAt
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[ShortTreatments] TO [public]
+GO

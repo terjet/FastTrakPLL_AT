@@ -6,3 +6,10 @@ CREATE VIEW [report].[NumericLabData] WITH SCHEMABINDING AS
   JOIN dbo.LabCode lc ON lc.LabCodeId = ld.LabCodeId
   JOIN dbo.LabClass lcl on lcl.LabClassId = lc.LabClassId
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [report].[NumericLabData] TO [public]
+GO

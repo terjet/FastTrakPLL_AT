@@ -13,6 +13,9 @@ GO
 GRANT SELECT ON [dbo].[DSSRuleExecute] TO [FastTrak]
 GO
 
+DENY UPDATE ON [dbo].[DSSRuleExecute] TO [public]
+GO
+
 ALTER TABLE [dbo].[DSSRuleExecute]
   ADD CONSTRAINT [FK_DSSRuleExecute_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

@@ -13,3 +13,10 @@ GO
 
 GRANT SELECT ON [GBD].[HultenNursingLoadByGroup] TO [FastTrak]
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [GBD].[HultenNursingLoadByGroup] TO [public]
+GO

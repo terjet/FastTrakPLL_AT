@@ -10,3 +10,10 @@ GO
 
 GRANT SELECT ON [KB].[ViewNorGEPPoly] TO [FastTrak]
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [KB].[ViewNorGEPPoly] TO [public]
+GO

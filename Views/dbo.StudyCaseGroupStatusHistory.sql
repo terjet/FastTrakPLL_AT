@@ -10,3 +10,10 @@ AS
   LEFT OUTER JOIN dbo.StudyCenter c ON c.CenterId=sg.CenterId
   LEFT OUTER JOIN dbo.StudyStatus ss ON ss.StudyId=sc.StudyId AND ss.StatusId=scl.NewStatusId
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[StudyCaseGroupStatusHistory] TO [public]
+GO

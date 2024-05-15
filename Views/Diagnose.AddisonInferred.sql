@@ -19,3 +19,10 @@ LEFT JOIN dbo.GetLastQuantities(6089) AS T6089 ON T6089.PersonId = p.PersonId
 WHERE ( T6090.EnumVal > 0 OR T6299.EnumVal = 1 OR T6089.Quantity > 1900 )
  AND ( NOT ISNULL( T6299.EnumVal, 0 ) IN ( 2, 3 ) )
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [Diagnose].[AddisonInferred] TO [public]
+GO

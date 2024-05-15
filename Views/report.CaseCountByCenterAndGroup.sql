@@ -9,3 +9,10 @@ AS
   JOIN dbo.StudyCenter c ON c.CenterId=sg.CenterId
   GROUP BY sc.StudyId,sg.CenterId,c.CenterName,sg.GroupName
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [report].[CaseCountByCenterAndGroup] TO [public]
+GO

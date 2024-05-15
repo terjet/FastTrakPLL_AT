@@ -4,6 +4,9 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+SET QUOTED_IDENTIFIER ON
+GO
+
 CREATE TABLE [dbo].[ClinEvent] (
   [EventId] [int] IDENTITY,
   [StudyId] [int] NOT NULL,
@@ -41,6 +44,13 @@ CREATE UNIQUE INDEX [I_ClinEvent_StudyPersonEvent]
 GO
 
 GRANT SELECT ON [dbo].[ClinEvent] TO [FastTrak]
+GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[ClinEvent] TO [public]
 GO
 
 ALTER TABLE [dbo].[ClinEvent]

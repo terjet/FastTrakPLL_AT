@@ -17,3 +17,10 @@ LEFT OUTER JOIN dbo.Person sp ON sp.PersonId=usp.PersonId
 JOIN dbo.MetaForm mf ON mf.FormId = cf.FormId
 LEFT OUTER JOIN Comm.MetaStatusCode m ON m.StatusCode=o.StatusCode
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [Comm].[OutboxForm] TO [public]
+GO

@@ -33,6 +33,13 @@ GO
 GRANT SELECT ON [dbo].[CaseLog] TO [FastTrak]
 GO
 
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[CaseLog] TO [public]
+GO
+
 ALTER TABLE [dbo].[CaseLog]
   ADD CONSTRAINT [FK_CaseLog_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

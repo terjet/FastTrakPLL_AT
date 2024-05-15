@@ -54,6 +54,13 @@ GO
 GRANT SELECT ON [dbo].[ClinForm] TO [FastTrak]
 GO
 
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[ClinForm] TO [public]
+GO
+
 ALTER TABLE [dbo].[ClinForm]
   ADD CONSTRAINT [FK_ClinForm_CreatedBy] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

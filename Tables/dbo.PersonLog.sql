@@ -21,6 +21,13 @@ GO
 GRANT SELECT ON [dbo].[PersonLog] TO [Administrator]
 GO
 
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[PersonLog] TO [public]
+GO
+
 ALTER TABLE [dbo].[PersonLog]
   ADD CONSTRAINT [FK_PersonLog_ChangedBy] FOREIGN KEY ([ChangedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

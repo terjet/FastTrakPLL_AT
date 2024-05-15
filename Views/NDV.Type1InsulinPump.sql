@@ -12,3 +12,10 @@ GO
 
 GRANT SELECT ON [NDV].[Type1InsulinPump] TO [FastTrak]
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [NDV].[Type1InsulinPump] TO [public]
+GO

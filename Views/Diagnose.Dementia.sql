@@ -10,3 +10,10 @@ CREATE VIEW [Diagnose].[Dementia] AS
     JOIN dbo.MetaNomItem mni ON mni.ItemId = mnli.ItemId
   WHERE mni.ItemCode LIKE 'F0[0123]%' OR mni.ItemCode LIKE 'G30%';
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [Diagnose].[Dementia] TO [public]
+GO

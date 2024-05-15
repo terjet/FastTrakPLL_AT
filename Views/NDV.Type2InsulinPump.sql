@@ -9,3 +9,10 @@ CREATE VIEW [NDV].[Type2InsulinPump] AS
   JOIN dbo.GetLastEnumValuesTable( 4056, '2100-01-01' ) t4056 ON t4056.PersonId = v.PersonId
   WHERE t3196.EnumVal = 2 AND t4056.EnumVal = 2
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [NDV].[Type2InsulinPump] TO [public]
+GO

@@ -13,3 +13,10 @@ GO
 
 GRANT SELECT ON [report].[LabClassOverview] TO [FastTrak]
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [report].[LabClassOverview] TO [public]
+GO

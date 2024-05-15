@@ -33,3 +33,10 @@ SELECT v.PersonId, v.DOB, v.FullName, DATEDIFF(year, v.DOB, GETDATE()) AS Alder,
 FROM
  dbo.ViewActiveCaseListStub AS v JOIN dbo.Study AS s ON s.StudyId = v.StudyId AND s.StudyName = 'NDV'
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [NDV].[EnkeltRegneark] TO [public]
+GO

@@ -8,3 +8,10 @@ CREATE VIEW [dbo].[UtilMissingPersonNo] AS
     LEFT OUTER JOIN StudyCenter c ON c.CenterId=sg.CenterId
   WHERE ( p.NationalId IS NULL ) and sg.GroupName <> 'Testpasienter' AND ss.StatusActive=1
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[UtilMissingPersonNo] TO [public]
+GO

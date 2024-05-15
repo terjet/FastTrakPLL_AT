@@ -10,3 +10,10 @@ CREATE VIEW [Diagnose].[DiabetesMellitus] AS
     JOIN dbo.MetaNomItem mni ON mni.ItemId = mnli.ItemId
   WHERE mni.ItemCode LIKE 'E1[01234]%';
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [Diagnose].[DiabetesMellitus] TO [public]
+GO

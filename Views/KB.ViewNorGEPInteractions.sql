@@ -10,3 +10,10 @@ AS
   JOIN dbo.ViewActiveCaseListStub p on p.PersonId=a.PersonId and p.StudyId=a.StudyId
   WHERE AlertLevel > 0
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [KB].[ViewNorGEPInteractions] TO [public]
+GO

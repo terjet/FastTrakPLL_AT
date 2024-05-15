@@ -34,3 +34,10 @@ JOIN dbo.KBAtcIndex k ON k.AtcCode=dt.ATC
  AND ( NOT Dose24hCount IS NULL )
 GROUP BY ac.StudyId,k.AtcCode,k.AtcName
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [report].[DrugUseStatistics] TO [public]
+GO

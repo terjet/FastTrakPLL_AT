@@ -13,3 +13,10 @@ CREATE VIEW [Comm].[HealthCareProfessional] AS
   JOIN MetaProfession mp ON mp.ProfId=ul.ProfId 
   WHERE HPRNo > 0;
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [Comm].[HealthCareProfessional] TO [public]
+GO

@@ -17,7 +17,7 @@
   [DeletedAt] [datetime] NULL,
   [DeletedBy] [int] NULL,
   [DescriptiveText] [varchar](max) NULL,
-  [CaveId] [varchar](40) NULL,
+  [CaveId] [uniqueidentifier] NULL,
   [LegemiddelId] [varchar](40) NULL,
   [VirkestoffId] [varchar](max) NULL,
   [HjelpestoffReaksjon] [bit] NULL,

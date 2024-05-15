@@ -24,3 +24,10 @@ GO
 
 GRANT SELECT ON [dbo].[ViewCenterCaseListStub] TO [FastTrak]
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[ViewCenterCaseListStub] TO [public]
+GO

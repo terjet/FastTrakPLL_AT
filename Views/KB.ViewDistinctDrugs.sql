@@ -7,3 +7,10 @@ GO
 
 GRANT SELECT ON [KB].[ViewDistinctDrugs] TO [FastTrak]
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [KB].[ViewDistinctDrugs] TO [public]
+GO

@@ -14,6 +14,13 @@
 ON [PRIMARY]
 GO
 
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [dbo].[RoleMember] TO [public]
+GO
+
 ALTER TABLE [dbo].[RoleMember]
   ADD CONSTRAINT [FK_RoleMember_GrantedBy] FOREIGN KEY ([GrantedBy]) REFERENCES [dbo].[UserList] ([UserId])
 GO

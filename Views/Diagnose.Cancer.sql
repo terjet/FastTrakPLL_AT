@@ -10,3 +10,10 @@ CREATE VIEW [Diagnose].[Cancer] AS
     JOIN dbo.MetaNomItem mni ON mni.ItemId = mnli.ItemId  
   WHERE mni.ItemCode LIKE 'C%';
 GO
+
+DENY
+  DELETE,
+  INSERT,
+  UPDATE
+ON [Diagnose].[Cancer] TO [public]
+GO
